@@ -4,6 +4,8 @@
 from priodict import priorityDictionary
 from math import sqrt
 
+
+#TODO: account for non viable route
 def Dijkstra(G,start,end=None):
 	D = {}
 	P = {}
