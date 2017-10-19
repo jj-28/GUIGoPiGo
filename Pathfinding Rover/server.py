@@ -123,6 +123,7 @@ class SendSpeed(Thread):
                 conn.send(str.encode("M " + str(xspeed) + " " + str(yspeed)))
                 sleep(0.1)
 
+#### Start HERE
 class Main(Thread):
     #handles all server commands from controller
     
@@ -135,33 +136,50 @@ class Main(Thread):
         global general_commands
         global home_coord
         servo_pos = 90
+
+        #MAIN Processing Loop
         while running:
+
+            #While there is nothing to do
             while movement_commands.empty() and general_commands.empty():
+                #Do Nothing
                 sleep(0.1)
                 if not running:
                     return
+
+            #If there are general commands, get them
             if not general_commands.empty():
                 data = general_commands.get()
             else:
                 data = movement_commands.get()
+
+            #If no data was found
             if not data:
                 print "Received nothing and quitting"
                 running = False
                 break
+
+            #IF stop, cancel existing commands
             if data[0] == "Stop":
                 if data[2] != 0 and data[3] != 0:
                     with movement_commands.mutex:
                         movement_commands.queue.clear()
                 data = data[1:]
+
+            #If Quit, we're done!
             if data[0] == "Quit":
                 print "Quitting"
                 break
+
+            #IF m, move
             elif data[0] == "M":
                 xspeed = int(data[1])
                 yspeed = int(data[2])
 
+                #IF 0 stop moving
                 if xspeed == 0 and yspeed == 0:
                     stop()
+                #ELSE move the desired speed
                 else:
                     set_left_speed(abs(xspeed))
                     set_right_speed(abs(yspeed))
@@ -169,23 +187,30 @@ class Main(Thread):
                         bwd()
                     else:
                         fwd()
+            #IF "SER" change the looking direction
             elif data[0] == "SER":
                 print "Changing Looking Direction"
                 print data
                 x = float(data[1])
                 xpos = int(x * 5)
+
+                #IF servo and position are wrong, realign(I THINK)
                 if xpos > 0 and servo_pos > 10:
                     servo_pos = servo_pos - xpos
                     servo(servo_pos)
                 if xpos < 0 and servo_pos < 140:
                     servo_pos = servo_pos - xpos
                     servo(servo_pos)
+
+            #Turn LED on or OFF
             elif data[0] == "LON":
                 print "Turning LED on"
                 led_on(1)
             elif data[0] == "LOFF":
                 print "Turning LED off"
                 led_off(1)
+
+            #IF "home" navigate rover to home position
             elif data[0] == "Home":
                 print "Going home"
                 goHome(home_coord)
