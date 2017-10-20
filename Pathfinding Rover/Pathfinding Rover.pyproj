@@ -21,7 +21,39 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="graphing.py" />
+    <Compile Include="Intersection.py" />
+    <Compile Include="intersection_enum.py" />
+    <Compile Include="line_detection_system.py" />
+    <Compile Include="line_reader_test.py" />
+    <Compile Include="line_sensor.py" />
+    <Compile Include="linked_list.py" />
+    <Compile Include="map_system.py" />
+    <Compile Include="navigation_system.py" />
+    <Compile Include="Node.py" />
+    <Compile Include="Pathfinding\edge.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pathfinding\graphing.py" />
+    <Compile Include="Pathfinding\map.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pathfinding\mapAssembler.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pathfinding\Node.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pathfinding\path.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Pathfinding_Rover.py" />
+    <Compile Include="priodict.py" />
+    <Compile Include="server.py" />
+    <Compile Include="stop.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pathfinding\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
