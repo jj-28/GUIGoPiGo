@@ -7,6 +7,9 @@ class map(object):
 
     def getPath(start,end)
 
+    def reversePath(path)
+
+    def pathinding(start,end)
 
 
 
