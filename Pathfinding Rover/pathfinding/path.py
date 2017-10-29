@@ -1,86 +1,75 @@
-import Node
-import edge
-import compassDirections
-import robotPosition
-
+from compassDirections import compassDirections
 class path(object):
     """description of class"""
-    robotPos
-    nodes[] #the nodes of a path
-    commands[] #string of commands for robot controller
+
+    def __init__(self):
+        self.nodes  # the nodes list of a path
+        self.commands  # string list of commands for robot controller
+
 
     #get a path of strings for the robot to use
-    def getPathAsStrings()
+    def getPathAsStrings(self,robotpos):
         i = 0 #the node index
         j = 0 #directions index
-        fakepos = robotPosition()
+        fakepos = robotpos
         fakepos.direction = robotpos.direction
 
-        #WHILE we have not reached the end node
-            #get the next node
-            #IF not the first node
-                #set robot direction opposite to direction it came
-            #get the edge we are working with
-            #WHILE we aren't facing the correct direction
-                #get a direction to turn to
-
-
         #while we have nodes to process
-        while(nodes.length > i)
+        while(self.nodes.length > i):
             #get the next node
-            node = nodes[i]
+            node = self.nodes[i]
 
             #if not the first node
-            if(not i = 0)
+            if not i == 0 :
                 #set robot direction opposite to direction it came
-                edge = nodes[i-1].getEdge(nodes[i])
-                tempDirection =  edge.getDirection(nodes[i])
-                fakepos.direction = reverseDirection(tempDirection)
+                edge = self.nodes[i-1].getEdge(self.nodes[i])
+                tempDirection =  edge.getDirection(self.nodes[i])
+                fakepos.direction = self.reverseDirection(tempDirection)
             #get the edge we need
-            edge = nodes[i].getEdge(nodes[i+1])
+            edge = self.nodes[i].getEdge(self.nodes[i+1])
             direction = edge.getDirection(node)
             #while we aren't facint the correct direction
-            while(not fakepos.direction = direction )
-                commands[j] = getDirection(direction,fakepos.direction)
-                j++
-            commands[j]= "Forward"
+            while(not fakepos.direction == direction ):
+                self.commands[j] = self.getDirection(direction,fakepos.direction)
+                j = j+1
+            self.commands[j]= "Forward"
             #prep for next node
-            i++
-            j++
+            i = i +1
+            j = j+1
 
 
-    def reverseDirection(d)
-        if(d = north)
+    def reverseDirection(d):
+        if(d == compassDirections.north):
             return compassDirections.south
-        else if(d = east)
+        elif(d == compassDirections.east):
             return compassDirections.west
-        else if(d = west)
+        elif(d == compassDirections.west):
             return compassDirections.east
-        else if(d = south)
+        elif(d == compassDirections.south):
             return compassDirections.north
 
-    def getDirection(d1,d2)
-        if(d1 = d2)
+    def getDirection(d1,d2):
+        if(d1 == d2):
             return "TurnAround"
-        if(d1 = compassDirections.north)
-            if(d2 = compassDirections.east)
+        if(d1 == compassDirections.north):
+            if(d2 == compassDirections.east):
                 return "Right"
-            else if(d2 = compassDirections.west)
+            elif(d2 == compassDirections.west):
                 return "Left"
-        else if(d1 = compassDirections.east)
-            if(d2 = compassDirections.north)
+        elif(d1 == compassDirections.east):
+            if(d2 == compassDirections.north):
                 return "Left"
-            else if(d2 = compassDirections.south)
+            elif(d2 == compassDirections.south):
                 return "Right"
-        else if(d1 = compassDirections.south)
-            if(d2 = compassDirections.east)
+        elif(d1 == compassDirections.south):
+            if(d2 == compassDirections.east):
                 return "Left"
-            else if(d2 = compassDirections.west)
+            elif(d2 == compassDirections.west):
                 return "Right"
-        else if(d1 = compassDirections.west)
-            if(d2 = compassDirections.south)
+        elif(d1 == compassDirections.west):
+            if(d2 == compassDirections.south):
                 return "Left"
-            else if(d2 = compassDirections.north)
+            elif(d2 == compassDirections.north):
                 return "Right"
             
             
