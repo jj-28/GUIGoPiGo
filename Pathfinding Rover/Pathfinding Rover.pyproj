@@ -31,6 +31,9 @@
     <Compile Include="map_system.py" />
     <Compile Include="navigation_system.py" />
     <Compile Include="Node.py" />
+    <Compile Include="Pathfinding\compassDirections.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Pathfinding\edge.py">
       <SubType>Code</SubType>
     </Compile>
@@ -45,6 +48,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Pathfinding\path.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pathfinding\robotPosition.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Pathfinding_Rover.py" />
