@@ -7,29 +7,28 @@
 <body>
 <p id="demo"></p>
 <! image of the map >
-<div align="center">
+
+<div class="mainwindow">
+<div class = "mapimage"  >
     <img align="center"
          class="map"
-         src="http://svgshare.com/i/3To.svg"
-         style="width: 744px; height: 1052px;"
+         src="../src/images/3To.svg"
          alt="map" usemap="#workmap" onclick="showCoords(event)">
 </div>
-<! image of the robot >
-<div>
+<div class="robotoverlay">
     <img class="robot" id="robot"
-         src="https://www.shareicon.net/data/128x128/2015/08/26/91000_r2d2_512x512.png"
+         src="../src/images/robot.png"
          width="40";
          alt="robot">
 </div>
-
 <! map points >
 <div>
     <map name="workmap">
         <area shape="circle" coords="428,464,100" alt="click me" href="http://google.com/" color="red">
     </map>
 </div>
-<!--<div id="mapdiv" style="width: 744px; height: 1052px;"></div>-->
 
+</div>
 <!--<div>-->
     <!--<map name="Intersections">-->
     <!--<area shape="square" coords="346,227" href="https://hurray.com" alt="N1" >-->
