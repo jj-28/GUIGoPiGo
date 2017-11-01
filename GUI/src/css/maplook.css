@@ -13,6 +13,12 @@
     bottom: 10%;
     /*padding-left: 10px ;*/
 }
+
+/*.deleteDep {*/
+    /*background-image: url("../images/x.svg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: 50% 50%;*/
+/*}*/
 .waypoints{
     position:relative;
     text-align: center;
@@ -44,6 +50,17 @@
     margin-left: 14.6%;
     /*margin-top: 0%;*/
     z-index:inherit;
+}
+
+.waypointpanel {
+    width: 250px;
+    height:300px;
+    position: relative;
+    z-index: 2;
+    border: 10px solid red;
+    left: 69%;
+    bottom : 53%;
+
 }
 
 .mainwindow {

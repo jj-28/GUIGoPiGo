@@ -3,10 +3,17 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/maplook.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <script src="../src/js/move.js"></script>
     <script src="../src/js/node.js"></script>
+
 </head>
 <body>
+<script>
+$('body').on('click', 'input.deleteDep', function() {
+$(this).parents('tr').remove();
+});
+</script>
 <p id="demo"></p>
 <! image of the map >
 
@@ -40,6 +47,36 @@
          src="../src/images/robot.png"
          alt="robot">
 </div>
+    <div class="waypointpanel">
+    <table id="waypointtable" cellpadding="14" style="width:100%">
+        <tr>
+            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+            <td>Waypoint n1</td>
+        </tr>
+
+        <tr>
+            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+            <td>Waypoint n2</td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+            <td>Waypoint n3</td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+            <td>Waypoint n4</td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+            <td>Waypoint n5</td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+            <td>Waypoint n6</td>
+        </tr>
+    </table>
+
+    </div>
 <! map points >
 <div>
     <map name="Intersections">

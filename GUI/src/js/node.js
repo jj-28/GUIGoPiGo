@@ -9,6 +9,7 @@ function addWaypoint(id) {
 
 
 
+
 //then send those values as a python array, to the pathfinder
 
 
