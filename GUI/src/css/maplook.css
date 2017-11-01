@@ -19,47 +19,81 @@
     /*background-repeat: no-repeat;*/
     /*background-position: 50% 50%;*/
 /*}*/
-.waypoints{
+/*.waypoints{
     position:relative;
     text-align: center;
     border-radius: 4px;
-    /*background-color: #f44336;*/
+    *//*background-color: #f44336;*//*
     font-size: 16px;
-    z-index: 1;
-    /*opacity: 0.6;*/
-    /*cursor: not-allowed;*/
-}
+    *//*z-index: 1;*//*
+    *//*opacity: 0.6;*//*
+    cursor: not-allowed;
+}*/
 #n1 {
     position: relative;
     display: block;
     margin-left: 34.6%;
     margin-top: 25.7%;
-    z-index:inherit;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+
+#n1:hover {
+    background-color: #008CBA;
+    color: white;
 }
 #n2 {
     position: relative;
     display: block;
-    margin-left: 34.6%;
-    margin-top: 3.6%;
-    z-index:inherit;
+    margin-left: 34.3%;
+    margin-top: 2%;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
 }
+#n2:hover {
+    background-color: #008CBA;
+    color: white;
+    }
 
 #n3 {
     position: relative;
     display: block;
-    margin-left: 14.6%;
-    /*margin-top: 0%;*/
-    z-index:inherit;
+    margin-left: 14.3%;
+    margin-top: -3.6%;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
 }
+#n3:hover {
+    background-color: #008CBA;
+    color: white;
+    }
+
+
 
 .waypointpanel {
     width: 250px;
     height:300px;
     position: relative;
     z-index: 2;
-    border: 10px solid red;
+    border: 10px solid #008CBA;
     left: 69%;
     bottom : 53%;
+    overflow: auto;
 
 }
 
@@ -72,13 +106,12 @@
     padding-bottom: 20px;
     padding-left: 20px;
     margin: auto;
-    border: 3px solid green;
+    border: 3px solid #008CBA;
     /*padding: 30px;*/
 
 }
-area {
-    display:inline;
-}
+
+
 
 
 
