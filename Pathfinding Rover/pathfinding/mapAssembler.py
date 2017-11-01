@@ -33,6 +33,12 @@ class mapAssembler(object):
         #then the second node and the direction it connects...followed by its weight and if an obstacle is present
         #(use 0 and false for now)
         #TODO: Needs redoing
+        #CHANGED:
+        #      edge(map[0].....,0,False)
+        #              .
+        #              .
+        #              .
+        #      edge(map[18]......,0,False)
         edge(map[0],compassDirections.north,map[1],compassDirections.south,0,False)
         edge(map[1],compassDirections.east,map[2],compassDirections.west,0,False)
         edge(map[1],compassDirections.north,map[3],compassDirections.south,0,False)
@@ -41,13 +47,15 @@ class mapAssembler(object):
         edge(map[3],compassDirections.west,map[6],compassDirections.east,0,False)
         edge(map[6],compassDirections.north,map[7],compassDirections.south,0,False)
         edge(map[6],compassDirections.west,map[8],compassDirections.south,0,False)
-        edge(map[8],compassDirections.east,map[9],compassDirections.south,0,False)
+        edge(map[8],compassDirections.north,map[9],compassDirections.south,0,False)
         edge(map[8],compassDirections.west,map[10],compassDirections.east,0,False)
         edge(map[10],compassDirections.west,map[11],compassDirections.east,0,False)
-        edge(map[10],compassDirections.south,map[12],compassDirections.north,0,False)
-        edge(map[12],compassDirections.east,map[13],compassDirections.west,0,False)
-        edge(map[12],compassDirections.west,map[14],compassDirections.north,0,False)
-        edge(map[14],compassDirections.west,map[15],compassDirections.east,0,False)
-        edge(map[14],compassDirections.south,map[16],compassDirections.north,0,False)
-        edge(map[14],compassDirections.east,map[17],compassDirections.west,0,False)
-        edge(map[17],compassDirections.east,map[18],compassDirections.west,0,False)
+        edge(map[11],compassDirections.south,map[12],compassDirections.north,0,False)
+        edge(map[12],compassDirections.south,map[13],compassDirections.north,0,False)
+        edge(map[13],compassDirections.west,map[14],compassDirections.east,0,False)
+        edge(map[13],compassDirections.south,map[15],compassDirections.north,0,False)
+        edge(map[13],compassDirections.east,map[16],compassDirections.west,0,False)
+        edge(map[16],compassDirections.west,map[12],compassDirections.east,0,False)
+        edge(map[16],compassDirections.east,map[17],compassDirections.west,0,False)
+        edge(map[17],compassDirections.north,map[6],compassDirections.south,0,False)
+        edge(map[17],compassDirections.south,map[18],compassDirections.north,0,False)
