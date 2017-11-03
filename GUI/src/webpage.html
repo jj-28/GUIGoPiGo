@@ -8,7 +8,7 @@
     <script src="../src/js/node.js"></script>
 
 </head>
-<body>
+<body background="../src/images/spiration dark.png">
 <script>
 $('body').on('click', 'input.deleteDep', function() {
 $(this).parents('tr').remove();
@@ -20,7 +20,7 @@ $(this).parents('tr').remove();
 <div class="mainwindow">
 
     <div class="waypoints">
-        <button onclick= "addWaypoint" id= "n1" name="n" type="button"> n1 </button>
+        <button class= "active" onclick= "addWaypoint" id= "n1" name="n" type="button"> n1 </button>
         <button id= "n2" type="button"  name="n"> n2 </button>
         <button id= "n3" type="button" name="n"> n3 </button>
         <!--<button id= "n4" type="button"> n4 </button>-->
@@ -77,12 +77,7 @@ $(this).parents('tr').remove();
     </table>
 
     </div>
-<! map points >
-<div>
-    <map name="Intersections">
-        <area shape="circle" coords="444,456,100" alt="click me" href="http://google.com/" color="red">
-    </map>
-</div>
+
 
 </div>
 </body>
