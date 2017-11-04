@@ -6,10 +6,16 @@ class Node(object):
     
     def __init__(self, inName):
         self.name = inName
+        self.fCost
+        self.gCost
+        self.hCost
+        self.x
+        self.y
         self.northEdge  # the north edge
         self.eastEdge  # the east edge
         self.southEdge  # the south edge
         self.westEdge  # the south edge
+        self.parent = None
         self.edges = [self.northEdge, self.eastEdge, self.southEdge, self.westEdge]
     def putEdgesOnArray(self):
         self.edges = [self.northEdge,self.eastEdge,self.southEdge,self.westEdge]
