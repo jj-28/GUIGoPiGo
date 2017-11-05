@@ -14,22 +14,27 @@ $('body').on('click', 'input.deleteDep', function() {
 $(this).parents('tr').remove();
 });
 </script>
+<<<<<<< HEAD
 
+=======
+<p style= "color: white;" id="demo"></p>
+<p style= "color: white;" id ="print"></p>
+>>>>>>> updated waypoint queue function [GUI]
 <! image of the map >
-
 <div class="mainwindow">
+<<<<<<< HEAD
     <p id="demo"></p>
 
     <div class="waypoints">
-        <button class= "active" onclick= "addWaypoint" id= "n1" name="n" type="button"> n1 </button>
-        <button id= "n2" type="button"  name="n"> n2 </button>
-        <button id= "n3" type="button" name="n"> n3 </button>
-        <button id= "n4" type="button"> n4 </button>
-        <button id= "n5" type="button"> n5 </button>
-        <button id= "n6" type="button"> n6 </button>
-        <button id= "n7" type="button"> n7 </button>
-        <button id= "n8" type="button"> n8 </button>
-        <button id= "n9" type="button"> n9 </button>
+        <button class= "active" onclick= "addWaypoint(this.id)" id= "n1" name="n" type="button"> n1 </button>
+        <button onclick= "addWaypoint(this.id)"  id= "n2" type="button"  name="n"> n2 </button>
+        <button onclick= "addWaypoint(this.id)" id= "n3" type="button" name="n"> n3 </button>
+        <button onclick= "addWaypoint(this.id)" id= "n4" type="button"> n4 </button>
+        <button onclick= "addWaypoint(this.id)" id= "n5" type="button"> n5 </button>
+        <button onclick= "addWaypoint(this.id)" id= "n6" type="button"> n6 </button>
+        <button onclick= "addWaypoint(this.id)" id= "n7" type="button"> n7 </button>
+        <button onclick= "addWaypoint(this.id)" id= "n8" type="button"> n8 </button>
+        <button onclick= "addWaypoint(this.id)" id= "n9" type="button"> n9 </button>
     </div>
 <!--<div class = "mapimage"  >-->
     <img
@@ -42,10 +47,11 @@ $(this).parents('tr').remove();
          src="../src/images/robot.png"
          alt="robot">
 </div>
+
     <div class="waypointpanel">
     <table id="waypointtable" cellpadding="14" style="width:100%">
         <tr>
-            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow();sendCoords();">  </td>
+            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
             <td>Waypoint n1</td>
         </tr>
         <tr>
@@ -70,9 +76,13 @@ $(this).parents('tr').remove();
             <td>Waypoint n6</td>
         </tr>
     </table>
-
     </div>
-
+	
+	<div class="actionbuttons">
+        <button id= "buttonStart" name="start" type="button"> Start </button>
+		<button id= "buttonStop" name="stop" type="button"> Stop </button>
+		<button id= "buttonClear" name="clear" type="button"> Clear </button>
+    </div>
 
 </div>
 </body>

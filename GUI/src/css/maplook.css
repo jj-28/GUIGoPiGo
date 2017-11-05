@@ -196,6 +196,7 @@
 
 }
 
+
 .waypointpanel {
     width: 250px;
     height:300px;
@@ -206,6 +207,57 @@
     bottom : 50%;
     overflow: auto;
 
+}
+
+#buttonStart {
+	position: relative;
+	left: 870px;
+    top: -220px;
+	cursor: pointer;
+	background:    #999999;
+	background:    -webkit-linear-gradient(#999999, #999999);
+	background:    linear-gradient(#999999, #999999);
+	border-radius: 5px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	font:          normal 700 18px/1 "Helvetica", sans-serif;
+	text-align:    center;
+	text-shadow:   1px 1px #000000;
+}
+
+#buttonStop {
+	position: relative;
+	left: 970px;
+    top: -220px;
+	cursor: pointer;
+	background:    #999999;
+	background:    -webkit-linear-gradient(#999999, #999999);
+	background:    linear-gradient(#999999, #999999);
+	border-radius: 5px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	font:          normal 700 18px/1 "Helvetica", sans-serif;
+	text-align:    center;
+	text-shadow:   1px 1px #000000;
+}
+
+#buttonClear {
+	position: relative;
+	left: 786px;
+    top: -175px;
+	cursor: pointer;
+	background:    #999999;
+	background:    -webkit-linear-gradient(#999999, #999999);
+	background:    linear-gradient(#999999, #999999);
+	border-radius: 5px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	font:          normal 700 18px/1 "Helvetica", sans-serif;
+	text-align:    center;
+	text-shadow:   1px 1px #000000;
 }
 
 .mainwindow {
@@ -222,7 +274,10 @@
 
 }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 50bc3be94bac1021a38e59178cdd39ffd66967a8
 .robot {
     position: absolute;
     top: 50%;
