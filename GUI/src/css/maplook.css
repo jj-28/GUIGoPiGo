@@ -87,8 +87,8 @@
 #n4 {
         position: absolute;
         display: block;
-        left: 245px;
-        top: 182px;
+        left: 400px;
+        top: 338px;
         z-index: 1;
         padding: 8px;
         border-radius: 50%;
@@ -106,8 +106,8 @@
 #n5 {
     position: absolute;
     display: block;
-    left: 245px;
-    top: 182px;
+    left: 450px;
+    top: 338px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -125,8 +125,8 @@
 #n6 {
     position: absolute;
     display: block;
-    left: 245px;
-    top: 182px;
+    left: 450px;
+    top: 400px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -143,8 +143,8 @@
 #n7 {
     position: absolute;
     display: block;
-    left: 245px;
-    top: 182px;
+    left: 200px;
+    top: 400px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -162,8 +162,8 @@
 #n8 {
     position: absolute;
     display: block;
-    left: 245px;
-    top: 182px;
+    left: 636px;
+    top: 202px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -180,8 +180,8 @@
 #n9 {
     position: absolute;
     display: block;
-    left: 245px;
-    top: 182px;
+    left: 640px;
+    top: 245px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
