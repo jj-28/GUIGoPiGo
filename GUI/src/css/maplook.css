@@ -1,34 +1,11 @@
-/*.mapimage {*/
-    /*border: 1px dotted red;*/
-    /*position:absolute;*/
-    /*height*/
-/*}*/
-
-
 #map {
     transform: rotate(90deg);
     border: 4px solid #008CBA;
     position:absolute;
     left: 15%;
     bottom: 10%;
-    /*padding-left: 10px ;*/
 }
 
-/*.deleteDep {*/
-    /*background-image: url("../images/x.svg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: 50% 50%;*/
-/*}*/
-/*.waypoints{
-    position:relative;
-    text-align: center;
-    border-radius: 4px;
-    *//*background-color: #f44336;*//*
-    font-size: 16px;
-    *//*z-index: 1;*//*
-    *//*opacity: 0.6;*//*
-    cursor: not-allowed;
-}*/
 #n1 {
     position: absolute;
     display: block;
@@ -64,7 +41,7 @@
 #n2:hover {
     background-color: #008CBA;
     color: white;
-    }
+}
 
 #n3 {
     position: absolute;
@@ -85,17 +62,17 @@
 }
 
 #n4 {
-        position: absolute;
-        display: block;
-        left: 400px;
-        top: 338px;
-        z-index: 1;
-        padding: 8px;
-        border-radius: 50%;
-        background-color: white;
-        color: black;
-        border: 2px solid #008CBA;
-        cursor: pointer;
+    position: absolute;
+    display: block;
+    left: 400px;
+    top: 338px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
 }
 #n4:hover {
         background-color: #008CBA;
@@ -140,6 +117,7 @@
     color: white;
 
 }
+
 #n7 {
     position: absolute;
     display: block;
@@ -177,6 +155,7 @@
     color: white;
 
 }
+
 #n9 {
     position: absolute;
     display: block;
@@ -193,9 +172,7 @@
 #n9:hover {
     background-color: #008CBA;
     color: white;
-
 }
-
 
 .waypointpanel {
     width: 250px;
@@ -206,13 +183,12 @@
     left: 70%;
     bottom : 50%;
     overflow: auto;
-
 }
 
 #buttonStart {
 	position: relative;
-	left: 870px;
-    top: -220px;
+	left: 850px;
+    top: 435px;
 	cursor: pointer;
 	background:    #999999;
 	background:    -webkit-linear-gradient(#999999, #999999);
@@ -224,12 +200,13 @@
 	font:          normal 700 18px/1 "Helvetica", sans-serif;
 	text-align:    center;
 	text-shadow:   1px 1px #000000;
+    z-index: 2;
 }
 
 #buttonStop {
 	position: relative;
-	left: 970px;
-    top: -220px;
+	left: 850px;
+    top: 435px;
 	cursor: pointer;
 	background:    #999999;
 	background:    -webkit-linear-gradient(#999999, #999999);
@@ -241,12 +218,13 @@
 	font:          normal 700 18px/1 "Helvetica", sans-serif;
 	text-align:    center;
 	text-shadow:   1px 1px #000000;
+    z-index: 2;
 }
 
 #buttonClear {
 	position: relative;
-	left: 786px;
-    top: -175px;
+	left: 850px;
+    top: 435px;
 	cursor: pointer;
 	background:    #999999;
 	background:    -webkit-linear-gradient(#999999, #999999);
@@ -258,6 +236,7 @@
 	font:          normal 700 18px/1 "Helvetica", sans-serif;
 	text-align:    center;
 	text-shadow:   1px 1px #000000;
+    z-index: 2;
 }
 
 .mainwindow {
@@ -274,10 +253,6 @@
 
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 50bc3be94bac1021a38e59178cdd39ffd66967a8
 .robot {
     position: absolute;
     top: 50%;
