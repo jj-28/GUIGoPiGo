@@ -42,6 +42,7 @@ import tornado.web
 import tornado.websocket
 import tornado.template
 import time
+import json
 
 c=0
 #Initialize TOrnado to use 'GET' and load index.html
@@ -57,9 +58,9 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 	def check_origin(self,origin):
 		return True
 	def on_message(self, message):      # receives the data from the webpage and is stored in the variable message
-		print message
+		# print message
 		# global c
-		# print 'received:', message        # prints the revived from the webpage
+		print 'received:', message        # prints the revived from the webpage
 		# if message == "u":                # checks for the received data and assigns different values to c which controls the movement of robot.
 		#   c = "8";
 		# if message == "d":

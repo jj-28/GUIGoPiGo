@@ -23,7 +23,8 @@ $(this).parents('tr').remove();
     <p id="demo"></p>
 
     <div class="waypoints">
-        <button onclick= "addWaypoint(this.id)" id= "n1" type="button"> n1 </button>
+        <!--<button value = "Stop" onclick= "addWaypoint(this.id); stop();" id= "n1" type="button"> n1 </button>-->
+        <button value = "Stop" onclick= "addWaypoint(this.id); " id= "n1" type="button"> n1 </button>
         <button onclick= "addWaypoint(this.id)" id= "n2" type="button"> n2 </button>
         <button onclick= "addWaypoint(this.id)" id= "n3" type="button"> n3 </button>
         <button onclick= "addWaypoint(this.id)" id= "n4" type="button"> n4 </button>
@@ -91,9 +92,9 @@ $(this).parents('tr').remove();
     <div>
         <form id="toolbar">
             Robot Address:<br>
-            <input type="text" name="ip">
+            <input type="text"  id="data">
             <br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="clickme" onclick="setup2()">
         </form>
     </div>
 
