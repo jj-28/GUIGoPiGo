@@ -74,10 +74,27 @@ $(this).parents('tr').remove();
     </table>
     </div>
 	
+    <script type="javascript">
+        $('input.toggle').on('change', function() {
+        $('input.toggle').not(this).prop('checked', false);  
+        });
+    </script>
 	<div class="actionbuttons">
         <button id= "buttonStart" name="start" type="button"> Start </button>
 		<button id= "buttonStop" name="stop" type="button"> Stop </button>
 		<button id= "buttonClear" name="clear" type="button"> Clear </button>
+        <!-- <input class="toggle" id="toggleWaypoint" name="toggleWaypoint" type="checkbox">Toggle Waypoint</input>
+        <input class="toggle" id="toggleObstacle" name="toggleObstacle" type="checkbox">Toggle</input> -->
+    </div>
+
+    <!-- toolbar -->
+    <div>
+        <form id="toolbar">
+            Robot Address:<br>
+            <input type="text" name="ip">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
     </div>
 
 </div>

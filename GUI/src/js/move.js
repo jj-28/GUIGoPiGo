@@ -28,9 +28,15 @@ function move(event) {
 
 document.addEventListener('keydown', move);
 
-function showCoords(event) {
-    var x = event.clientX;
-    var y = event.clientY;
-    var coords = "X coords: " + x + ", Y coords: " + y;
-    document.getElementById("demo").innerHTML = coords;
-}
+// function showCoords(event) {
+//     var x = event.clientX;
+//     var y = event.clientY;
+//     var coords = "X coords: " + x + ", Y coords: " + y;
+//     document.getElementById("demo").innerHTML = coords;
+// }
+
+
+
+$(document.getElementByClass('toggle')).on('change', function() {
+        $(document.getElementByClass('toggle')).not(this).prop('checked', false);  
+        });

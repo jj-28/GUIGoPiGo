@@ -75,8 +75,8 @@
     cursor: pointer;
 }
 #n4:hover {
-        background-color: #008CBA;
-        color: white;
+    background-color: #008CBA;
+    color: white;
 
 }
 
@@ -181,7 +181,7 @@
     z-index: 2;
     border: 4px solid #008CBA;
     left: 70%;
-    bottom : 50%;
+    bottom : 48.5%;
     overflow: auto;
 }
 
@@ -190,9 +190,9 @@
 	left: 850px;
     top: 435px;
 	cursor: pointer;
-	background:    #999999;
-	background:    -webkit-linear-gradient(#999999, #999999);
-	background:    linear-gradient(#999999, #999999);
+	background:    #008CBA;
+	background:    -webkit-linear-gradient(#008CBA, #008CBA);
+	background:    linear-gradient(#008CBA, #008CBA);
 	border-radius: 5px;
 	padding:       8px 20px;
 	color:         #ffffff;
@@ -208,9 +208,9 @@
 	left: 850px;
     top: 435px;
 	cursor: pointer;
-	background:    #999999;
-	background:    -webkit-linear-gradient(#999999, #999999);
-	background:    linear-gradient(#999999, #999999);
+	background:    #008CBA;
+	background:    -webkit-linear-gradient(#008CBA, #008CBA);
+	background:    linear-gradient(#008CBA, #008CBA);
 	border-radius: 5px;
 	padding:       8px 20px;
 	color:         #ffffff;
@@ -226,9 +226,9 @@
 	left: 850px;
     top: 435px;
 	cursor: pointer;
-	background:    #999999;
-	background:    -webkit-linear-gradient(#999999, #999999);
-	background:    linear-gradient(#999999, #999999);
+	background:    #008CBA;
+	background:    -webkit-linear-gradient(#008CBA, #008CBA);
+	background:    linear-gradient(#008CBA, #008CBA);
 	border-radius: 5px;
 	padding:       8px 20px;
 	color:         #ffffff;
@@ -237,6 +237,20 @@
 	text-align:    center;
 	text-shadow:   1px 1px #000000;
     z-index: 2;
+}
+
+/*#toggle {
+    position: relative;
+    left: 850px;
+    top: 435px;
+    cursor: pointer;
+    z-index: 2;
+}*/
+
+#toolbar {
+    position: relative;
+    display: block;
+    top: 500px;
 }
 
 .mainwindow {
