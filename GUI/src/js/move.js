@@ -35,8 +35,16 @@ document.addEventListener('keydown', move);
 //     document.getElementById("demo").innerHTML = coords;
 // }
 
+function allowDrop(ev) {
+    ev.preventDefault();
+}
 
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
 
-$(document.getElementByClass('toggle')).on('change', function() {
-        $(document.getElementByClass('toggle')).not(this).prop('checked', false);  
-        });
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}

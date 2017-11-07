@@ -9,94 +9,96 @@
 
 </head>
 <body background="../src/images/spiration dark.png">
-<script>
-$('body').on('click', 'input.deleteDep', function() {
-$(this).parents('tr').remove();
-});
-</script>
-
-<p style= "color: white;" id="demo"></p>
-<p style= "color: white;" id ="print"></p>
-
-<!-- image of the map -->
-<div class="mainwindow">
-    <p id="demo"></p>
-
-    <div class="waypoints">
-        <button onclick= "addWaypoint(this.id)" id= "n1" type="button"> n1 </button>
-        <button onclick= "addWaypoint(this.id)" id= "n2" type="button"> n2 </button>
-        <button onclick= "addWaypoint(this.id)" id= "n3" type="button"> n3 </button>
-        <button onclick= "addWaypoint(this.id)" id= "n4" type="button"> n4 </button>
-        <button onclick= "addWaypoint(this.id)" id= "n5" type="button"> n5 </button>
-        <button onclick= "addWaypoint(this.id)" id= "n6" type="button"> n6 </button>
-        <button onclick= "addWaypoint(this.id)" id= "n7" type="button"> n7 </button>
-        <button onclick= "addWaypoint(this.id)" id= "n8" type="button"> n8 </button>
-        <button onclick= "addWaypoint(this.id)" id= "n9" type="button"> n9 </button>
-    </div>
-<!--<div class = "mapimage"  >-->
-    <img
-         id="map"
-         src="../src/images/Map2.0.svg"
-         alt="map" usemap="#Intersections" onclick="showCoords(event)">
-<!--</div>-->
-<div class="robotoverlay">
-    <img class="robot" id="robot"
-         src="../src/images/robot.png"
-         alt="robot">
-</div>
-
-    <div class="waypointpanel">
-    <table id="waypointtable" cellpadding="14" style="width:100%">
-        <tr>
-            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-            <td>Waypoint n1</td>
-        </tr>
-        <tr>
-            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-            <td>Waypoint n2</td>
-        </tr>
-        <tr>
-            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-            <td>Waypoint n3</td>
-        </tr>
-        <tr>
-            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-            <td>Waypoint n4</td>
-        </tr>
-        <tr>
-            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-            <td>Waypoint n5</td>
-        </tr>
-        <tr>
-            <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-            <td>Waypoint n6</td>
-        </tr>
-    </table>
-    </div>
-	
-    <script type="javascript">
-        $('input.toggle').on('change', function() {
-        $('input.toggle').not(this).prop('checked', false);  
+    <script>
+        $('body').on('click', 'input.deleteDep', function() {
+            $(this).parents('tr').remove();
         });
     </script>
-	<div class="actionbuttons">
-        <button id= "buttonStart" name="start" type="button"> Start </button>
-		<button id= "buttonStop" name="stop" type="button"> Stop </button>
-		<button id= "buttonClear" name="clear" type="button"> Clear </button>
-        <!-- <input class="toggle" id="toggleWaypoint" name="toggleWaypoint" type="checkbox">Toggle Waypoint</input>
-        <input class="toggle" id="toggleObstacle" name="toggleObstacle" type="checkbox">Toggle</input> -->
-    </div>
 
-    <!-- toolbar -->
-    <div>
-        <form id="toolbar">
-            Robot Address:<br>
-            <input type="text" name="ip">
-            <br>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+    <p style= "color: white;" id="demo"></p>
+    <p style= "color: white;" id ="print"></p>
 
-</div>
-</body>
-</html>
+    <!-- image of the map -->
+    <div class="mainwindow">
+        <p id="demo"></p>
+
+        <div class="waypoints">
+            <button onclick= "addWaypoint(this.id)" id= "n1" type="button"> n1 </button>
+            <button onclick= "addWaypoint(this.id)" id= "n2" type="button"> n2 </button>
+            <button onclick= "addWaypoint(this.id)" id= "n3" type="button"> n3 </button>
+            <button onclick= "addWaypoint(this.id)" id= "n4" type="button"> n4 </button>
+            <button onclick= "addWaypoint(this.id)" id= "n5" type="button"> n5 </button>
+            <button onclick= "addWaypoint(this.id)" id= "n6" type="button"> n6 </button>
+            <button onclick= "addWaypoint(this.id)" id= "n7" type="button"> n7 </button>
+            <button onclick= "addWaypoint(this.id)" id= "n8" type="button"> n8 </button>
+            <button onclick= "addWaypoint(this.id)" id= "n9" type="button"> n9 </button>
+        </div>
+        <!--<div class = "mapimage"  >-->
+            <img
+            id="map"
+            src="../src/images/Map2.0.svg"
+            alt="map" usemap="#Intersections" onclick="showCoords(event)">
+            <!--</div>-->
+            <div class="robotoverlay">
+                <img class="robot" id="robot"
+                    -webkit-transform: rotate(180deg);
+                    transform: rotate(180deg);
+                src="../src/images/robot1.0.svg"
+                alt="robot">
+            </div>
+
+            <div class="waypointpanel">
+                <table id="waypointtable" cellpadding="14" style="width:100%">
+                    <tr>
+                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+                        <td>Waypoint n1</td>
+                    </tr>
+                    <tr>
+                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+                        <td>Waypoint n2</td>
+                    </tr>
+                    <tr>
+                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+                        <td>Waypoint n3</td>
+                    </tr>
+                    <tr>
+                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+                        <td>Waypoint n4</td>
+                    </tr>
+                    <tr>
+                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+                        <td>Waypoint n5</td>
+                    </tr>
+                    <tr>
+                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
+                        <td>Waypoint n6</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="actionbuttons">
+                <button id= "buttonStart" name="start" type="button"> Start </button>
+                <button id= "buttonStop" name="stop" type="button"> Stop </button>
+                <button id= "buttonClear" name="clear" type="button"> Clear </button>
+            </div>
+
+            <!-- toolbar -->
+            <div>
+                <form id="toolbar">
+                    Robot Address:<br>
+                    <input type="text" name="ip">
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+            <!-- obstacles -->
+            <div id="obstacle" ondrop="drop(event)" ondragover="allowDrop(event)">
+              <img src="../src/images/block.png" draggable="true" ondragstart="drag(event)" id="drag1" width="60">obstacles
+          </div>
+
+          <div id="dropSpot1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+      </div>
+  </body>
+  </html>
