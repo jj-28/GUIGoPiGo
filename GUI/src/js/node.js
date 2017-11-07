@@ -1,5 +1,5 @@
 //first make a function that adds and removes waypoint names from the map
-var x =0;
+var brakes;
 var cmdqueue= Array();
 function addWaypoint(id) {
 //        for (var i = 0; i < cmdqueue.length; i++) {
@@ -10,6 +10,7 @@ function addWaypoint(id) {
         // cmdqueue[x] = document.getElementById(id).value;
         // alert("Element: " + cmdqueue[x] + " Added at index " + x);
         // x++;
+        setup2();
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             // cmdqueue[x] = document.getElementById(id).value;
@@ -18,13 +19,21 @@ function addWaypoint(id) {
             cmdqueue.push(id);
             // document.getElementById("print").innerHTML = cmdqueue.length;
             window.alert(cmdqueue.toString());
-
+        setup2();
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
+        setup2();
         }
     }
 }
 
+// function stop()
+// {
+// brakes = "b";
+//     setup2();
+// }
+
+// Creates the websockets connection
 function setup2()
 {
     var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
@@ -45,29 +54,33 @@ function setup2()
         }
         $txt.val("");
     });
-    $txt
-        .keypress(function(evt)
-        {
-            if(evt.which == 13)
-            {
-                $btnSend.click();
-            }
-        });
-
-    // event handlers for websocket
+    // $txt
+    //     .keypress(function(evt)
+    //     {
+    //         if(evt.which == 13)
+    //         {
+    //             $btnSend.click();
+    //         }
+    //     });
+    //
+    // // event handlers for websocket
     if(socket)
     {
         var count =1;
         socket.onopen = function()
         {
             count = 0;
-            send();    // function for detecting the button press on webpage
+            // arrows();     // function for detecting keyboard presses
+            buttons();    // function for detecting the button press on webpage
         }
         //Send the button pressed backed to the Raspberry Pi
-        function send()
+        function buttons()
         {
-            var json = JSON.stringify(cmdqueue.toString());
-                socket.send();
+            // if(brakes == "b")
+            // {
+            //     socket.send("b");
+            // }
+        socket.send(cmdqueue.toString());
         }
         socket.onmessage = function(msg)
         {
@@ -91,10 +104,11 @@ function setup2()
     }
 }
 
+jQuery(function($)
+{
+    if (!("WebSocket" in window))
+    {
+        alert("Your browser does not support web sockets");
+    }
+});
 
-
-
-//then send those values as a python array, to the pathfinder
-
-
-//
