@@ -1,73 +1,92 @@
-import mapAssembler
+from mapAssembler import mapAssembler
+from Node import Node
+from Node import edge
+from path import path
 import math
-from priodict import priorityDictionary
+import sys
+
+
+# from priodict import priorityDictionary
 class map(object):
     """description of class
     this class is responsible returning paths from a map
     """
 
-
     def __init__(self):
-        self.nodes = mapAssembler.assembleMap() #nodes of the map
-    def getPath(self,start,end):
-        path = self.__pathfinding(start,end)
-        return path
+        mapper = mapAssembler()
+        self.nodes = []
+        self.nodes = mapper.assembleMap()  # nodes of the map
 
-    #A* pathfinding solution
-    #TODO determine how to allow for weights
-    def __pathfinding(self,start,end):
+    def findNode(self,name):
+        for node in self.nodes:
+            if(node.name == name):
+                return node
+        return None
+
+    def getPath(self, start, end):
+        mypath = path()
+        mypath.nodes = self.__pathfinding(start, end)
+        return mypath
+
+    # A* pathfinding solution
+    # TODO determine how to allow for weights
+    def __pathfinding(self, start, end):
         # initialize components
         pathSuccess = False
         openSet = []
         closedSet = []
         neighborList = []
-        currentNode = None
+        currentNode = Node('',0,0)
         newMovementCost = 0
         path = 0
-
-        openSet.__add__(start)
-        while(openSet.count > 0 and currentNode != end):
+        count = 0
+        openSet.append(start)
+        count = openSet.__len__()
+        while (sys.getsizeof(openSet) > 0 and currentNode != end):
             openSet.sort()
             currentNode = openSet.pop()
-            closedSet.__add__(currentNode)
+            closedSet.append(currentNode)
 
-            if(currentNode == end):
+            if (currentNode == end):
                 pathSuccess = True
 
             neighborList.clear()
-            neighborList = currentNode.edges
+            for myedge in currentNode.edges:
+                neighborList.append(myedge)
+            #neighborList = currentNode.edges
             for neighbor in neighborList:
-                if(not closedSet.__contains__(neighbor)):
-                    newMovementCost = currentNode.gCost + currentNode.getDirection().weight
-                    if(newMovementCost < neighbor.gCost or not openSet.__contains__(neighbor)):
-                        neighbor.gCost = newMovementCost
-                        neighbor.hCost = self.getDistance(neighbor,end)
-                        neighbor.parent = currentNode
+                if type(neighbor) is edge:
+                    neighborNode = neighbor.getOtherNode(currentNode)
+                    if (not closedSet.__contains__(neighborNode)):
+                        newMovementCost = currentNode.gCost + currentNode.hCost
+                        if (newMovementCost < neighborNode.gCost or not openSet.__contains__(neighborNode)):
+                            neighborNode.gCost = newMovementCost
+                            neighborNode.hCost = self.getDistance(neighborNode, end)
+                            neighborNode.parent = currentNode
 
-                        if(not openSet.__contains__(neighbor)):
-                            openSet.__add__(neighbor)
-                        #else:
-                            #openSet.updateitem neighbor
-
+                            if (not openSet.__contains__(neighborNode)):
+                                openSet.append(neighborNode)
+                                # else:
+                                # openSet.updateitem neighbor
 
         if pathSuccess:
-            waypoints = self.tracePath(start,end)
+            waypoints = self.tracePath(start, end)
             return waypoints
         else:
             return None
 
-    def tracePath(self,start,end):
+    def tracePath(self, start, end):
         path = []
         currentNode = end
 
         while currentNode != start:
-            path.__add__(currentNode)
+            path.append(currentNode)
             currentNode = currentNode.parent
-        path.add(start)
+        path.append(start)
         path.reverse()
         return path
 
-    def getDistance(self,a,b):
+    def getDistance(self, a, b):
         x = math.fabs(a.x - b.x)
         y = math.fabs(a.y - a.y)
-        return x+y
+        return x + y

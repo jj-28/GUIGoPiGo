@@ -1,10 +1,11 @@
 from compassDirections import compassDirections
+
 class path(object):
     """description of class"""
 
     def __init__(self):
-        self.nodes  # the nodes list of a path
-        self.commands  # string list of commands for robot controller
+        self.nodes = [] # the nodes list of a path
+        self.commands = [] # string list of commands for robot controller
 
 
     #get a path of strings for the robot to use

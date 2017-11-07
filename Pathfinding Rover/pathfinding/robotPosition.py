@@ -1,4 +1,4 @@
-import compassDirections
+from compassDirections import compassDirections
 
 class RobotPosition(object):
 
