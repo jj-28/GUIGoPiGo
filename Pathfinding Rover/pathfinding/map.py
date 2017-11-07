@@ -44,6 +44,7 @@ class map(object):
         count = openSet.__len__()
         while (len(openSet) > 0 and currentNode != end):
             openSet.sort()
+            openSet.reverse()
             currentNode = openSet.pop()
             closedSet.append(currentNode)
 
@@ -59,7 +60,8 @@ class map(object):
                     if not neighbor.inObstacle:
                         neighborNode = neighbor.getOtherNode(currentNode)
                         if (not closedSet.__contains__(neighborNode)):
-                            newMovementCost = currentNode.gCost + currentNode.hCost
+                            #newMovementCost = currentNode.gCost + currentNode.hCost
+                            newMovementCost = currentNode.gCost + self.getDistance(currentNode,neighborNode)
                             if (newMovementCost < neighborNode.gCost or not openSet.__contains__(neighborNode)):
                                 neighborNode.gCost = newMovementCost
                                 neighborNode.hCost = self.getDistance(neighborNode, end)
@@ -74,7 +76,6 @@ class map(object):
             waypoints = self.tracePath(start, end)
             return waypoints
         else:
-            print("no Path found")
             return None
 
     def tracePath(self, start, end):

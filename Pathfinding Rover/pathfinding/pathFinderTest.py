@@ -19,11 +19,18 @@ endNode = map.findNode(end)
 #get the path
 mypath = path()
 mypath = map.getPath(startNode,endNode)
-mynodes = []
-for node in mypath.nodes:
-    mynodes.append(node.name)
-print(mynodes)
 
-commands = mypath.getPathAsStrings(robot)
-print(commands)
 
+if mypath.nodes != None:
+    mynodes = []
+    myhcost = []
+    for node in mypath.nodes:
+        mynodes.append(node.name)
+    for node in map.nodes:
+        myhcost.append(node.hCost)
+    print(mynodes)
+    print(myhcost)
+    commands = mypath.getPathAsStrings(robot)
+    print(commands)
+else:
+    print("No valid path")
