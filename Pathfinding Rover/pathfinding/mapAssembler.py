@@ -60,4 +60,80 @@ class mapAssembler(object):
         edge(map[17],compassDirections.north,map[6],compassDirections.south,0,False)
         edge(map[17],compassDirections.south,map[18],compassDirections.north,0,False)
 
+
         return map
+
+        #
+        #                                                __
+        #                                               |_
+        #                                               __)
+        #                                                |
+        #                                                |
+        #                                                |
+        #                                                |
+        #                                                |
+        #                                                |
+        #                     _                          | __
+        #                    |_                          | __)                     |_|
+        #                    |_)   _____________________ | __)   __________________  |
+        #                                                |
+        #                                                |
+        #                                                |
+        #                                                |
+        #                                                |
+        #                                                |
+        #                     __                         | __
+        #                      /                         |  _)                        /|
+        #                     /   ______________________ | /__   ____________________  |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |
+        #                        |                                                   |    
+        #                     _  |                                                   |  _
+        #                    (_) |                                                   | / \
+        #                    (_) | _________________________________________________ | \_/
+
+        # Method for a second map made above
+        def assembleMap2(self):
+        # TODO Write a method which makes a square shape and all the edges
+        # CHANGED
+
+            map = []
+            map[0]= Node('n1')
+            map[1]= Node('n2')
+            map[2]= Node('n3')
+            map[3]= Node('n4')
+            map[4]= Node('n5')
+            map[5]= Node('n6')
+            map[6]= Node('n7')
+            map[7]= Node('n8')
+            map[8]= Node('n9')
+            map[9]= Node('n10')
+
+            # CHANGED
+            #
+            #  Below are the edges for the square shape which conatains the nodes and direction on compass
+
+            edge(map[0],compassDirections.north,map[1],compassDirections.south,0,False)
+            edge(map[1],compassDirections.west,map[2],compassDirections.east,0,False)
+            edge(map[2],compassDirections.north,map[3],compassDirections.south,0,False)
+            edge(map[3],compassDirections.east,map[4],compassDirections.west,0,False)
+            edge(map[3],compassDirections.north,map[5],compassDirections.south,0,False)
+            edge(map[3],compassDirections.west,map[6],compassDirections.east,0,False)
+            edge(map[5],compassDirections.south,map[6],compassDirections.north,0,False)
+            edge(map[6],compassDirections.south,map[7],compassDirections.north,0,False)
+            edge(map[7],compassDirections.east,map[2],compassDirections.west,0,False)
+            edge(map[7],compassDirections.south,map[8],compassDirections.north,0,False)
+            edge(map[8],compassDirections.east,map[0],compassDirections.west,0,False)
+
