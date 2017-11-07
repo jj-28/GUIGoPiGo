@@ -43,7 +43,6 @@ class map(object):
         openSet.append(start)
         count = openSet.__len__()
         while (len(openSet) > 0 and currentNode != end):
-            print(len(openSet))
             openSet.sort()
             currentNode = openSet.pop()
             closedSet.append(currentNode)
@@ -57,18 +56,19 @@ class map(object):
             #neighborList = currentNode.edges
             for neighbor in neighborList:
                 if type(neighbor) is edge:
-                    neighborNode = neighbor.getOtherNode(currentNode)
-                    if (not closedSet.__contains__(neighborNode)):
-                        newMovementCost = currentNode.gCost + currentNode.hCost
-                        if (newMovementCost < neighborNode.gCost or not openSet.__contains__(neighborNode)):
-                            neighborNode.gCost = newMovementCost
-                            neighborNode.hCost = self.getDistance(neighborNode, end)
-                            neighborNode.parent = currentNode
+                    if not neighbor.inObstacle:
+                        neighborNode = neighbor.getOtherNode(currentNode)
+                        if (not closedSet.__contains__(neighborNode)):
+                            newMovementCost = currentNode.gCost + currentNode.hCost
+                            if (newMovementCost < neighborNode.gCost or not openSet.__contains__(neighborNode)):
+                                neighborNode.gCost = newMovementCost
+                                neighborNode.hCost = self.getDistance(neighborNode, end)
+                                neighborNode.parent = currentNode
 
-                            if (not openSet.__contains__(neighborNode)):
-                                openSet.append(neighborNode)
-                                # else:
-                                # openSet.updateitem neighbor
+                                if (not openSet.__contains__(neighborNode)):
+                                    openSet.append(neighborNode)
+                                    # else:
+                                    # openSet.updateitem neighbor
 
         if pathSuccess:
             waypoints = self.tracePath(start, end)

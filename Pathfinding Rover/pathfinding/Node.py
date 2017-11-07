@@ -1,4 +1,5 @@
 from compassDirections import compassDirections
+
 class Node(object):
     """description of class
     This class will point to other nodes for pathfinding and will use directions.
@@ -33,8 +34,9 @@ class Node(object):
 
     def getEdge(self,otherNode):
         for currentEdge in self.edges:
-            if(currentEdge.getOtherNode(self) == otherNode ):
-                return currentEdge
+            if type(currentEdge) is edge:
+                if(currentEdge.getOtherNode(self) == otherNode ):
+                    return currentEdge
         return None
 
     def fCost(self):
@@ -105,5 +107,10 @@ class edge(object):
         else:
             return None
 
+    def isStraightEdge(self):
+        if(self.d1 + self.d2)%2 ==0:
+            return True
+        else:
+            return False
 
 
