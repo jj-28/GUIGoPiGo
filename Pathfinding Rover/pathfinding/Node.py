@@ -86,7 +86,7 @@ class edge(object):
         elif d == compassDirections.south:
             n.southEdge = self
         elif d == compassDirections.west:
-            n.southEdge = self
+            n.westEdge = self
         n.putEdgesOnArray()
 
     def getOtherNode(self,node):

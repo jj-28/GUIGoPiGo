@@ -42,7 +42,8 @@ class map(object):
         count = 0
         openSet.append(start)
         count = openSet.__len__()
-        while (sys.getsizeof(openSet) > 0 and currentNode != end):
+        while (len(openSet) > 0 and currentNode != end):
+            print(len(openSet))
             openSet.sort()
             currentNode = openSet.pop()
             closedSet.append(currentNode)
@@ -73,6 +74,7 @@ class map(object):
             waypoints = self.tracePath(start, end)
             return waypoints
         else:
+            print("no Path found")
             return None
 
     def tracePath(self, start, end):
