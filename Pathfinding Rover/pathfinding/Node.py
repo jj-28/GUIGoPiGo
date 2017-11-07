@@ -4,13 +4,12 @@ class Node(object):
     This class will point to other nodes for pathfinding and will use directions.
     """
     
-    def __init__(self, inName):
+    def __init__(self, inName,x,y):
         self.name = inName
-        self.fCost
         self.gCost
         self.hCost
-        self.x
-        self.y
+        self.x = x
+        self.y = y
         self.northEdge  # the north edge
         self.eastEdge  # the east edge
         self.southEdge  # the south edge
@@ -25,6 +24,24 @@ class Node(object):
             if(currentEdge.getOtherNode(self) == otherNode ):
                 return currentEdge
         return None
+
+    def fCost(self):
+        return self.gCost + self.hCost
+
+    def __le__(self, other):
+        return self.fCost() <= other.fCost
+
+    def __lt__(self, other):
+        return self.fCost() <= other.fCost
+
+    def __gt__(self, other):
+        return self.fCost() > other.fCost
+
+    def __ge__(self, other):
+        return self.fCost() >= other.fCost
+
+    def __eq__(self, other):
+        return self.fCost() == other.fCost
 
 
 

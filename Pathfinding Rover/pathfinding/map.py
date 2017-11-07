@@ -26,7 +26,8 @@ class map(object):
         path = 0
 
         openSet.__add__(start)
-        while(openSet.count >0 and currentNode != end):
+        while(openSet.count > 0 and currentNode != end):
+            openSet.sort()
             currentNode = openSet.pop()
             closedSet.__add__(currentNode)
 
