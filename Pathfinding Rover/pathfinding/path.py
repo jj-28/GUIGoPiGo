@@ -51,28 +51,35 @@ class path(object):
             return compassDirections.north
 
     def getDirection(self,d1,d2):
-        if(d1 == d2):
-            return "TurnAround"
+
         if(d1 == compassDirections.north):
             if(d2 == compassDirections.west):
                 return "Right"
             elif(d2 == compassDirections.east):
                 return "Left"
+            elif(d2 == compassDirections.south):
+                return "TurnAround"
         elif(d1 == compassDirections.east):
             if(d2 == compassDirections.north):
                 return "Right"
             elif(d2 == compassDirections.south):
                 return "Left"
+            elif(d2 == compassDirections.west):
+                return "TurnAround"
         elif(d1 == compassDirections.south):
             if(d2 == compassDirections.east):
                 return "Right"
             elif(d2 == compassDirections.west):
                 return "Left"
+            elif(d2 == compassDirections.north):
+                return "TurnAround"
         elif(d1 == compassDirections.west):
             if(d2 == compassDirections.south):
                 return "Right"
             elif(d2 == compassDirections.north):
                 return "Left"
+            elif(d2 == compassDirections.east):
+                return "TurnAround"
             
             
 
