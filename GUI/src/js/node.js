@@ -2,6 +2,7 @@
 var brakes;
 var cmdqueue= Array();
 function addWaypoint(id) {
+    var table = document.getElementById("waypointtable");
 //        for (var i = 0; i < cmdqueue.length; i++) {
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
@@ -10,6 +11,11 @@ function addWaypoint(id) {
         // cmdqueue[x] = document.getElementById(id).value;
         // alert("Element: " + cmdqueue[x] + " Added at index " + x);
         // x++;
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        //var cell2 = row.insertCell(1);
+        cell1.innerHTML = document.getElementById(id);
+        //cell2.innerHTML = "NEW CELL2";
         setup2();
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
@@ -19,10 +25,15 @@ function addWaypoint(id) {
             cmdqueue.push(id);
             // document.getElementById("print").innerHTML = cmdqueue.length;
             window.alert(cmdqueue.toString());
-        setup2();
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            //var cell2 = row.insertCell(1);
+            cell1.innerHTML = document.getElementById(id);
+            //cell2.innerHTML = "NEW CELL2";
+            setup2();
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
-        setup2();
+            setup2();
         }
     }
 }
@@ -36,6 +47,7 @@ function addWaypoint(id) {
 // Creates the websockets connection
 function setup2()
 {
+    window.alert("Initiating robot")
     var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
     var host =  "ws://"+name+":9093/ws"; 	// combines the three string and creates a new string
@@ -80,7 +92,7 @@ function setup2()
             // {
             //     socket.send("b");
             // }
-        socket.send(cmdqueue.toString());
+            socket.send(cmdqueue.toString());
         }
         socket.onmessage = function(msg)
         {
