@@ -14,7 +14,8 @@ function addWaypoint(id) {
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        cell1.innerHTML = document.getElementById(id);
+        var x = document.createElement("BUTTON");
+        cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
         cell2.innerHTML = document.getElementById(id).name;
         setup2();
     } else {
@@ -25,10 +26,11 @@ function addWaypoint(id) {
             cmdqueue.push(id);
             // document.getElementById("print").innerHTML = cmdqueue.length;
             window.alert(cmdqueue.toString());
-            var row = table.insertRow(0);
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-            cell1.innerHTML = document.getElementById(id);
+            cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
             cell2.innerHTML = document.getElementById(id).name;
             setup2();
         } else {
