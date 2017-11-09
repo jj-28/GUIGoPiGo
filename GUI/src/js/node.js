@@ -14,10 +14,9 @@ function addWaypoint(id) {
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        var x = document.createElement("BUTTON");
         cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
         cell2.innerHTML = document.getElementById(id).name;
-        setup2();
+        //setup2();
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             // cmdqueue[x] = document.getElementById(id).value;
@@ -32,10 +31,10 @@ function addWaypoint(id) {
             var cell2 = row.insertCell(1);
             cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
             cell2.innerHTML = document.getElementById(id).name;
-            setup2();
+            //setup2();
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
-            setup2();
+            //setup2();
         }
     }
 }
@@ -49,7 +48,7 @@ function addWaypoint(id) {
 // Creates the websockets connection
 function setup2()
 {
-    //window.alert("Initiating robot")
+    window.alert("Initiating robot")
     var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
     var host =  "ws://"+name+":9093/ws"; 	// combines the three string and creates a new string

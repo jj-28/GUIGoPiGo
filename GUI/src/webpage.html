@@ -6,7 +6,6 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <script src="../src/js/move.js"></script>
     <script src="../src/js/node.js"></script>
-
 </head>
 <body background="../src/images/spiration dark.png">
     <script>
@@ -35,46 +34,468 @@
         </div>
         <!--<div class = "mapimage"  >-->
             <img
+            class="map"
             id="map"
             src="../src/images/Map2.0.svg"
-            alt="map" usemap="#Intersections" onclick="showCoords(event)">
+            alt="map" usemap="#obstacles" onclick="showCoords(event)">
+
+            <img src="../src/images/Map2.0 (copy).svg"
+            class="map"
+            id="start-n4" 
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/Map2.0 (another copy).svg"
+            class="map"
+            id="start-n4-solid" 
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n7-n6.svg"
+            class="map"
+            id="n7-n6"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n7-n6 (copy).svg"
+            class="map"
+            id="n7-n6-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n7-n7.1.svg"
+            class="map"
+            id="n7-n7_1"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n7-n7.1 (copy).svg"
+            class="map"
+            id="n7-n7_1-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n7-n7.2.svg"
+            class="map"
+            id="n7-n7_2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n7-n7.2 (copy).svg"
+            class="map"
+            id="n7-n7_2-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n4-n5.svg"
+            class="map"
+            id="n4-n5"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n4-n5 (copy).svg"
+            class="map"
+            id="n4-n5-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n6-n6.1.svg"
+            class="map"
+            id="n6-n6_1"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n6-n6.1 (copy).svg"
+            class="map"
+            id="n6-n6_1-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n6-n5.svg"
+            class="map"
+            id="n6-n5"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n6-n5 (copy).svg"
+            class="map"
+            id="n6-n5-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n6-n6.2.svg"
+            class="map"
+            id="n6-n6_2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n6-n6.2 (copy).svg"
+            class="map"
+            id="n6-n6_2-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n5-n5.1.svg"
+            class="map"
+            id="n5-n5_1"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n5-n5.1 (copy).svg"
+            class="map"
+            id="n5-n5_1-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n5-n9.svg"
+            class="map"
+            id="n5-n9"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n5-n9 (copy).svg"
+            class="map"
+            id="n5-n9-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n4-n3.svg"
+            class="map"
+            id="n4-n3"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n4-n3 (copy).svg"
+            class="map"
+            id="n4-n3-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n3-n2.svg"
+            class="map"
+            id="n3-n2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n3-n2 (copy).svg"
+            class="map"
+            id="n3-n2-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n3-n1.svg"
+            class="map"
+            id="n3-n1"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n3-n1 (copy).svg"
+            class="map"
+            id="n3-n1-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n1-n1.1.svg"
+            class="map"
+            id="n1-n1_1"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n1-n1.1 (copy).svg"
+            class="map"
+            id="n1-n1_1-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n1-n1.2.svg"
+            class="map"
+            id="n1-n1_2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n1-n1.2 (copy).svg"
+            class="map"
+            id="n1-n1_2-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n1-n2.svg"
+            class="map"
+            id="n1-n2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n1-n2 (copy).svg"
+            class="map"
+            id="n1-n2-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n2-n8.svg"
+            class="map"
+            id="n2-n8"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n2-n8 (copy).svg"
+            class="map"
+            id="n2-n8-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n8-n8.1.svg"
+            class="map"
+            id="n8-n8_1"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n8-n8.1 (copy).svg"
+            class="map"
+            id="n8-n8_1-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n8-n9.svg"
+            class="map"
+            id="n8-n9"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n8-n9 (copy).svg"
+            class="map"
+            id="n8-n9-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+            <img src="../src/images/n9-n9.1.svg"
+            class="map"
+            id="n9-n9_1"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+            <img src="../src/images/n9-n9.1 (copy).svg"
+            class="map"
+            id="n9-n9_1-2"
+            style="display: none;"
+            alt="map" usemap="#obstacles">
+
+
             <!--</div>-->
             <div class="robotoverlay">
                 <img class="robot" id="robot"
-                    -webkit-transform: rotate(180deg);
-                    transform: rotate(180deg);
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
                 src="../src/images/robot1.0.svg"
                 alt="robot">
+            </div>
+            <div>
+                <map name="obstacles">
+                    <area class="areas" id="area1" shape="rect" coords="264,676,274,374" onclick="javascript:$('#start-n4-solid').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area1").hover(function(){
+                                $('#start-n4').show()
+                            },
+                            function(){
+                                $('#start-n4').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area2" shape="rect" coords="328,566,335,326" onclick="javascript:$('#n7-n6-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area2").hover(function(){
+                                $('#n7-n6').show()
+                            },
+                            function(){
+                                $('#n7-n6').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area3" shape="rect" coords="328,676,334,574" onclick="javascript:$('#n7-n7_1-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area3").hover(function(){
+                                $('#n7-n7_1').show()
+                            },
+                            function(){
+                                $('#n7-n7_1').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area4" shape="rect" coords="334,566,434,572" onclick="javascript:$('#n7-n7_2-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area4").hover(function(){
+                                $('#n7-n7_2').show()
+                            },
+                            function(){
+                                $('#n7-n7_2').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area5" shape="rect" coords="265,365,271,322" onclick="javascript:$('#n4-n5-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area5").hover(function(){
+                                $('#n4-n5').show()
+                            },
+                            function(){
+                                $('#n4-n5').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area6" shape="rect" coords="326,315,336,40" onclick="javascript:$('#n6-n6_1-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area6").hover(function(){
+                                $('#n6-n6_1').show()
+                            },
+                            function(){
+                                $('#n6-n6_1').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area7" shape="rect" coords="270,315,325,322" onclick="javascript:$('#n6-n5-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area7").hover(function(){
+                                $('#n6-n5').show()
+                            },
+                            function(){
+                                $('#n6-n5').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area8" shape="rect" coords="344,315,430,320" onclick="javascript:$('#n6-n6_2-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area8").hover(function(){
+                                $('#n6-n6_2').show()
+                            },
+                            function(){
+                                $('#n6-n6_2').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area9" shape="rect" coords="264,315,272,40" onclick="javascript:$('#n5-n5_1-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area9").hover(function(){
+                                $('#n5-n5_1').show()
+                            },
+                            function(){
+                                $('#n5-n5_1').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area10" shape="poly" coords="264,322,243,305,222,271,188,213,171,132" onclick="javascript:$('#n5-n9-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area10").hover(function(){
+                                $('#n5-n9').show()
+                            },
+                            function(){
+                                $('#n5-n9').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area11" shape="rect" coords="207,367,265,372" onclick="javascript:$('#n4-n3-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area11").hover(function(){
+                                $('#n4-n3').show()
+                            },
+                            function(){
+                                $('#n4-n3').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area12" shape="rect" coords="141,368,199,374" onclick="javascript:$('#n3-n2-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area12").hover(function(){
+                                $('#n3-n2').show()
+                            },
+                            function(){
+                                $('#n3-n2').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area13" shape="poly" coords="116,529,209,528,206,373,199,373,201,520,115,522" onclick="javascript:$('#n3-n1-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area13").hover(function(){
+                                $('#n3-n1').show()
+                            },
+                            function(){
+                                $('#n3-n1').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area14" shape="rect" coords="109,531,117,677" onclick="javascript:$('#n1-n1_1-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area14").hover(function(){
+                                $('#n1-n1_1').show()
+                            },
+                            function(){
+                                $('#n1-n1_1').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area15" shape="rect" coords="39,523,108,529" onclick="javascript:$('#n1-n1_2-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area15").hover(function(){
+                                $('#n1-n1_2').show()
+                            },
+                            function(){
+                                $('#n1-n1_2').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area16" shape="poly" coords="108,522,102,370,133,368,133,375,110,376,114,522" onclick="javascript:$('#n1-n2-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area16").hover(function(){
+                                $('#n1-n2').show()
+                            },
+                            function(){
+                                $('#n1-n2').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area17" shape="rect" coords="129,136,141,368" onclick="javascript:$('#n2-n8-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area17").hover(function(){
+                                $('#n2-n8').show()
+                            },
+                            function(){
+                                $('#n2-n8').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area18" shape="rect" coords="21,128,129,135" onclick="javascript:$('#n8-n8_1-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area18").hover(function(){
+                                $('#n8-n8_1').show()
+                            },
+                            function(){
+                                $('#n8-n8_1').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area19" shape="rect" coords="136,128,170,131" onclick="javascript:$('#n8-n9-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area19").hover(function(){
+                                $('#n8-n9').show()
+                            },
+                            function(){
+                                $('#n8-n9').hide()
+                            });
+                        });
+                    </script>
+                    <area class="areas" id="area20" shape="poly" coords="176,130,206,114,229,92,238,35,232,34,224,86,204,106,173,122" onclick="javascript:$('#n9-n9_1-2').toggle()">
+                    <script>
+                        $(document).ready(function(){
+                            $("#area20").hover(function(){
+                                $('#n9-n9_1').show()
+                            },
+                            function(){
+                                $('#n9-n9_1').hide()
+                            });
+                        });
+                    </script>
+                </map>
             </div>
 
 
             <div class="waypointpanel">
-                <table id="waypointtable" cellpadding="14" style="width:100%">
-                    <!-- <tr>
-                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-                        <td>Waypoint n1</td>
-                    </tr>
-                    <tr>
-                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-                        <td>Waypoint n2</td>
-                    </tr>
-                    <tr>
-                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-                        <td>Waypoint n3</td>
-                    </tr>
-                    <tr>
-                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-                        <td>Waypoint n4</td>
-                    </tr>
-                    <tr>
-                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-                        <td>Waypoint n5</td>
-                    </tr>
-                    <tr>
-                        <td> <input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">  </td>
-                        <td>Waypoint n6</td>
-                    </tr> -->
-                </table>
+                <table id="waypointtable" cellpadding="14" style="width:100%"></table>
             </div>
 
             <div class="actionbuttons">
@@ -92,14 +513,5 @@
                     <input type="submit" value="Submit">
                 </form>
             </div>
-
-            <!-- obstacles -->
-            <div id="obstacle" ondrop="drop(event)" ondragover="allowDrop(event)">
-              <img src="../src/images/block.png" draggable="true" ondragstart="drag(event)" id="drag1" width="60">obstacles
-          </div>
-
-          <div id="dropSpot1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-
-      </div>
-  </body>
-  </html>
+        </body>
+        </html>
