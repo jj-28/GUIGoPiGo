@@ -39,6 +39,16 @@ function addWaypoint(id) {
     }
 }
 
+function clearWaypoints() {
+    window.alert("Clearing waypoints...")
+   while (cmdqueue.length > 0 ) {
+       cmdqueue.pop();
+       $('#waypointtable tbody').html('');
+   }
+
+    window.alert("All waypoints cleared.");
+}
+
 // function stop()
 // {
 // brakes = "b";
@@ -49,11 +59,11 @@ function addWaypoint(id) {
 function setup2()
 {
     window.alert("Initiating robot")
-    var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
+    var $txt = $("#ip");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
     var host =  "ws://"+name+":9093/ws"; 	// combines the three string and creates a new string
     var socket = new WebSocket(host);
-    var $txt = $("#data");
+    var $txt = $("#ip");
     var $btnSend = $("#sendtext");
     $txt.focus();
 
@@ -79,8 +89,10 @@ function setup2()
     // // event handlers for websocket
     if(socket)
     {
+      //  window.alert("Establishing connection wirh the robot");
         var count =1;
         socket.onopen = function()
+
         {
             count = 0;
             // arrows();     // function for detecting keyboard presses
@@ -93,6 +105,7 @@ function setup2()
             // {
             //     socket.send("b");
             // }
+        // window.alert("sending waypoints...");
             socket.send(cmdqueue.toString());
         }
         socket.onmessage = function(msg)
