@@ -10,7 +10,8 @@
 <body background="../src/images/spiration dark.png">
     <script>
         $('body').on('click', 'input.deleteDep', function() {
-            $(this).parents('tr').remove();
+            //$(this).parents('tr').remove();
+			$(this).closest("tr").remove();
         });
     </script>
 

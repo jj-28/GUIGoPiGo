@@ -1,7 +1,9 @@
 //first make a function that adds and removes waypoint names from the map
 var brakes;
-var cmdqueue= Array();
+var cmdqueue= new Array();
+
 function addWaypoint(id) {
+	
     var table = document.getElementById("waypointtable");
 //        for (var i = 0; i < cmdqueue.length; i++) {
     if (cmdqueue.length == 0) {
@@ -11,10 +13,13 @@ function addWaypoint(id) {
         // cmdqueue[x] = document.getElementById(id).value;
         // alert("Element: " + cmdqueue[x] + " Added at index " + x);
         // x++;
+		//var index = cmdqueue.indexOf(id);
+		console.log(cmdqueue.indexOf(id));
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
+        //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow(this)">';
+		cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
         cell2.innerHTML = document.getElementById(id).name;
         //setup2();
     } else {
@@ -25,11 +30,14 @@ function addWaypoint(id) {
             cmdqueue.push(id);
             // document.getElementById("print").innerHTML = cmdqueue.length;
             window.alert(cmdqueue.toString());
+			//var index = cmdqueue.indexOf(id);
+			console.log(cmdqueue.indexOf(id));
             var rowCount = table.rows.length;
             var row = table.insertRow(rowCount);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-            cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
+            //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
+			cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
             cell2.innerHTML = document.getElementById(id).name;
             //setup2();
         } else {
@@ -38,6 +46,27 @@ function addWaypoint(id) {
         }
     }
 }
+
+function deleteButton(button){
+    button.addEventListener("click", function(){
+		deleteRow(this);
+        this.parentNode.parentNode.remove(); //"this" refer to the "button" object
+		
+    }, false);
+}
+
+function deleteFromArray(i) {
+	//if (i > -1) {  //<-it worked when I got rid of the if condition but why?!?
+		cmdqueue.splice(i, 1);
+	//}
+}
+
+//function deleteRow(btn) {
+	//var i = r.parentNode.parentNode.rowIndex;
+//	var row = btn.parentNode.parentNode;
+//	row.parentNode.removeChild(row);
+    //document.getElementById("waypointtable").deleteRow(row);
+//}
 
 function clearWaypoints() {
     window.alert("Clearing waypoints...")
