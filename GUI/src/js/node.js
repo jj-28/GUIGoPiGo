@@ -19,8 +19,8 @@ function addWaypoint(id) {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow(this)">';
-		cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
-        cell2.innerHTML = document.getElementById(id).name;
+		cell1.innerHTML = document.getElementById(id).name;
+        cell2.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
         //setup2();
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
@@ -37,8 +37,8 @@ function addWaypoint(id) {
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
-			cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
-            cell2.innerHTML = document.getElementById(id).name;
+			cell1.innerHTML = document.getElementById(id).name;
+            cell2.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
             //setup2();
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
