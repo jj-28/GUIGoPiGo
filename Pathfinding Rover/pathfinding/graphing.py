@@ -1,7 +1,7 @@
 #Source: David Eppstein, UC Irvine, 2002
 #https://www.ics.uci.edu/~eppstein/161/python/dijkstra.py
 
-from priodict import priorityDictionary
+from .priodict import priorityDictionary
 from math import sqrt
 
 
