@@ -43,20 +43,19 @@ class Node(object):
         return self.gCost + self.hCost
 
     def __le__(self, other):
-        return self.fCost() <= other.fCost
+        return self.hCost <= other.hCost
 
     def __lt__(self, other):
-        return self.fCost() <= other.fCost()
+        return self.hCost <= other.hCost
 
     def __gt__(self, other):
-        return self.fCost() > other.fCost()
+        return self.hCost > other.hCost
 
     def __ge__(self, other):
-        return self.fCost() >= other.fCost()
+        return self.hCost >= other.hCost
 
     def __eq__(self, other):
         return self.name == other.name
-
 
 class edge(object):
     """description of class

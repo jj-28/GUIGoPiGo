@@ -24,12 +24,18 @@ mypath = map.getPath(startNode,endNode)
 if mypath.nodes != None:
     mynodes = []
     myhcost = []
+
+    #prep and print nodes
     for node in mypath.nodes:
         mynodes.append(node.name)
+    print(mynodes)
+
+    #prep and print all hcosts
     for node in map.nodes:
         myhcost.append(node.hCost)
-    print(mynodes)
     print(myhcost)
+
+    #prep and print directions
     commands = mypath.getPathAsStrings(robot)
     print(commands)
 else:

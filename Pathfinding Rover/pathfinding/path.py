@@ -19,7 +19,6 @@ class path(object):
         while(len(self.nodes) -1 > i):
             #get the next node
             node = self.nodes[i]
-
             #if not the first node
             if not i == 0:
                 #set robot direction opposite to direction it came
