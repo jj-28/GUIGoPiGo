@@ -6,6 +6,22 @@
     bottom: 10%;
 }
 
+.Map2 {
+    font: sans-serif;
+    font-size: 10;
+}
+
+#overlay {
+    display: none;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 5;
+    cursor: not-allowed;
+}
+
 .areas {
     cursor: pointer;
 }
@@ -13,8 +29,8 @@
 #n1 {
     position: absolute;
     display: block;
-    left: 245px;
-    top: 182px;
+    left: 100px;
+    top: 400px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -26,14 +42,13 @@
 #n1:hover {
     background-color: #008CBA;
     color: white;
-
 }
 
 #n2 {
     position: absolute;
     display: block;
-    left: 400px;
-    top: 208px;
+    left: 200px;
+    top: 400px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -50,8 +65,8 @@
 #n3 {
     position: absolute;
     display: block;
-    left: 400px;
-    top: 274px;
+    left: 200px;
+    top: 500px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -68,8 +83,8 @@
 #n4 {
     position: absolute;
     display: block;
-    left: 400px;
-    top: 338px;
+    left: 450px;
+    top: 400px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -81,14 +96,13 @@
 #n4:hover {
     background-color: #008CBA;
     color: white;
-
 }
 
 #n5 {
     position: absolute;
     display: block;
     left: 450px;
-    top: 338px;
+    top: 500px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -100,13 +114,12 @@
 #n5:hover {
     background-color: #008CBA;
     color: white;
-
 }
 
 #n6 {
     position: absolute;
     display: block;
-    left: 450px;
+    left: 725px;
     top: 400px;
     z-index: 1;
     padding: 8px;
@@ -119,14 +132,13 @@
 #n6:hover {
     background-color: #008CBA;
     color: white;
-
 }
 
 #n7 {
     position: absolute;
     display: block;
-    left: 200px;
-    top: 400px;
+    left: 450px;
+    top: 338px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -138,14 +150,13 @@
 #n7:hover {
     background-color: #008CBA;
     color: white;
-
 }
 
 #n8 {
     position: absolute;
     display: block;
-    left: 636px;
-    top: 202px;
+    left: 725px;
+    top: 340px;
     z-index: 1;
     padding: 8px;
     border-radius: 50%;
@@ -157,7 +168,6 @@
 #n8:hover {
     background-color: #008CBA;
     color: white;
-
 }
 
 #n9 {
@@ -177,6 +187,187 @@
     background-color: #008CBA;
     color: white;
 }
+
+#n10 {
+    position: absolute;
+    display: block;
+    left: 725px;
+    top: 305px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n10:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n11 {
+    position: absolute;
+    display: block;
+    left: 636px;
+    top: 202px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n11:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n12 {
+    position: absolute;
+    display: block;
+    left: 636px;
+    top: 102px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n12:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n13 {
+    position: absolute;
+    display: block;
+    left: 400px;
+    top: 208px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n13:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n14 {
+    position: absolute;
+    display: block;
+    left: 245px;
+    top: 182px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n14:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n15 {
+    position: absolute;
+    display: block;
+    left: 245px;
+    top: 120px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n15:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n16 {
+    position: absolute;
+    display: block;
+    left: 100px;
+    top: 182px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n16:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n17 {
+    position: absolute;
+    display: block;
+    left: 400px;
+    top: 274px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n17:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n18 {
+    position: absolute;
+    display: block;
+    left: 400px;
+    top: 338px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n18:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#n19 {
+    position: absolute;
+    display: block;
+    left: 100px;
+    top: 345px;
+    z-index: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+#n19:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
 
 .waypointpanel {
     width: 250px;
@@ -222,7 +413,7 @@
 	font:          normal 700 18px/1 "Helvetica", sans-serif;
 	text-align:    center;
 	text-shadow:   1px 1px #000000;
-    z-index: 2;
+    z-index: 6;
 }
 
 #buttonClear {
