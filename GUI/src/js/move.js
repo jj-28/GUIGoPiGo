@@ -35,4 +35,3 @@ document.addEventListener('keydown', move);
 //     document.getElementById("demo").innerHTML = coords;
 // }
 
-

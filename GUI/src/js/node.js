@@ -1,11 +1,11 @@
 //first make a function that adds and removes waypoint names from the map
 var brakes;
-var cmdqueue= new Array();
+var cmdqueue = [];
 
 function addWaypoint(id) {
 	
     var table = document.getElementById("waypointtable");
-//        for (var i = 0; i < cmdqueue.length; i++) {
+//for (var i = 0; i < cmdqueue.length; i++) {
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
         // document.getElementById("print").innerHTML = cmdqueue.length;
@@ -19,8 +19,8 @@ function addWaypoint(id) {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow(this)">';
-		cell1.innerHTML = document.getElementById(id).name;
-        cell2.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
+        cell1.innerHTML = document.getElementById(id).name;
+        cell2.innerHTML = '<input type="button" id="cell1.id" name="document.getElementById(id).name" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
         //setup2();
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
@@ -37,8 +37,8 @@ function addWaypoint(id) {
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
-			cell1.innerHTML = document.getElementById(id).name;
-            cell2.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
+            cell1.innerHTML = document.getElementById(id).name;
+            cell2.innerHTML = '<input type="button" id="document.getElementById(id)" name="document.getElementById(id).name" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
             //setup2();
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
@@ -49,16 +49,22 @@ function addWaypoint(id) {
 
 function deleteButton(button){
     button.addEventListener("click", function(){
-		deleteRow(this);
+        var i = cmdqueue.indexOf(this.id);
+      cmdqueue.splice(cmdqueue.indexOf(this.id),1);
         this.parentNode.parentNode.remove(); //"this" refer to the "button" object
-		
+
     }, false);
 }
 
 function deleteFromArray(i) {
-	//if (i > -1) {  //<-it worked when I got rid of the if condition but why?!?
-		cmdqueue.splice(i, 1);
-	//}
+    window.alert()
+    cmdqueue.splice(i, 1);
+	// var $row = $(this).closest("tr");    // Find the row
+ //    var $text = $row.find("td").text; // Find the text
+    
+ //    // Let's test it out
+ //    alert($row);
+ //    alert($text);
 }
 
 //function deleteRow(btn) {
@@ -70,12 +76,12 @@ function deleteFromArray(i) {
 
 function clearWaypoints() {
     window.alert("Clearing waypoints...")
-   while (cmdqueue.length > 0 ) {
+    while (cmdqueue.length > 0 ) {
        cmdqueue.pop();
        $('#waypointtable tbody').html('');
    }
 
-    window.alert("All waypoints cleared.");
+   window.alert("All waypoints cleared.");
 }
 
 // function stop()
@@ -119,11 +125,11 @@ function setup2()
     if(socket)
     {
       //  window.alert("Establishing connection wirh the robot");
-        var count =1;
-        socket.onopen = function()
+      var count =1;
+      socket.onopen = function()
 
-        {
-            count = 0;
+      {
+        count = 0;
             // arrows();     // function for detecting keyboard presses
             buttons();    // function for detecting the button press on webpage
         }
@@ -135,14 +141,14 @@ function setup2()
             //     socket.send("b");
             // }
         // window.alert("sending waypoints...");
-            socket.send(cmdqueue.toString());
-        }
-        socket.onmessage = function(msg)
-        {
-            showServerResponse(msg.data);
-        }
-        socket.onclose = function()
-        {
+        socket.send(cmdqueue.toString());
+    }
+    socket.onmessage = function(msg)
+    {
+        showServerResponse(msg.data);
+    }
+    socket.onclose = function()
+    {
             //alert("connection closed....");
             showServerResponse("The connection has been closed.");
         }
