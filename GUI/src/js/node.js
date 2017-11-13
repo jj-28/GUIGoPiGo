@@ -1,6 +1,6 @@
 //first make a function that adds and removes waypoint names from the map
 var brakes;
-var cmdqueue= new Array();
+var cmdqueue = [];
 
 function addWaypoint(id) {
 	
@@ -20,7 +20,7 @@ function addWaypoint(id) {
         var cell2 = row.insertCell(1);
         //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow(this)">';
         cell1.innerHTML = document.getElementById(id).name;
-        cell2.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
+        cell2.innerHTML = '<input type="button" id="cell1.id" name="document.getElementById(id).name" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
         //setup2();
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
@@ -38,7 +38,7 @@ function addWaypoint(id) {
             var cell2 = row.insertCell(1);
             //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
             cell1.innerHTML = document.getElementById(id).name;
-            cell2.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(id))">';
+            cell2.innerHTML = '<input type="button" id="document.getElementById(id)" name="document.getElementById(id).name" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
             //setup2();
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
@@ -49,16 +49,22 @@ function addWaypoint(id) {
 
 function deleteButton(button){
     button.addEventListener("click", function(){
-      deleteRow(this);
+        var i = cmdqueue.indexOf(this.id);
+      cmdqueue.splice(cmdqueue.indexOf(this.id),1);
         this.parentNode.parentNode.remove(); //"this" refer to the "button" object
 
     }, false);
 }
 
 function deleteFromArray(i) {
-	//if (i > -1) {  //<-it worked when I got rid of the if condition but why?!?
-		cmdqueue.splice(i, 1);
-	//}
+    window.alert()
+    cmdqueue.splice(i, 1);
+	// var $row = $(this).closest("tr");    // Find the row
+ //    var $text = $row.find("td").text; // Find the text
+    
+ //    // Let's test it out
+ //    alert($row);
+ //    alert($text);
 }
 
 //function deleteRow(btn) {

@@ -23,25 +23,25 @@
 
         <!-- Waypoints -->
         <div class="waypoints">
-            <button onclick= "addWaypoint(this.id)" id= "n1"  name="Waypoint n1"  type="button"> n1  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n2"  name="Waypoint n2"  type="button"> n2  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n3"  name="Waypoint n3"  type="button"> n3  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n4"  name="Waypoint n4"  type="button"> n4  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n5"  name="Waypoint n5"  type="button"> n5  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n6"  name="Waypoint n6"  type="button"> n6  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n7"  name="Waypoint n7"  type="button"> n7  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n8"  name="Waypoint n8"  type="button"> n8  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n9"  name="Waypoint n9"  type="button"> n9  </button>
-            <button onclick= "addWaypoint(this.id)" id= "n10" name="Waypoint n10" type="button"> n10 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n11" name="Waypoint n11" type="button"> n11 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n12" name="Waypoint n12" type="button"> n12 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n13" name="Waypoint n13" type="button"> n13 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n14" name="Waypoint n14" type="button"> n14 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n15" name="Waypoint n15" type="button"> n15 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n16" name="Waypoint n16" type="button"> n16 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n17" name="Waypoint n17" type="button"> n17 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n18" name="Waypoint n18" type="button"> n18 </button>
-            <button onclick= "addWaypoint(this.id)" id= "n19" name="Waypoint n19" type="button"> n19 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n1"  name="Waypoint n1"  type="button"> n1  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n2"  name="Waypoint n2"  type="button"> n2  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n3"  name="Waypoint n3"  type="button"> n3  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n4"  name="Waypoint n4"  type="button"> n4  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n5"  name="Waypoint n5"  type="button"> n5  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n6"  name="Waypoint n6"  type="button"> n6  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n7"  name="Waypoint n7"  type="button"> n7  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n8"  name="Waypoint n8"  type="button"> n8  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n9"  name="Waypoint n9"  type="button"> n9  </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n10" name="Waypoint n10" type="button"> n10 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n11" name="Waypoint n11" type="button"> n11 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n12" name="Waypoint n12" type="button"> n12 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n13" name="Waypoint n13" type="button"> n13 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n14" name="Waypoint n14" type="button"> n14 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n15" name="Waypoint n15" type="button"> n15 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n16" name="Waypoint n16" type="button"> n16 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n17" name="Waypoint n17" type="button"> n17 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n18" name="Waypoint n18" type="button"> n18 </button>
+            <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n19" name="Waypoint n19" type="button"> n19 </button>
         </div>
 
         <!-- map with red overlay -->
@@ -50,16 +50,29 @@
             class="map" id="map" src="../src/images/Map2.0.svg" alt="map" usemap="#obstacles" 
             onclick="showCoords(event)">
 
-            <img src="../src/images/n18-n19.svg"
+            
+
+            <img src="../src/images/n1-n2.svg"
             class="map"
-            id="n18-n19" 
+            id="n1-n2"
             style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n18-n19.svg"
+            alt="n1-n2" usemap="#obstacles">
+            <img src="../src/images/n1-n2.svg"
             class="map"
-            id="n18-n19-solid" 
+            id="n1-n2-2"
             style="display: none;"
-            alt="map" usemap="#obstacles">
+            alt="n1-n2-2" usemap="#obstacles">
+
+            <img src="../src/images/n2-n3.svg"
+            class="map"
+            id="n2-n3"
+            style="display: none;"
+            alt="n2-n3" usemap="#obstacles">
+            <img src="../src/images/n2-n3.svg"
+            class="map"
+            id="n2-n3-2"
+            style="display: none;"
+            alt="n2-n3-2" usemap="#obstacles">
 
             <img src="../src/images/n2-n4.svg"
             class="map"
@@ -72,71 +85,38 @@
             style="display: none;"
             alt="n2-n4-2" usemap="#obstacles">
 
-            <img src="../src/images/n1-n2.svg"
+            <img src="../src/images/n4-n5.svg"
             class="map"
-            id="n1-n2"
+            id="n4-n5"
             style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n1-n2.svg"
+            alt="n4-n5" usemap="#obstacles">
+            <img src="../src/images/n4-n5.svg"
             class="map"
-            id="n1-n2-2"
+            id="n4-n5-2"
             style="display: none;"
-            alt="map" usemap="#obstacles">
-
-            <img src="../src/images/n2-n3.svg"
-            class="map"
-            id="n2-n3"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n2-n3.svg"
-            class="map"
-            id="n2-n3-2"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-
-            <img src="../src/images/n7-n18.svg"
-            class="map"
-            id="n7-n18"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n7-n18.svg"
-            class="map"
-            id="n7-n18-2"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
+            alt="n4-n5-2" usemap="#obstacles">
 
             <img src="../src/images/n4-n6.svg"
             class="map"
             id="n4-n6"
             style="display: none;"
-            alt="map" usemap="#obstacles">
+            alt="n4-n6" usemap="#obstacles">
             <img src="../src/images/n4-n6.svg"
             class="map"
             id="n4-n6-2"
             style="display: none;"
-            alt="map" usemap="#obstacles">
+            alt="n4-n6-2" usemap="#obstacles">
 
             <img src="../src/images/n4-n7.svg"
             class="map"
             id="n4-n7"
             style="display: none;"
-            alt="map" usemap="#obstacles">
+            alt="n4-n7" usemap="#obstacles">
             <img src="../src/images/n4-n7.svg"
             class="map"
             id="n4-n7-2"
             style="display: none;"
-            alt="map" usemap="#obstacles">
-
-            <img src="../src/images/n4-n5.svg"
-            class="map"
-            id="n4-n5"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n4-n5.svg"
-            class="map"
-            id="n4-n5-2"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
+            alt="n4-n7-2" usemap="#obstacles">
 
             <img src="../src/images/n7-n8.svg"
             class="map"
@@ -158,95 +138,29 @@
             class="map"
             id="n7-n9-2"
             style="display: none;"
-            alt="n7-n9-2" usemap="#obstacles">
+            alt="n7-n9-2" usemap="#obstacles"> 
 
-            <img src="../src/images/n17-n18.svg"
+            <img src="../src/images/n7-n18.svg"
             class="map"
-            id="n17-n18"
+            id="n7-n18"
             style="display: none;"
             alt="n17-n18" usemap="#obstacles">
-            <img src="../src/images/n17-n18.svg"
+            <img src="../src/images/n7-n18.svg"
             class="map"
-            id="n17-n18-2"
+            id="n7-n18-2"
             style="display: none;"
-            alt="n17-n18-2" usemap="#obstacles">
+            alt="n17-n18-2" usemap="#obstacles">      
 
-            <img src="../src/images/n13-n17.svg"
+            <img src="../src/images/n9-n10.svg"
             class="map"
-            id="n13-n17"
+            id="n9-n10"
             style="display: none;"
-            alt="n13-n17" usemap="#obstacles">
-            <img src="../src/images/n13-n17.svg"
+            alt="n9-n10" usemap="#obstacles">
+            <img src="../src/images/n9-n10.svg"
             class="map"
-            id="n13-n17-2"
+            id="n9-n10-2"
             style="display: none;"
-            alt="n13-n17-2" usemap="#obstacles">
-
-            <img src="../src/images/n14-n17.svg"
-            class="map"
-            id="n14-n17"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n14-n17.svg"
-            class="map"
-            id="n14-n17-2"
-            style="display: none;"
-            alt="NO" usemap="#obstacles">
-
-            <img src="../src/images/n14-n16.svg"
-            class="map"
-            id="n14-n16"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n14-n16.svg"
-            class="map"
-            id="n14-n16-2"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-
-            <img src="../src/images/n14-n15.svg"
-            class="map"
-            id="n14-n15"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n14-n15.svg"
-            class="map"
-            id="n14-n15-2"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-
-            <img src="../src/images/n13-n14.svg"
-            class="map"
-            id="n13-n14"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n13-n14.svg"
-            class="map"
-            id="n13-n14-2"
-            style="display: none;"
-            alt="map" usemap="#obstacles">
-
-            <img src="../src/images/n11-n13.svg"
-            class="map"
-            id="n11-n13"
-            style="display: none;"
-            alt="n11-n13" usemap="#obstacles">
-            <img src="../src/images/n11-n13.svg"
-            class="map"
-            id="n11-n13-2"
-            style="display: none;"
-            alt="n11-n13-2" usemap="#obstacles">
-
-            <img src="../src/images/n11-n12.svg"
-            class="map"
-            id="n11-n12"
-            style="display: none;"
-            alt="n11-n12" usemap="#obstacles">
-            <img src="../src/images/n11-n12.svg"
-            class="map"
-            id="n11-n12-2"
-            style="display: none;"
-            alt="n11-n12-2" usemap="#obstacles">
+            alt="n9-n10-2" usemap="#obstacles">
 
             <img src="../src/images/n9-n11.svg"
             class="map"
@@ -259,16 +173,105 @@
             style="display: none;"
             alt="n9-n11-2" usemap="#obstacles">
 
-            <img src="../src/images/n9-n10.svg"
+            <img src="../src/images/n11-n12.svg"
             class="map"
-            id="n9-n10"
+            id="n11-n12"
             style="display: none;"
-            alt="map" usemap="#obstacles">
-            <img src="../src/images/n9-n10.svg"
+            alt="n11-n12" usemap="#obstacles">
+            <img src="../src/images/n11-n12.svg"
             class="map"
-            id="n9-n10-2"
+            id="n11-n12-2"
             style="display: none;"
-            alt="map" usemap="#obstacles">
+            alt="n11-n12-2" usemap="#obstacles">
+
+            <img src="../src/images/n11-n13.svg"
+            class="map"
+            id="n11-n13"
+            style="display: none;"
+            alt="n11-n13" usemap="#obstacles">
+            <img src="../src/images/n11-n13.svg"
+            class="map"
+            id="n11-n13-2"
+            style="display: none;"
+            alt="n11-n13-2" usemap="#obstacles">
+
+            <img src="../src/images/n13-n14.svg"
+            class="map"
+            id="n13-n14"
+            style="display: none;"
+            alt="n13-n14" usemap="#obstacles">
+            <img src="../src/images/n13-n14.svg"
+            class="map"
+            id="n13-n14-2"
+            style="display: none;"
+            alt="n13-n14" usemap="#obstacles">
+
+            <img src="../src/images/n13-n17.svg"
+            class="map"
+            id="n13-n17"
+            style="display: none;"
+            alt="n13-n17" usemap="#obstacles">
+            <img src="../src/images/n13-n17.svg"
+            class="map"
+            id="n13-n17-2"
+            style="display: none;"
+            alt="n13-n17-2" usemap="#obstacles">
+
+            <img src="../src/images/n14-n15.svg"
+            class="map"
+            id="n14-n15"
+            style="display: none;"
+            alt="n14-n15" usemap="#obstacles">
+            <img src="../src/images/n14-n15.svg"
+            class="map"
+            id="n14-n15-2"
+            style="display: none;"
+            alt="n14-n16-2" usemap="#obstacles">
+
+            <img src="../src/images/n14-n16.svg"
+            class="map"
+            id="n14-n16"
+            style="display: none;"
+            alt="n14-n16" usemap="#obstacles">
+            <img src="../src/images/n14-n16.svg"
+            class="map"
+            id="n14-n16-2"
+            style="display: none;"
+            alt="n14-n16-2" usemap="#obstacles">
+
+            <img src="../src/images/n14-n17.svg"
+            class="map"
+            id="n14-n17"
+            style="display: none;"
+            alt="n14-n17" usemap="#obstacles">
+            <img src="../src/images/n14-n17.svg"
+            class="map"
+            id="n14-n17-2"
+            style="display: none;"
+            alt="n14-n17-2" usemap="#obstacles">
+
+            <img src="../src/images/n17-n18.svg"
+            class="map"
+            id="n17-n18"
+            style="display: none;"
+            alt="n17-n18" usemap="#obstacles">
+            <img src="../src/images/n17-n18.svg"
+            class="map"
+            id="n17-n18-2"
+            style="display: none;"
+            alt="n17-n18-2" usemap="#obstacles">
+
+            <img src="../src/images/n18-n19.svg"
+            class="map"
+            id="n18-n19" 
+            style="display: none;"
+            alt="n18-n19" usemap="#obstacles">
+            <img src="../src/images/n18-n19.svg"
+            class="map"
+            id="n18-n19-solid" 
+            style="display: none;"
+            alt="n17-n18-2" usemap="#obstacles">
+
         </div>
 
         <!--Robot-->
