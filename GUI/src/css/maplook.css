@@ -7,10 +7,10 @@
     bottom: 10%;
 }
 
-.Map2 {
+/*.Map2 {
     font: sans-serif;
     font-size: 10;
-}
+}*/
 
 #overlay {
     display: none;
@@ -444,6 +444,7 @@
 .mainwindow {
     width: 1250px;
     height:720px;
+    background-color: white;
     position:relative;
     padding-top: 20px;
     padding-bottom: 20px;
