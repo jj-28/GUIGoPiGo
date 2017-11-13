@@ -33,5 +33,9 @@ document.addEventListener('keydown', move);
 //     var y = event.clientY;
 //     var coords = "X coords: " + x + ", Y coords: " + y;
 //     document.getElementById("demo").innerHTML = coords;
+<<<<<<< HEAD
 // }
 
+=======
+// }
+>>>>>>> 4579ebe1b5584534aad08ff2750fe13ab68ac055
