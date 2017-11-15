@@ -3,7 +3,7 @@ var brakes;
 var cmdqueue = [];
 
 function addWaypoint(id) {
-	
+
     var table = document.getElementById("waypointtable");
 //for (var i = 0; i < cmdqueue.length; i++) {
     if (cmdqueue.length == 0) {
@@ -61,7 +61,7 @@ function deleteFromArray(i) {
     cmdqueue.splice(i, 1);
 	// var $row = $(this).closest("tr");    // Find the row
  //    var $text = $row.find("td").text; // Find the text
-    
+
  //    // Let's test it out
  //    alert($row);
  //    alert($text);
