@@ -55,8 +55,8 @@ class mapAssembler(object):
         edge(map[13],compassDirections.west,map[14],compassDirections.east,0,False)
         edge(map[13],compassDirections.south,map[15],compassDirections.north,0,False)
         edge(map[13],compassDirections.east,map[16],compassDirections.south,0,False)
-        edge(map[16],compassDirections.west,map[12],compassDirections.east,0,False)
-        edge(map[16],compassDirections.east,map[17],compassDirections.west,0,False)
+        edge(map[12],compassDirections.east,map[16],compassDirections.west,0,False)
+        edge(map[17],compassDirections.west,map[16],compassDirections.east,0,False)
         edge(map[17],compassDirections.north,map[6],compassDirections.south,0,False)
         edge(map[17],compassDirections.south,map[18],compassDirections.north,0,False)
 

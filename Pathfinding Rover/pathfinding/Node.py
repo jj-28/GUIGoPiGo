@@ -75,7 +75,7 @@ class edge(object):
         self.d2 = inDirection2          #direction this edge comes from the second node
         self.weight = inWeight          #the distance between these two nodes
         self.inObstacle = inObstacle    #is there an obstacle?
-
+        self.name = inNode1.name + inNode2.name
         self.__assign(self.n1,self.d1)
         self.__assign(self.n2,self.d2)
 
