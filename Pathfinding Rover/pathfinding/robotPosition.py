@@ -7,4 +7,5 @@ class RobotPosition(object):
         self.y = 0
         self.z = 0.00
         self.direction = compassDirections.north
+        self.currentNode = 'n1'
 

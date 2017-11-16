@@ -16,6 +16,20 @@ class map(object):
         mapper = mapAssembler()
         self.nodes = []
         self.nodes = mapper.assembleMap()  # nodes of the map
+        edgeList = []
+        for thisEdge in self.nodes:
+            if(not edgeList.contains(thisEdge)):
+                edgeList.append(thisEdge)
+        self.edges = edgeList
+
+    def resetMap(self):
+        for thisEdge in self.edges:
+            thisEdge.inObstacle = False
+
+    def findEdge(self,name):
+        for thisEdge in self.edges:
+            if thisEdge.name == name:
+                return thisEdge
 
     def findNode(self,name):
         for node in self.nodes:
@@ -26,10 +40,10 @@ class map(object):
     def getPath(self, start, end):
         mypath = path()
         mypath.nodes = self.__pathfinding(start, end)
+        mypath.getPathAsStrings()
         return mypath
 
     # A* pathfinding solution
-    # TODO determine how to allow for weights
     def __pathfinding(self, start, end):
         # initialize components
         pathSuccess = False         #Assume there isn't a valid path
