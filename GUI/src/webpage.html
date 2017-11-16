@@ -3,7 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/maplook.css">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>-->
+    <script src="../src/js/jquery-1.8.3.min.js"></script>
     <script src="../src/js/move.js"></script>
     <script src="../src/js/node.js"></script>
 </head>
@@ -514,7 +515,7 @@
 
         <!-- Action Buttons-->
         <div class="actionbuttons">
-            <button id= "buttonStart" onclick="disable()"  name="start" type="button"> Start </button>
+            <button id= "buttonStart" onclick="setup2()" value="start" name="start" type="button"> Start </button>
             <button id= "buttonStop" name="stop" type="button"> Stop </button>
             <button id= "buttonClear" onclick = "clearWaypoints()" name="clear" type="button"> Clear </button>
         </div>
