@@ -1,7 +1,7 @@
-from map import map
-from path import path
-from robotPosition import RobotPosition
-from RPi_Server_Code import WSHandler
+from PathfindingRover.pathfinding.map import map
+from PathfindingRover.pathfinding.path import path
+from PathfindingRover.pathfinding.robotPosition import RobotPosition
+#from RPi_Server_Code import WSHandler
 
 import threading
 import tornado.ioloop
@@ -9,9 +9,7 @@ import tornado.web
 import tornado.websocket
 import tornado.template
 import time
-ourMap = map()
-ourPath = path()
-robotPosition = RobotPosition()
+
 #WSHandler = WSHandler().onmessage()
 
 
@@ -34,8 +32,13 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         node = None
         node = Nodem
         #if len(ourPath.nodes)==0 :
-        ourPath = map.getPath(map.findNode(robotPosition.currentNode),node)
-        print(ourPath.nodes)
+        temp = ''
+        temp = robotPosition.currentNode
+        temp = ourMap.findNode(temp)
+        node = ourMap.findNode(node)
+        ourPath = ourMap.getPath(temp,node,robotPosition)
+        for node in ourPath.nodes:
+            print(node.name)
         print(ourPath.commands)
 
     #print ("Values Updated")
@@ -65,6 +68,9 @@ if __name__ == "__main__":
     #BrickPi.MotorEnable[PORT_A] = 1    #Enable the Motor A
     #BrickPi.MotorEnable[PORT_D] = 1    #Enable the Motor D
     #BrickPiSetupSensors()          #Send the properties of sensors to BrickPi
+    ourMap = map()
+    ourPath = path()
+    robotPosition = RobotPosition()
     running = True
     thread1 = myThread(1, "Thread-1", 1)
     thread1.setDaemon(True)

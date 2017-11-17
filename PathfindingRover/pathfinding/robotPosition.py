@@ -1,4 +1,4 @@
-from compassDirections import compassDirections
+from PathfindingRover.pathfinding.compassDirections import compassDirections
 
 class RobotPosition(object):
 

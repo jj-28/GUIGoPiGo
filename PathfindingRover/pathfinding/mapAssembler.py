@@ -1,6 +1,6 @@
-from Node import Node
-from Node import edge
-from compassDirections import compassDirections
+from PathfindingRover.pathfinding.Node import Node
+from PathfindingRover.pathfinding.Node import edge
+from PathfindingRover.pathfinding.compassDirections import compassDirections
 class mapAssembler(object):
     """description of class
     this class will read the current map from a file for use in the project
