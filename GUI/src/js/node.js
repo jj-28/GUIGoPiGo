@@ -72,11 +72,11 @@ function clearWaypoints() {
 function setup2()
 {
     window.alert("Initiating robot")
-    var $txt = $("#ip");      			// assigns the data(hostname/ip address) entered in the text box
+    var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
     var host =  "ws://"+name+":9093/ws"; 	// combines the three string and creates a new string
     var socket = new WebSocket(host);
-    var $txt = $("#ip");
+    var $txt = $("data");
     var $btnSend = $("#sendtext");
     $txt.focus();
 

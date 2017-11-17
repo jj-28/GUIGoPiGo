@@ -42,7 +42,22 @@
 </p>
 
 <p>                                        
-<input id="touch" style="height: 100px; width: 100px; position: absolute; left: 650px; top: 200px" type="button" value="Steer Right" onclick="steer_right(); " />
+<input id="touch" style="height: 100px; width: 100px; position: absolute; left: 650px; top: 200px" type="button" value="Steer Right" onclick="steer_right(
+<div id="send">
+
+    </br></br></br></br></br></br></br></br></br></br></br></br>
+<p>  Enter the hostname/ip address to make the websocket connection </p>
+<input type="text" id="data" size="100"/><br>
+<input id="clickMe" type="button" value="clickme" onclick="setup2()" />
+</br
+<p><span style="font-weight:bold">Instructions for keyboard controls:</span></p>
+<p>Press Up arrow key - Acceleraate </p>
+<p>Press Down arrow key - Reverse </p>
+<p>Press Right arrow key - Steer Right</p>
+<p>Press Left arrow key - Steer Left</p>
+<p>Press cltr/shift key to Stop</p>
+
+</div>); " />
 </p>
 
 <p>                                        
@@ -51,21 +66,6 @@
 
 </br></br></br></br>
 
-<div id="send">
-
-</br></br></br></br></br></br></br></br></br></br></br></br>
-<p>  Enter the hostname/ip address to make the websocket connection </p>
-    <input type="text" id="data" size="100"/><br>
-	<input id="clickMe" type="button" value="clickme" onclick="setup2()" />
-	</br></br>
-<p><span style="font-weight:bold">Instructions for keyboard controls:</span></p>	
-<p>Press Up arrow key - Acceleraate </p>
-<p>Press Down arrow key - Reverse </p>
-<p>Press Right arrow key - Steer Right</p>
-<p>Press Left arrow key - Steer Left</p>
-<p>Press cltr/shift key to Stop</p>
-	
-</div>
 
 </div>
 <div id="output"></div>

@@ -58,8 +58,7 @@ class MainHandler(tornado.web.RequestHandler):
 class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         print
-
-    'connection opened...'
+        'connection opened...'
 
     def check_origin(self, origin):
         return True
@@ -67,7 +66,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 def transfer(message):
     saved = message
-    return saved
+    return message
 
     def on_message(self, message):  # receives the data from the webpage and is stored in the variable message
         print
@@ -109,8 +108,7 @@ def transfer(message):
     #   BrickPi.MotorSpeed[PORT_A] = 0
     #   BrickPi.MotorSpeed[PORT_D] = 0
     # BrickPiUpdateValues();                # BrickPi updates the values for the motors
-    print
-    "Values Updated"
+    # print "Values Updated"
     def on_close(self):
         print
         'connection closed...'
