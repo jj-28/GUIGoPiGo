@@ -7,7 +7,7 @@ function addWaypoint(id) {
     var table = document.getElementById("waypointtable");
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
-        window.alert(cmdqueue.toString());
+        // window.alert(cmdqueue.toString());
 		console.log(cmdqueue.indexOf(id));
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
@@ -17,7 +17,7 @@ function addWaypoint(id) {
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             cmdqueue.push(id);
-            window.alert(cmdqueue.toString());
+            // window.alert(cmdqueue.toString());
 			console.log(cmdqueue.indexOf(id));
             var rowCount = table.rows.length;
             var row = table.insertRow(rowCount);
@@ -41,7 +41,7 @@ function deleteButton(button){
 }
 
 function deleteFromArray(i) {
-    window.alert()
+    // window.alert()
     cmdqueue.splice(i, 1);
 	// var $row = $(this).closest("tr");    // Find the row
  //    var $text = $row.find("td").text; // Find the text
@@ -59,19 +59,19 @@ function deleteFromArray(i) {
 //}
 
 function clearWaypoints() {
-    window.alert("Clearing waypoints...")
+    // window.alert("Clearing waypoints...")
     while (cmdqueue.length > 0 ) {
        cmdqueue.pop();
        $('#waypointtable tbody').html('');
    }
 
-   window.alert("All waypoints cleared.");
+   // window.alert("All waypoints cleared.");
 }
 
 // Creates the websockets connection
 function setup2()
 {
-    window.alert("Initiating robot")
+    // window.alert("Initiating robot")
     var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
     var host =  "ws://"+name+":9093/ws"; 	// combines the three string and creates a new string
@@ -104,7 +104,7 @@ function setup2()
     // // event handlers for websocket
     if(socket)
     {
-        window.alert("Establishing connection wirh the robot");
+        // window.alert("Establishing connection wirh the robot");
       var count =1;
       socket.onopen = function()
 
