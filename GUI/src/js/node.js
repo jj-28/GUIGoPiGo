@@ -1,6 +1,7 @@
 //first make a function that adds and removes waypoint names from the map
 var brakes;
 var cmdqueue = [];
+var edgeQueue = [];
 
 function addWaypoint(id) {
 	
@@ -68,6 +69,25 @@ function clearWaypoints() {
    // window.alert("All waypoints cleared.");
 }
 
+function addEdgeQueue(id) {
+    for (var i =0; i <edgeQueue.length; i++) {
+        if (edgeQueue[i]== 0) {
+            edgeQueue[i] = id;
+            window.alert(cmdqueue.toString());
+        }else {
+            console.log("something at " + i);
+        git }
+    }
+}
+function deleteEdge(id) {
+    for (var i=0; i<edgeQueue.length; i++) {
+        if (edgeQueue[i] == id) {
+            edgeQueue[i] = 0;
+            window.alert("edge deleted")
+        }
+    }
+}
+
 // Creates the websockets connection
 function setup2()
 {
@@ -107,10 +127,10 @@ function setup2()
         // window.alert("Establishing connection wirh the robot");
       var count =1;
       socket.onopen = function()
-
       {
         count = 0;
             // arrows();     // function for detecting keyboard presses
+         // socket.send("waiting");
             buttons();    // function for detecting the button press on webpage
         }
         //Send the button pressed backed to the Raspberry Pi
@@ -120,7 +140,8 @@ function setup2()
     }
     socket.onmessage = function(msg)
     {
-        showServerResponse(msg.data);
+
+        // showServerResponse(msg.data);
     }
     socket.onclose = function()
     {
