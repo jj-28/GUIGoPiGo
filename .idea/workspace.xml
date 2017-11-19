@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="743b7b98-23c7-4038-9149-30f2448139fd" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/.vs/Pathfinding Rover/v15/.suo" afterPath="$PROJECT_DIR$/PathfindingRover/.vs/Pathfinding Rover/v15/.suo" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/Intersection.py" afterPath="$PROJECT_DIR$/PathfindingRover/Intersection.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/Node.py" afterPath="$PROJECT_DIR$/PathfindingRover/Node.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/Pathfinding Rover.pyproj" afterPath="$PROJECT_DIR$/PathfindingRover/Pathfinding Rover.pyproj" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/Pathfinding Rover.sln" afterPath="$PROJECT_DIR$/PathfindingRover/Pathfinding Rover.sln" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/Pathfinding_Rover.py" afterPath="$PROJECT_DIR$/PathfindingRover/Pathfinding_Rover.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/intersection_enum.py" afterPath="$PROJECT_DIR$/PathfindingRover/intersection_enum.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/line_detection_system.py" afterPath="$PROJECT_DIR$/PathfindingRover/line_detection_system.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/line_reader_test.py" afterPath="$PROJECT_DIR$/PathfindingRover/line_reader_test.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/line_sensor.py" afterPath="$PROJECT_DIR$/PathfindingRover/line_sensor.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/linked_list.py" afterPath="$PROJECT_DIR$/PathfindingRover/linked_list.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/map_system.py" afterPath="$PROJECT_DIR$/PathfindingRover/map_system.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/navigation_system.py" afterPath="$PROJECT_DIR$/PathfindingRover/navigation_system.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/Node.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/Node.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/compassDirections.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/compassDirections.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/graphing.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/graphing.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/map.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/map.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/mapAssembler.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/mapAssembler.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/path.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/path.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/pathFinderTest.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/pathFinderTest.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/priodict.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/priodict.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/pathfinding/robotPosition.py" afterPath="$PROJECT_DIR$/PathfindingRover/pathfinding/robotPosition.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/server.py" afterPath="$PROJECT_DIR$/PathfindingRover/server.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Pathfinding Rover/stop.py" afterPath="$PROJECT_DIR$/PathfindingRover/stop.py" />
+    <list default="true" id="743b7b98-23c7-4038-9149-30f2448139fd" name="Default" comment="[MCP2] threading refined and renamed for robotcontrol and guicontrol">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasterControlProgram.py" afterPath="$PROJECT_DIR$/MasterControlProgram.py" />
     </list>
@@ -39,7 +15,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/GUIGoPiGo$pathFinderTest.coverage" NAME="pathFinderTest Coverage Results" MODIFIED="1510936295220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pathfinding Rover/pathfinding" />
-    <SUITE FILE_PATH="coverage/GUIGoPiGo$MasterControlProgram.coverage" NAME="MasterControlProgram Coverage Results" MODIFIED="1510940094334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUIGoPiGo$MasterControlProgram.coverage" NAME="MasterControlProgram Coverage Results" MODIFIED="1511121492278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -58,28 +34,18 @@
       <file leaf-file-name="robotPosition.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/robotPosition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+            <state relative-caret-position="136">
+              <caret line="8" column="48" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="path.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/path.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="map.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="map.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="65" column="39" lean-forward="true" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
+            <state relative-caret-position="221">
+              <caret line="31" column="31" lean-forward="false" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -90,18 +56,18 @@
       <file leaf-file-name="Node.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/Node.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+            <state relative-caret-position="186">
+              <caret line="84" column="27" lean-forward="true" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasterControlProgram.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MasterControlProgram.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MasterControlProgram.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-851">
-              <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+            <state relative-caret-position="2006">
+              <caret line="118" column="8" lean-forward="false" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -112,7 +78,7 @@
       <file leaf-file-name="websocket.py" pinned="false" current-in-tab="false">
         <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/tornado/websocket.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="1736">
               <caret line="493" column="0" lean-forward="false" selection-start-line="493" selection-start-column="0" selection-end-line="493" selection-end-column="0" />
               <folding />
             </state>
@@ -129,11 +95,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="UpdateData.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UpdateData.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ioloop.py" pinned="false" current-in-tab="false">
         <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/tornado/ioloop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="862" column="0" lean-forward="false" selection-start-line="862" selection-start-column="0" selection-end-line="862" selection-end-column="0" />
+            <state relative-caret-position="-2650">
+              <caret line="753" column="0" lean-forward="false" selection-start-line="753" selection-start-column="0" selection-end-line="753" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -192,10 +170,10 @@
         <option value="$PROJECT_DIR$/PathfindingRover/pathfinding/__init__.py" />
         <option value="$PROJECT_DIR$/PathfindingRover/pathfinding/mapAssembler.py" />
         <option value="$PROJECT_DIR$/PathfindingRover/pathfinding/path.py" />
-        <option value="$PROJECT_DIR$/PathfindingRover/pathfinding/robotPosition.py" />
         <option value="$PROJECT_DIR$/PathfindingRover/pathfinding/Node.py" />
-        <option value="$PROJECT_DIR$/MasterControlProgram.py" />
         <option value="$PROJECT_DIR$/PathfindingRover/pathfinding/map.py" />
+        <option value="$PROJECT_DIR$/PathfindingRover/pathfinding/robotPosition.py" />
+        <option value="$PROJECT_DIR$/MasterControlProgram.py" />
       </list>
     </option>
   </component>
@@ -206,8 +184,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="21" />
-    <option name="y" value="-20" />
+    <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -251,28 +228,6 @@
             <path>
               <item name="GUIGoPiGo" type="b2602c69:ProjectViewProjectNode" />
               <item name="GUIGoPiGo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GUIGoPiGo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GUIGoPiGo" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GUIGoPiGo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GUIGoPiGo" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GUIGoPiGo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GUIGoPiGo" type="462c0819:PsiDirectoryNode" />
-              <item name="PathfindingRover" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GUIGoPiGo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GUIGoPiGo" type="462c0819:PsiDirectoryNode" />
-              <item name="PathfindingRover" type="462c0819:PsiDirectoryNode" />
-              <item name="pathfinding" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -477,12 +432,27 @@
       <workItem from="1510509025963" duration="1599000" />
       <workItem from="1510761555357" duration="1191000" />
       <workItem from="1510934935353" duration="224000" />
-      <workItem from="1510935792144" duration="4319000" />
+      <workItem from="1510935792144" duration="14117000" />
     </task>
+    <task id="LOCAL-00001" summary="[MCP2] MCP now has threading capabilities">
+      <created>1511119491531</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1511119491531</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[MCP2] threading refined and renamed for robotcontrol and guicontrol">
+      <created>1511120686818</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1511120686818</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47290000" />
+    <option name="totallyTimeSpent" value="57088000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -494,22 +464,22 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33387887" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5794251" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22390318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40425533" sideWeight="0.60287446" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -524,6 +494,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[MCP2] MCP now has threading capabilities" />
+    <MESSAGE value="[MCP2] threading refined and renamed for robotcontrol and guicontrol" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MCP2] threading refined and renamed for robotcontrol and guicontrol" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -537,15 +512,15 @@
           <line>23</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/PathfindingRover/pathfinding/map.py</url>
-          <line>33</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/MasterControlProgram.py</url>
-          <line>36</line>
-          <option name="timeStamp" value="23" />
+          <line>124</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/MasterControlProgram.py</url>
+          <line>122</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -555,16 +530,16 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="currentNode" />
-        <watch expression="robotPosition" />
+        <watch expression="robotPosition.currentNode" />
         <watch expression="node" />
-        <watch expression="temp" />
-        <watch expression="name" />
-        <watch expression="map" />
+        <watch expression="node != ''" />
+        <watch expression="node != None" />
+        <watch expression="commandQueue.__sizeof__()" />
       </configuration>
     </watches-manager>
   </component>
@@ -803,16 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UpdateData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GUI/src/socketcmdline.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -877,14 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/robotPosition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/tornado/iostream.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -901,30 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/tornado/ioloop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="862" column="0" lean-forward="false" selection-start-line="862" selection-start-column="0" selection-end-line="862" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/tornado/websocket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="493" column="0" lean-forward="false" selection-start-line="493" selection-start-column="0" selection-end-line="493" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/Node.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/pathFinderTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -935,22 +868,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MasterControlProgram.py">
+    <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/tornado/ioloop.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-851">
-          <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2650">
+          <caret line="753" column="0" lean-forward="false" selection-start-line="753" selection-start-column="0" selection-end-line="753" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/tornado/websocket.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1736">
+          <caret line="493" column="0" lean-forward="false" selection-start-line="493" selection-start-column="0" selection-end-line="493" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="65" column="39" lean-forward="true" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
+        <state relative-caret-position="221">
+          <caret line="31" column="31" lean-forward="false" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/Node.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="84" column="27" lean-forward="true" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PathfindingRover/pathfinding/robotPosition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="48" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UpdateData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterControlProgram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="118" column="8" lean-forward="false" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
