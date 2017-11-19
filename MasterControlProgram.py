@@ -52,7 +52,7 @@ application = tornado.web.Application([
     (r"/(.*)", tornado.web.StaticFileHandler, {"path": "./resources"}),
 ])
 
-class myThread (threading.Thread):
+class guiControlThread (threading.Thread):
     def __init__(self, threadID, name, counter,queue):
         threading.Thread.__init__(self)
         self.threadID = threadID
@@ -60,12 +60,32 @@ class myThread (threading.Thread):
         self.counter = counter
         self.queue = queue
     def run(self):
-        print ("Ready")
+        print (self.name + " Ready")
         application.listen(9093)            #starts the websockets connection
         tornado.ioloop.IOLoop.instance().start()
         while running:
             #      BrickPiUpdateValues()       # Ask BrickPi to update values for sensors/motors
             time.sleep(.2)              # sleep for 200 ms
+
+class robotControlThread(threading.Thread):
+    def __init__(self, threadID, name, counter,queue):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.counter = counter
+        self.queue = queue
+    def run(self):
+        print (self.name + " Ready")
+
+class mapRecievingThread(threading.Thread):
+    def __init__(self, threadID, name, counter,queue):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.counter = counter
+        self.queue = queue
+    def run(self):
+        print (self.name + " Ready")
 
 if __name__ == "__main__":
     #BrickPiSetup()             # setup the serial port for communication
@@ -77,12 +97,12 @@ if __name__ == "__main__":
     robotPosition = RobotPosition()
     commandQueue = queue.Queue()
     running = True
-    thread1 = myThread(1, "Thread-1", 1,commandQueue)
-    thread1.setDaemon(True)
-    thread1.start()
+    guiThread = guiControlThread(1, "Gui Control Thread", 1,commandQueue)
+    robotThread = robotControlThread(2,"Robot Control Thread",1,commandQueue)
+    guiThread.setDaemon(True)
+    guiThread.start()
+    robotThread.start()
 
-    global guiCall
-    guiCall = ''
     while(True):
         #Check for new map
         #IF there is a new map
