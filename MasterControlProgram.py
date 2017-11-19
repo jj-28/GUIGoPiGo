@@ -81,7 +81,7 @@ class robotControlThread(threading.Thread):
                     self.control.turn_right()
                 elif temp == "TurnAround":
                     self.control.turn_around()
-            time.sleep(.2)
+            time.sleep(.2)#note for commit
 
 class mapRecievingThread(threading.Thread):
     def __init__(self, threadID, name, counter, cqueue, queue):
