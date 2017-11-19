@@ -1,6 +1,7 @@
 from PathfindingRover.pathfinding.map import map
 from PathfindingRover.pathfinding.path import path
 from PathfindingRover.pathfinding.robotPosition import RobotPosition
+from RobotController.src.Wrapper import *
 #from RPi_Server_Code import WSHandler
 import queue
 import threading
@@ -59,15 +60,28 @@ class guiControlThread (threading.Thread):
         tornado.ioloop.IOLoop.instance().start()
 
 class robotControlThread(threading.Thread):
-    def __init__(self, threadID, name, counter,cqueue,queue):
+    def __init__(self, threadID, name, counter,cqueue,queue,control):
         threading.Thread.__init__(self)
         self.threadID = threadID
         self.name = name
         self.counter = counter
         self.queue = queue
         self.cqueue = cqueue
+        self.control = control
     def run(self):
         print (self.name + " Ready")
+        while (True):
+            if not queue.empty():
+                temp = queue.get()
+                if temp == "Forward":
+                    self.control.go_straight()
+                elif temp == "Left":
+                    self.control.turn_left()
+                elif temp == "Right":
+                    self.control.turn_right()
+                elif temp == "TurnAround":
+                    self.control.turn_around()
+            time.sleep(.2)
 
 class mapRecievingThread(threading.Thread):
     def __init__(self, threadID, name, counter, cqueue, queue):
@@ -84,13 +98,15 @@ if __name__ == "__main__":
     ourMap = map()
     ourPath = path()
     robotPosition = RobotPosition()
+    robotController = Wrapper()
+    robotController.waiting = 2
     commandQueue = queue.Queue()
     guiMessageQueue = queue.Queue()
     rcMessageQueue = queue.Queue()
 
     #get threads going
     guiThread = guiControlThread(1, "Gui Control Thread", 1,commandQueue,guiMessageQueue)
-    robotThread = robotControlThread(2,"Robot Control Thread",1,commandQueue,rcMessageQueue)
+    robotThread = robotControlThread(2,"Robot Control Thread",1,commandQueue,rcMessageQueue,robotController)
     guiThread.setDaemon(True)
     guiThread.start()
     robotThread.start()
@@ -104,18 +120,30 @@ if __name__ == "__main__":
 
         #check rover status
         #IF rover is idle
+        if robotController.waiting == 2:
             #ask for a node
+            if len(ourPath.nodes) > 0:
+                robotController.waiting = 0
             #IF node is available
                 #get a new path
                 #guichange is needed
-            #ELIF rover is processing
-                #Do nothing
-            #ELIF waiting for next command
-                #IF there are remaining commands
-                    #send next command
-                    #Gui change is needed
-                #ELSE
-                    #set status to idle
+        #ELIF rover is processing
+        if robotController.waiting == 0:
+            pass
+        #ELIF waiting for next command
+        elif robotController.waiting == 1:
+            #IF there are remaining commands
+            if len(ourPath.commands) > 0:
+                #send next command
+                temp = ourPath.commands.pop(0)
+                robotControlThread.put(temp)
+                if temp == "Forward":
+                    robotPosition.currentNode = ourPath.nodes.pop(0)
+                #Gui change is needed
+            #ELSE
+            else:
+                #set status to idle
+                robotController.waiting = 2
 
         #check pathfinding status
         #IF current path is empty

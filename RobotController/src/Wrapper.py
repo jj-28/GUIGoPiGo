@@ -18,7 +18,7 @@ class Wrapper():
         '''
         self.gpg = EasyGoPiGo()
         self.ls = LineFollower()
-        self._waiting = 1
+        self.waiting = 1
         # speed is set to 30
         self.gpg.set_speed(30)
         self.ls.read()
@@ -30,7 +30,7 @@ class Wrapper():
     
         
     def getwaiting(self):
-        return self._waiting
+        return self.waiting
         
     def waiting(self):
         status = self.getwaiting()
@@ -41,29 +41,29 @@ class Wrapper():
 
             
     def followline(self):
-        self._waiting = 0
+        self.waiting = 0
         self.ls.follow_line()
-        self._waiting = 1
+        self.waiting = 1
         
     def go_straight(self):
         print("Going straight")
-        self._waiting = 0
+        self.waiting = 0
         self.gpg.forward()
         time.sleep(.8)
         self.ls.follow_line()
-        self._waiting = 1
+        self.waiting = 1
         
     def turn_right(self):
         print("Turning right")
-        self._waiting = 0
+        self.waiting = 0
         self.ls.turn_right()
-        self._waiting = 1
+        self.waiting = 1
         
     def turn_left(self):
         print("Turning left")
-        self._waiting = 0
+        self.waiting = 0
         self.ls.turn_left()
-        self._waiting = 1
+        self.waiting = 1
         
     def turn_around(self):
         print("Turning around")
