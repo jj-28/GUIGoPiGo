@@ -46,10 +46,18 @@
         </div>
 
         <!-- map with red overlay (aka the obstacles) -->
-        <div class="Map2">
+        <div>
             <img
             class="map" id="map" src="../src/images/Map2.0.svg" alt="map" usemap="#obstacles"
             onclick="showCoords(event)">
+
+            <img src="../src/images/robot1.0.svg"
+            class="robot" 
+            id="robot"
+            style="left: 0px; top: 0px" 
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            alt="robot">
 
             <img src="../src/images/n1-n2.svg"
             class="map"
@@ -418,11 +426,7 @@
 
         <!--Robot-->
         <div class="robotoverlay">
-            <img class="robot" id="robot"
-            -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-            src="../src/images/robot1.0.svg"
-            alt="robot">
+            
         </div>
         
         <!-- clickable areas for the obstacles -->     

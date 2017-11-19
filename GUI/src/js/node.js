@@ -5,44 +5,28 @@ var cmdqueue = [];
 function addWaypoint(id) {
 
     var table = document.getElementById("waypointtable");
-//for (var i = 0; i < cmdqueue.length; i++) {
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
-        // document.getElementById("print").innerHTML = cmdqueue.length;
         window.alert(cmdqueue.toString());
-        // cmdqueue[x] = document.getElementById(id).value;
-        // alert("Element: " + cmdqueue[x] + " Added at index " + x);
-        // x++;
-		//var index = cmdqueue.indexOf(id);
 		console.log(cmdqueue.indexOf(id));
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow(this)">';
         cell1.innerHTML = document.getElementById(id).name;
         cell2.innerHTML = '<input type="button" id="cell1.id" name="document.getElementById(id).name" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
-        //setup2();
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
-            // cmdqueue[x] = document.getElementById(id).value;
-            // alert("Element: " + cmdqueue[x] + " Added at index " + x);
-            // x++;
             cmdqueue.push(id);
-            // document.getElementById("print").innerHTML = cmdqueue.length;
             window.alert(cmdqueue.toString());
-			//var index = cmdqueue.indexOf(id);
 			console.log(cmdqueue.indexOf(id));
             var rowCount = table.rows.length;
             var row = table.insertRow(rowCount);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-            //cell1.innerHTML = '<input type="button" class="deleteDep" value="Delete" onclick = "deleteRow()">';
             cell1.innerHTML = document.getElementById(id).name;
             cell2.innerHTML = '<input type="button" id="document.getElementById(id)" name="document.getElementById(id).name" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
-            //setup2();
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
-            //setup2();
         }
     }
 }
@@ -59,12 +43,6 @@ function deleteButton(button){
 function deleteFromArray(i) {
     window.alert()
     cmdqueue.splice(i, 1);
-	// var $row = $(this).closest("tr");    // Find the row
- //    var $text = $row.find("td").text; // Find the text
-
- //    // Let's test it out
- //    alert($row);
- //    alert($text);
 }
 
 //function deleteRow(btn) {
@@ -84,11 +62,6 @@ function clearWaypoints() {
    window.alert("All waypoints cleared.");
 }
 
-// function stop()
-// {
-// brakes = "b";
-//     setup2();
-// }
 
 // Creates the websockets connection
 function setup2()
