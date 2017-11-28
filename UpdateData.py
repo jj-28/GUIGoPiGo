@@ -33,10 +33,10 @@ class UpdateData(object):
         edgelist = ''
         for thisEdge in map:
             edgelist = edgelist + thisEdge.name + ' ' + thisEdge.inObstacle + ' '
-        d = [["PathNodes",nodelist],["RobotNode", robotNode],["Edges", edgelist]]
+        # d = [["PathNodes",nodelist],["RobotNode", robotNode],["Edges", edgelist]]
         # d = {}
         # d['Path Nodes'] = nodelist
         # d['RobotNode'] = robotNode
         # d['Edges'] = edgelist
         json_data = json.dumps(d);
-        return json_data
+        return nodelist + '/' + robotNode + "/" + edgelist

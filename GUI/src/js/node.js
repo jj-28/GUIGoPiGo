@@ -111,7 +111,7 @@ function setup2() {
         //Sends JSON object containing node and edges
         function buttons() {
 
-            var g {['node': cmdqueue.toString(), 'edges': edgeQueue.toString()]};
+            var g = {'node': cmdqueue.toString(), 'edges': edgeQueue.toString()};
             socket.send(JSON.stringify(g));
         }
         //clears previous update information
@@ -123,19 +123,34 @@ function setup2() {
 
 
         socket.onmessage = function (msg) {
-            if (typeof msg == 'string') {
-                if (msg == "request nodes and edges") {
-                    buttons();
-                } else {
-                    window.alert("unexpected string received: " + msg);
-                }
-            } else {
+            // if (typeof msg == 'string') {
+            //     if (msg == "request nodes and edges") {
+            //         buttons();
+            //     } else {
+            //         window.alert("unexpected string received: " + msg);
+            //     }
+            // } else {
+            //     clearUpdate();
+            //     var response =[] ;
+            //         response = JSON.parse(msg);
+            //     // tokenize array elements and put into seperate arrays
+            //     // progressNodes = response.[0].split(" ");
+            //     // progressEdges = response.[1].split(" ");
+            //     // progressRobot = response.[2];
+            // }
+            var response =  msg;
+            if (response.indexOf("/") > -1 ) {
+                var q = response.split("/");
                 clearUpdate();
-                var response = JSON.parse(msg);
-                //tokenize array elements and put into seperate arrays
-                progressNodes = response.[0].split(" ");
-                progressEdges = response.[1].split(" ");
-                progressRobot = response.[2];
+                progressNodes = q[0].split(" ");
+                progressEdges = q[2].split(" ");
+                progressRobot = q[1].split(" ");
+            } else {
+                    if (msg == "request nodes and edges") {
+                        buttons();
+                    } else {
+                        window.alert("unexpected string received: " + msg);
+                    }
             }
         }
 
