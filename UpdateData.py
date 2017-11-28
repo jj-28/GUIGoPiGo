@@ -1,4 +1,5 @@
 from PathfindingRover.pathfinding.map import map
+import json
 from PathfindingRover.pathfinding.path import path
 from PathfindingRover.pathfinding.robotPosition import RobotPosition
 #from map import map
@@ -24,7 +25,7 @@ class UpdateData(object):
     #
     #     return temp
 
-    def dict(self):
+    def updatedJson(self):
         nodelist = ''
         for node in self.mypath.nodes:
             nodelist = nodelist + node.name
@@ -32,9 +33,10 @@ class UpdateData(object):
         edgelist = ''
         for thisEdge in map:
             edgelist = edgelist + thisEdge.name + ' ' + thisEdge.inObstacle + ' '
-        d = {
-            'Path Nodes': nodelist,
-            'RobotNode': robotNode,
-            'Edges': edgelist
-        }
-        return d
+        d = [["PathNodes",nodelist],["RobotNode", robotNode],["Edges", edgelist]]
+        # d = {}
+        # d['Path Nodes'] = nodelist
+        # d['RobotNode'] = robotNode
+        # d['Edges'] = edgelist
+        json_data = json.dumps(d);
+        return json_data
