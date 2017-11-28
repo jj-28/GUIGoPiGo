@@ -12,8 +12,8 @@ function addWaypoint(id) {
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        cell1.innerHTML = document.getElementById(id).name;
-        cell2.innerHTML = '<input type="button" id="cell1.id" name="document.getElementById(id).name" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
+        cell1.innerHTML = document.getElementById(id).name; + document.getElementById(id).name;
+        cell2.innerHTML = '<input type="button" id="cell1.id" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));" document.getElementById(id).name >';
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             cmdqueue.push(id);
@@ -24,7 +24,7 @@ function addWaypoint(id) {
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             cell1.innerHTML = document.getElementById(id).name;
-            cell2.innerHTML = '<input type="button" id="document.getElementById(id)" name="document.getElementById(id).name" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
+            cell2.innerHTML = '<input type="button" id="document.getElementById(id)" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
         }
@@ -36,8 +36,8 @@ function deleteButton(button){
         var i = cmdqueue.indexOf(this.id);
       cmdqueue.splice(cmdqueue.indexOf(this.id),1);
         this.parentNode.parentNode.remove(); //"this" refer to the "button" object
-
     }, false);
+    window.alert(this.rowIndex)
 }
 
 function deleteFromArray(i) {
@@ -151,7 +151,7 @@ jQuery(function($)
 function showPath(input) {
     var currentPath;
     for (var i = 0; i <= input.length - 1; i++) {
-        currentPath = input[i]     
+        currentPath = input[i]
         switch (currentPath) {
             case "n1-n2":
             case "n2-n1":
@@ -265,9 +265,13 @@ function showPath(input) {
             window.alert("you done fucked up a a ron")
             alert(currentPath)
         }
-    }  
+    }
 }
 
 //for testing purposes un-comment code//
  // var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
  // showPath(array)
+
+function doSomething(){
+    window.alert("YES")
+}

@@ -1,3 +1,6 @@
+#button {
+    display: none;
+}
 
 .map {
     transform: rotate(90deg);

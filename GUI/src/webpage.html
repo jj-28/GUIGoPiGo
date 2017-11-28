@@ -52,9 +52,9 @@
             onclick="showCoords(event)">
 
             <img src="../src/images/robot1.0.svg"
-            class="robot" 
+            class="robot"
             id="robot"
-            style="left: 0px; top: 0px" 
+            style="left: 0px; top: 0px"
             -webkit-transform: rotate(180deg);
             transform: rotate(180deg);
             alt="robot">
@@ -426,13 +426,13 @@
 
         <!--Robot-->
         <div class="robotoverlay">
-            
+
         </div>
-        
-        <!-- clickable areas for the obstacles -->     
+
+        <!-- clickable areas for the obstacles -->
         <div>
             <map name="obstacles">
-                <area class="areas" id="area1" shape="rect" coords="264,676,274,374" onclick="javascript:$('#n18-n19-solid').toggle()">
+                <area class="areas" id="area1" shape="rect" coords="264,676,274,374" onclick="javascript: $('#n18-n19-solid').toggle(); doSomething()">
                 <script>
                     $(document).ready(function(){
                         $("#area1").hover(function(){
@@ -656,12 +656,13 @@
         </div>
 
         <div class="waypointpanel">
-            <table id="waypointtable" cellpadding="14" style="width:100%"></table>
+            <table border="6" id="waypointtable" cellspacing="6" cellpadding="20" style="width:100%"></table>
+            <input type="button" id="button" name="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));">
         </div>
 
         <!-- Action Buttons-->
         <div class="actionbuttons">
-            <button id= "buttonStart" value=clickme name="clickme" onclick="setup2()" type="button"> Start 
+            <button id= "buttonStart" value=clickme name="clickme" onclick="setup2()" type="button"> Start
                 <script>
                     $(document).ready(function() {
                         $('#buttonStart').click(function() {
@@ -670,7 +671,7 @@
                     });
                 </script>
             </button>
-            <button id= "buttonStop" name="stop" type="button"> Stop 
+            <button id= "buttonStop" name="stop" type="button"> Stop
                 <script>
                     $(document).ready(function() {
                         $('#buttonStop').click(function() {
