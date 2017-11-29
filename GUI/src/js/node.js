@@ -5,39 +5,36 @@ var cmdqueue = [];
 function addWaypoint(id) {
 
     var table = document.getElementById("waypointtable");
+    var waypointName = document.getElementById(id).name;
+
+    var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
         window.alert(cmdqueue.toString());
 		console.log(cmdqueue.indexOf(id));
-        var row = table.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = document.getElementById(id).name; + document.getElementById(id).name;
-        cell2.innerHTML = '<input type="button" id="cell1.id" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));" document.getElementById(id).name >';
+
+        row.insertCell(0).innerHTML = waypointName;
+        row.insertCell(1).innerHTML = '<input type="button" id="cell1.id" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             cmdqueue.push(id);
             window.alert(cmdqueue.toString());
 			console.log(cmdqueue.indexOf(id));
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            cell1.innerHTML = document.getElementById(id).name;
-            cell2.innerHTML = '<input type="button" id="document.getElementById(id)" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));">';
+
+            row.insertCell(0).innerHTML = waypointName;
+            row.insertCell(1).innerHTML = '<input type="button" id="document.getElementById(id)" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
         } else {
             window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
         }
     }
 }
 
-function deleteButton(button){
-    button.addEventListener("click", function(){
-        var i = cmdqueue.indexOf(this.id);
-      cmdqueue.splice(cmdqueue.indexOf(this.id),1);
-        this.parentNode.parentNode.remove(); //"this" refer to the "button" object
-    }, false);
-    window.alert(this.rowIndex)
+function deleteButton(obj){
+    var index = obj.parentNode.parentNode.rowIndex;
+    //window.alert(cell[0].value);
+    window.alert(index);
 }
 
 function deleteFromArray(i) {
