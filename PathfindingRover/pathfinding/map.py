@@ -1,7 +1,7 @@
-from mapAssembler import mapAssembler
-from Node import Node
-from Node import edge
-from path import path
+from PathfindingRover.pathfinding.mapAssembler import mapAssembler
+from PathfindingRover.pathfinding.Node import Node
+from PathfindingRover.pathfinding.Node import edge
+from PathfindingRover.pathfinding.path import path
 import math
 import sys
 
@@ -16,20 +16,35 @@ class map(object):
         mapper = mapAssembler()
         self.nodes = []
         self.nodes = mapper.assembleMap()  # nodes of the map
+        edgeList = []
+        for thisEdge in self.nodes:
+            if(not edgeList.__contains__(thisEdge)):
+                edgeList.append(thisEdge)
+        self.edges = edgeList
+
+    def resetMap(self):
+        for thisEdge in self.edges:
+            thisEdge.inObstacle = False
+
+    def findEdge(self,name):
+        for thisEdge in self.edges:
+            if thisEdge.name == name:
+                return thisEdge
 
     def findNode(self,name):
+        temp = name
         for node in self.nodes:
-            if(node.name == name):
+            if(node.name == temp):
                 return node
         return None
 
-    def getPath(self, start, end):
+    def getPath(self, start, end,robPos):
         mypath = path()
         mypath.nodes = self.__pathfinding(start, end)
+        mypath.getPathAsStrings(robPos)
         return mypath
 
     # A* pathfinding solution
-    # TODO determine how to allow for weights
     def __pathfinding(self, start, end):
         # initialize components
         pathSuccess = False         #Assume there isn't a valid path
@@ -46,9 +61,9 @@ class map(object):
         while (len(openSet) > 0 and not pathSuccess):
             #get the shortest distance node(also put it in the closed set)
             openSet.sort()
-            for node in openSet:
-                print(node.name)
-            print("*****************")
+            #for node in openSet:
+            #    print(node.name)
+            #print("*****************")
             openSet.reverse()
             currentNode = openSet.pop(0)
             closedSet.append(currentNode)

@@ -4,7 +4,7 @@
     <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/maplook.css">
     <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>-->
-    <script src="../src/js/jquery.js"></script>
+    <script src="../src/js/jquery-1.8.3.min.js"></script>
     <script src="../src/js/move.js"></script>
     <script src="../src/js/node.js"></script>
 </head>
@@ -443,7 +443,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area2" shape="rect" coords="328,566,335,326" onclick="javascript:$('#n2-n4-2').toggle()">
+                <area class="areas" id="area2" shape="rect" coords="328,566,335,326" onclick="javascript:$('#n2-n4-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area2").hover(function(){
@@ -454,7 +454,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area3" shape="rect" coords="328,676,334,574" onclick="javascript:$('#n1-n2-2').toggle()">
+                <area class="areas" id="area3" shape="rect" coords="328,676,334,574" onclick="javascript:$('#n1-n2-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area3").hover(function(){
@@ -465,7 +465,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area4" shape="rect" coords="334,566,434,572" onclick="javascript:$('#n2-n3-2').toggle()">
+                <area class="areas" id="area4" shape="rect" coords="334,566,434,572" onclick="javascript:$('#n2-n3-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area4").hover(function(){
@@ -476,7 +476,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area5" shape="rect" coords="265,365,271,322" onclick="javascript:$('#n7-n18-2').toggle()">
+                <area class="areas" id="area5" shape="rect" coords="265,365,271,322" onclick="javascript:$('#n7-n18-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area5").hover(function(){
@@ -487,7 +487,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area6" shape="rect" coords="326,315,336,40" onclick="javascript:$('#n4-n6-2').toggle()">
+                <area class="areas" id="area6" shape="rect" coords="326,315,336,40" onclick="javascript:$('#n4-n6-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area6").hover(function(){
@@ -498,7 +498,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area7" shape="rect" coords="270,315,325,322" onclick="javascript:$('#n4-n7-2').toggle()">
+                <area class="areas" id="area7" shape="rect" coords="270,315,325,322" onclick="javascript:$('#n4-n7-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area7").hover(function(){
@@ -509,7 +509,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area8" shape="rect" coords="344,315,430,320" onclick="javascript:$('#n4-n5-2').toggle()">
+                <area class="areas" id="area8" shape="rect" coords="344,315,430,320" onclick="javascript:$('#n4-n5-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area8").hover(function(){
@@ -520,7 +520,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area9" shape="rect" coords="264,315,272,40" onclick="javascript:$('#n7-n8-2').toggle()">
+                <area class="areas" id="area9" shape="rect" coords="264,315,272,40" onclick="javascript:$('#n7-n8-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area9").hover(function(){
@@ -531,7 +531,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area10" shape="poly" coords="264,322,243,305,222,271,188,213,171,132" onclick="javascript:$('#n7-n9-2').toggle()">
+                <area class="areas" id="area10" shape="poly" coords="264,322,243,305,222,271,188,213,171,132" onclick="javascript:$('#n7-n9-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area10").hover(function(){
@@ -542,7 +542,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area11" shape="rect" coords="207,367,265,372" onclick="javascript:$('#n17-n18-2').toggle()">
+                <area class="areas" id="area11" shape="rect" coords="207,367,265,372" onclick="javascript:$('#n17-n18-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area11").hover(function(){
@@ -553,7 +553,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area12" shape="rect" coords="141,368,199,374" onclick="javascript:$('#n13-n17-2').toggle()">
+                <area class="areas" id="area12" shape="rect" coords="141,368,199,374" onclick="javascript:$('#n13-n17-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area12").hover(function(){
@@ -564,7 +564,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area13" shape="poly" coords="116,529,209,528,206,373,199,373,201,520,115,522" onclick="javascript:$('#n14-n17-2').toggle()">
+                <area class="areas" id="area13" shape="poly" coords="116,529,209,528,206,373,199,373,201,520,115,522" onclick="javascript:$('#n14-n17-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area13").hover(function(){
@@ -575,7 +575,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area14" shape="rect" coords="109,531,117,677" onclick="javascript:$('#n14-n16-2').toggle()">
+                <area class="areas" id="area14" shape="rect" coords="109,531,117,677" onclick="javascript:$('#n14-n16-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area14").hover(function(){
@@ -586,7 +586,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area15" shape="rect" coords="39,523,108,529" onclick="javascript:$('#n14-n15-2').toggle()">
+                <area class="areas" id="area15" shape="rect" coords="39,523,108,529" onclick="javascript:$('#n14-n15-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area15").hover(function(){
@@ -597,7 +597,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area16" shape="poly" coords="108,522,102,370,133,368,133,375,110,376,114,522" onclick="javascript:$('#n13-n14-2').toggle()">
+                <area class="areas" id="area16" shape="poly" coords="108,522,102,370,133,368,133,375,110,376,114,522" onclick="javascript:$('#n13-n14-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area16").hover(function(){
@@ -608,7 +608,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area17" shape="rect" coords="129,136,141,368" onclick="javascript:$('#n11-n13-2').toggle()">
+                <area class="areas" id="area17" shape="rect" coords="129,136,141,368" onclick="javascript:$('#n11-n13-2').toggle(); maintainQueue(this.id)", >
                 <script>
                     $(document).ready(function(){
                         $("#area17").hover(function(){
@@ -619,7 +619,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area18" shape="rect" coords="21,128,129,135" onclick="javascript:$('#n11-n12-2').toggle()">
+                <area class="areas" id="area18" shape="rect" coords="21,128,129,135" onclick="javascript:$('#n11-n12-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area18").hover(function(){
@@ -630,7 +630,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area19" shape="rect" coords="136,128,170,131" onclick="javascript:$('#n9-n11-2').toggle()">
+                <area class="areas" id="area19" shape="rect" coords="136,128,170,131" onclick="javascript:$('#n9-n11-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area19").hover(function(){
@@ -641,7 +641,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="area20" shape="poly" coords="176,130,206,114,229,92,238,35,232,34,224,86,204,106,173,122" onclick="javascript:$('#n9-n10-2').toggle()">
+                <area class="areas" id="area20" shape="poly" coords="176,130,206,114,229,92,238,35,232,34,224,86,204,106,173,122" onclick="javascript:$('#n9-n10-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#area20").hover(function(){
@@ -681,6 +681,7 @@
                 </script>
             </button>
             <button id= "buttonClear" onclick = "clearWaypoints()" name="clear" type="button"> Clear </button>
+            <!--<button id= "buttonReset" onclick = "clearWaypoints()" name="reset" type="button"> Reset </button>-->
         </div>
 
         <!-- Toolbar -->
@@ -694,7 +695,6 @@
         <div id="overlay">
 
         </div>
-
     </div>
 </body>
 </html>

@@ -1,9 +1,11 @@
-//first make a function that adds and removes waypoint names from the map
 var brakes;
 var cmdqueue = [];
+var edgeQueue = [];
+var progressNodes;
+var progressEdges;
+var progressRobot;
 
 function addWaypoint(id) {
-
     var table = document.getElementById("waypointtable");
     var waypointName = document.getElementById(id).name;
 
@@ -42,106 +44,141 @@ function deleteFromArray(i) {
     cmdqueue.splice(i, 1);
 }
 
-//function deleteRow(btn) {
-	//var i = r.parentNode.parentNode.rowIndex;
-//	var row = btn.parentNode.parentNode;
-//	row.parentNode.removeChild(row);
-    //document.getElementById("waypointtable").deleteRow(row);
-//}
+// function deleteButton(button) {
+//     button.addEventListener("click", function () {
+//         var i = cmdqueue.indexOf(this.id);
+//         cmdqueue.splice(cmdqueue.indexOf(this.id), 1);
+//         this.parentNode.parentNode.remove(); //"this" refer to the "button" object
+//
+//     }, false);
+// }
+//
+// function deleteFromArray(i) {
+//     // window.alert()
+//     cmdqueue.splice(i, 1);
+//     var $row = $(this).closest("tr");    // Find the row
+//        var $text = $row.find("td").text; // Find the text
+//
+//     //    // Let's test it out
+//     //    alert($row);
+//     //    alert($text);
+// }
+//
+// function deleteRow(btn) {
+// var i = r.parentNode.parentNode.rowIndex;
+// 	var row = btn.parentNode.parentNode;
+// 	row.parentNode.removeChild(row);
+// document.getElementById("waypointtable").deleteRow(row);
+// }
 
+// clears waypoints and edges
 function clearWaypoints() {
-    window.alert("Clearing waypoints...")
-    while (cmdqueue.length > 0 ) {
-       cmdqueue.pop();
-       $('#waypointtable tbody').html('');
-   }
-
-   window.alert("All waypoints cleared.");
+    while (cmdqueue.length > 0) {
+        cmdqueue.pop();
+        $('#waypointtable tbody').html('');
+    }
+}
+//adds and removes edges from array onClick
+function maintainQueue(id) {
+    if (edgeQueue.indexOf(id) > -1) {
+        edgeQueue.push(id);
+        window.alert(edgeQueue.toString());
+    } else {
+        edgeQueue.splice(edgeQueue.indexOf(id), 1);
+        window.alert("removed, array looks like " + edgeQueue.toString());
+    }
 }
 
 
+
+
 // Creates the websockets connection
-function setup2()
-{
-    window.alert("Initiating robot")
-    var $txt = $("#ip");      			// assigns the data(hostname/ip address) entered in the text box
+function setup2() {
+    // window.alert("Initiating robot")
+    var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
-    var host =  "ws://"+name+":9093/ws"; 	// combines the three string and creates a new string
+    var host = "ws://" + name + ":9093/ws"; 	// combines the three string and creates a new string
     var socket = new WebSocket(host);
-    var $txt = $("#ip");
+    var $txt = $("data");
     var $btnSend = $("#sendtext");
     $txt.focus();
 
     // event handlers for UI
-    $btnSend.on('click',function()
-    {
+    $btnSend.on('click', function () {
         var text = $txt.val();
-        if(text == "")
-        {
+        if (text == "") {
             return;
         }
         $txt.val("");
     });
-    // $txt
-    //     .keypress(function(evt)
-    //     {
-    //         if(evt.which == 13)
-    //         {
-    //             $btnSend.click();
-    //         }
-    //     });
-    //
-    // // event handlers for websocket
-    if(socket)
-    {
-      //  window.alert("Establishing connection wirh the robot");
-      var count =1;
-      socket.onopen = function()
 
-      {
-        count = 0;
-            // arrows();     // function for detecting keyboard presses
-            buttons();    // function for detecting the button press on webpage
+    if (socket) {
+        var count = 1;
+        //sends initial client message
+        socket.onopen = function () {
+            socket.send("client ready");
         }
-        //Send the button pressed backed to the Raspberry Pi
-        function buttons()
-        {
-            // if(brakes == "b")
-            // {
-            //     socket.send("b");
+
+        //Sends JSON object containing node and edges
+        function buttons() {
+
+            var g = {'node': cmdqueue.toString(), 'edges': edgeQueue.toString()};
+            socket.send(JSON.stringify(g));
+        }
+        //clears previous update information
+        function clearUpdate() {
+            progressEdges = [];
+            progressNodes = [];
+            progressRobot = "";
+        }
+
+
+        socket.onmessage = function (msg) {
+            // if (typeof msg == 'string') {
+            //     if (msg == "request nodes and edges") {
+            //         buttons();
+            //     } else {
+            //         window.alert("unexpected string received: " + msg);
+            //     }
+            // } else {
+            //     clearUpdate();
+            //     var response =[] ;
+            //         response = JSON.parse(msg);
+            //     // tokenize array elements and put into seperate arrays
+            //     // progressNodes = response.[0].split(" ");
+            //     // progressEdges = response.[1].split(" ");
+            //     // progressRobot = response.[2];
             // }
-        // window.alert("sending waypoints...");
-        socket.send(cmdqueue.toString());
-    }
-    socket.onmessage = function(msg)
-    {
-        showServerResponse(msg.data);
-    }
-    socket.onclose = function()
-    {
-            //alert("connection closed....");
+            var response =  msg;
+            if (response.indexOf("/") > -1 ) {
+                var q = response.split("/");
+                clearUpdate();
+                progressNodes = q[0].split(" ");
+                progressEdges = q[2].split(" ");
+                progressRobot = q[1].split(" ");
+            } else {
+                    if (msg == "request nodes and edges") {
+                        buttons();
+                    } else {
+                        window.alert("unexpected string received: " + msg);
+                    }
+            }
+        }
+
+        socket.onclose = function () {
+            window.alert("connection closed....");
             showServerResponse("The connection has been closed.");
         }
-    }
-    else
-    {
+    } else {
         console.log("invalid socket");
     }
-    function showServerResponse(txt)
-    {
-        var p = document.createElement('p');
-        p.innerHTML = txt;
-        document.getElementById('output').appendChild(p);
-    }
-}
 
-jQuery(function($)
-{
-    if (!("WebSocket" in window))
-    {
-        alert("Your browser does not support web sockets");
+    function showServerResponse(txt) {
+        // var p = document.createElement('p');
+        // p.innerHTML = txt;
+        // document.getElementById('output').appendChild(p);
     }
-});
+
 
 
 //function that takes in an array from pathfinding and shows the calculated path

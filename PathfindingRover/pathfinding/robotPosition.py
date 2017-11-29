@@ -1,4 +1,4 @@
-from compassDirections import compassDirections
+from PathfindingRover.pathfinding.compassDirections import compassDirections
 
 class RobotPosition(object):
 
@@ -7,4 +7,5 @@ class RobotPosition(object):
         self.y = 0
         self.z = 0.00
         self.direction = compassDirections.north
+        self.currentNode = 'n1'
 

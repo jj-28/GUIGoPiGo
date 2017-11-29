@@ -1,4 +1,4 @@
-from compassDirections import compassDirections
+from PathfindingRover.pathfinding.compassDirections import compassDirections
 
 class Node(object):
     """description of class
@@ -55,7 +55,10 @@ class Node(object):
         return self.hCost >= other.hCost
 
     def __eq__(self, other):
-        return self.name == other.name
+        if type(other) is Node:
+            return self.name == other.name
+        else:
+            return self.name == other
 
 class edge(object):
     """description of class
@@ -75,7 +78,7 @@ class edge(object):
         self.d2 = inDirection2          #direction this edge comes from the second node
         self.weight = inWeight          #the distance between these two nodes
         self.inObstacle = inObstacle    #is there an obstacle?
-
+        self.name = inNode1.name + inNode2.name
         self.__assign(self.n1,self.d1)
         self.__assign(self.n2,self.d2)
 
@@ -113,3 +116,5 @@ class edge(object):
             return False
 
 
+    def __str__(self):
+        return self.name
