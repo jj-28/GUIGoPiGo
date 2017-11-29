@@ -28,7 +28,7 @@ class UpdateData(object):
     def updatedJson(self):
         nodelist = ''
         for node in self.mypath.nodes:
-            nodelist = nodelist + node.name
+            nodelist = nodelist + node.name + ' '
         robotNode = self.robpos.currentNode
         edgelist = ''
         for thisEdge in map:
@@ -38,5 +38,5 @@ class UpdateData(object):
         # d['Path Nodes'] = nodelist
         # d['RobotNode'] = robotNode
         # d['Edges'] = edgelist
-        json_data = json.dumps(d);
+        # json_data = json.dumps(d);
         return nodelist + '/' + robotNode + "/" + edgelist

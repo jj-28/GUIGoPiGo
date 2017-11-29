@@ -72,7 +72,7 @@ function clearWaypoints() {
 }
 //adds and removes edges from array onClick
 function maintainQueue(id) {
-    if (edgeQueue.indexOf(id) == -1) {
+    if (edgeQueue.indexOf(id) > -1) {
         edgeQueue.push(id);
         window.alert(edgeQueue.toString());
     } else {
