@@ -1,3 +1,6 @@
+#button {
+    display: none;
+}
 
 .map {
     transform: rotate(90deg);
@@ -7,10 +10,9 @@
     bottom: 10%;
 }
 
-/*.Map2 {
-    font: sans-serif;
-    font-size: 10;
-}*/
+.bluePaths {
+    z-index: 3;
+}
 
 #overlay {
     display: none;
@@ -19,12 +21,13 @@
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 5;
+    z-index: 6;
     cursor: not-allowed;
 }
 
 .areas {
     cursor: pointer;
+    z-index: 4
 }
 
 #n1 {
@@ -414,7 +417,7 @@
 	font:          normal 700 18px/1 "Helvetica", sans-serif;
 	text-align:    center;
 	text-shadow:   1px 1px #000000;
-    z-index: 6;
+    z-index: 7;
 }
 
 #buttonClear {
@@ -453,12 +456,8 @@
     border: 4px solid #008CBA;
 }
 
-.robot {
+#robot {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -500px;
     height:80px;
     width: 80px;
     z-index: 2;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/maplook.css">
     <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>-->
     <script src="../src/js/jquery-1.8.3.min.js"></script>
@@ -15,8 +15,8 @@
         });
     </script>
 
-    <p style= "color: white;" id="demo"></p>
-    <p style= "color: white;" id ="print"></p>
+    <!--<p style= "color: white;" id="demo"></p>-->
+    <!--<p style= "color: white;" id ="print"></p>-->
 
     <!-- Main Window -->
     <div class="mainwindow">
@@ -45,13 +45,19 @@
             <button class="Waypoint" onclick= "addWaypoint(this.id)" id= "n19" name="Waypoint n19" type="button"> n19 </button>
         </div>
 
-        <!-- map with red overlay -->
-        <div class="Map2">
+        <!-- map with red overlay (aka the obstacles) -->
+        <div>
             <img
-            class="map" id="map" src="../src/images/Map2.0.svg" alt="map" usemap="#obstacles" 
+            class="map" id="map" src="../src/images/Map2.0.svg" alt="map" usemap="#obstacles"
             onclick="showCoords(event)">
 
-            
+            <img src="../src/images/robot1.0.svg"
+            class="robot"
+            id="robot"
+            style="left: 0px; top: 0px"
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            alt="robot">
 
             <img src="../src/images/n1-n2.svg"
             class="map"
@@ -139,7 +145,7 @@
             class="map"
             id="n7-n9-2"
             style="display: none;"
-            alt="n7-n9-2" usemap="#obstacles"> 
+            alt="n7-n9-2" usemap="#obstacles">
 
             <img src="../src/images/n7-n18.svg"
             class="map"
@@ -150,7 +156,7 @@
             class="map"
             id="n7-n18-2"
             style="display: none;"
-            alt="n17-n18-2" usemap="#obstacles">      
+            alt="n17-n18-2" usemap="#obstacles">
 
             <img src="../src/images/n9-n10.svg"
             class="map"
@@ -264,29 +270,169 @@
 
             <img src="../src/images/n18-n19.svg"
             class="map"
-            id="n18-n19" 
+            id="n18-n19"
             style="display: none;"
             alt="n18-n19" usemap="#obstacles">
             <img src="../src/images/n18-n19.svg"
             class="map"
-            id="n18-n19-solid" 
+            id="n18-n19-solid"
             style="display: none;"
             alt="n17-n18-2" usemap="#obstacles">
 
         </div>
 
+        <!-- Blue Overlay (aka pathfinder path) -->
+        <div>
+            <img src="../src/images/Blue Paths/n1-n2.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n1-n2"
+            style="display: none;"
+            alt="b-n1-n2">
+
+            <img src="../src/images/Blue Paths/n2-n3.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n2-n3"
+            style="display: none;"
+            alt="b-n2-n3">
+
+            <img src="../src/images/Blue Paths/n2-n4.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n2-n4"
+            style="display: none;"
+            alt="b-n2-n4" usemap="#obstacles">
+
+            <img src="../src/images/Blue Paths/n4-n5.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n4-n5"
+            style="display: none;"
+            alt="b-n4-n5">
+
+            <img src="../src/images/Blue Paths/n4-n6.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n4-n6"
+            style="display: none;"
+            alt="b-n4-n6">
+
+            <img src="../src/images/Blue Paths/n4-n7.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n4-n7"
+            style="display: none;"
+            alt="b-n4-n7">
+
+            <img src="../src/images/Blue Paths/n7-n8.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n7-n8"
+            style="display: none;"
+            alt="b-n7-n8">
+
+            <img src="../src/images/Blue Paths/n7-n9.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n7-n9"
+            style="display: none;"
+            alt="b-n7-n9">
+
+            <img src="../src/images/Blue Paths/n7-n18.svg"
+            class="map"
+            class="bluePaths"
+            id="n7-n18"
+            style="display: none;"
+            alt="b-n17-n18">
+
+            <img src="../src/images/Blue Paths/n9-n10.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n9-n10"
+            style="display: none;"
+            alt="b-n9-n10">
+
+            <img src="../src/images/Blue Paths/n9-n11.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n9-n11"
+            style="display: none;"
+            alt="b-n9-n11">
+
+            <img src="../src/images/Blue Paths/n11-n12.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n11-n12"
+            style="display: none;"
+            alt="b-n11-n12">
+
+            <img src="../src/images/Blue Paths/n11-n13.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n11-n13"
+            style="display: none;"
+            alt="b-n11-n13">
+
+            <img src="../src/images/Blue Paths/n13-n14.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n13-n14"
+            style="display: none;"
+            alt="b-n13-n14">
+
+            <img src="../src/images/Blue Paths/n13-n17.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n13-n17"
+            style="display: none;"
+            alt="b-n13-n17">
+
+            <img src="../src/images/Blue Paths/n14-n15.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n14-n15"
+            style="display: none;"
+            alt="b-n14-n15">
+
+            <img src="../src/images/Blue Paths/n14-n16.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n14-n16"
+            style="display: none;"
+            alt="b-n14-n16">
+
+            <img src="../src/images/Blue Paths/n14-n17.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n14-n17"
+            style="display: none;"
+            alt="b-n14-n17">
+
+            <img src="../src/images/Blue Paths/n17-n18.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n17-n18"
+            style="display: none;"
+            alt="b-n17-n18">
+
+            <img src="../src/images/Blue Paths/n18-n19.svg"
+            class="map"
+            class="bluePaths"
+            id="b-n18-n19"
+            style="display: none;"
+            alt="b-n18-n19">
+        </div>
+
         <!--Robot-->
         <div class="robotoverlay">
-            <img class="robot" id="robot"
-            -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-            src="../src/images/robot1.0.svg"
-            alt="robot">
+
         </div>
-        
+
+        <!-- clickable areas for the obstacles -->
         <div>
             <map name="obstacles">
-                <area class="areas" id="area1" shape="rect" coords="264,676,274,374" onclick="javascript:$('#n18-n19-solid').toggle(); maintainQueue(this.id)">
+                <area class="areas" id="area1" shape="rect" coords="264,676,274,374" onclick="javascript: $('#n18-n19-solid').toggle(); doSomething()">
                 <script>
                     $(document).ready(function(){
                         $("#area1").hover(function(){
@@ -510,36 +656,45 @@
         </div>
 
         <div class="waypointpanel">
-            <table id="waypointtable" cellpadding="14" style="width:100%"></table>
+            <table border="6" id="waypointtable" cellspacing="6" cellpadding="20" style="width:100%"></table>
+            <input type="button" id="button" name="button" class="deleteDep" value="Delete" onclick = "deleteButton(this); deleteFromArray(cmdqueue.indexOf(this.id));">
         </div>
 
         <!-- Action Buttons-->
         <div class="actionbuttons">
-            <button id= "buttonStart" onclick="setup2()" value="start" name="start" type="button"> Start </button>
-            <button id= "buttonStop" name="stop" type="button"> Stop </button>
+            <button id= "buttonStart" value=clickme name="clickme" onclick="setup2()" type="button"> Start
+                <script>
+                    $(document).ready(function() {
+                        $('#buttonStart').click(function() {
+                            $('#overlay').css('display','block')
+                        });
+                    });
+                </script>
+            </button>
+            <button id= "buttonStop" name="stop" type="button"> Stop
+                <script>
+                    $(document).ready(function() {
+                        $('#buttonStop').click(function() {
+                            $('#overlay').css('display','none')
+                        });
+                    });
+                </script>
+            </button>
             <button id= "buttonClear" onclick = "clearWaypoints()" name="clear" type="button"> Clear </button>
             <!--<button id= "buttonReset" onclick = "clearWaypoints()" name="reset" type="button"> Reset </button>-->
         </div>
 
         <!-- Toolbar -->
-        <!--<div>-->
-            <!--<form id="toolbar">-->
-                <!--Robot Address:<br>-->
-                <!--<input type="text" name="ip">-->
-                <!--<br>-->
-            <!--</form>-->
-        <!--</div>-->
-
-        <div id="send">
-            Robot Address:<br>
-            <input type="text" id="data"<br>
-            <!--<input id="clickMe" type="button" value="clickme" onclick="setup2()" />-->
-            </br
+        <div>
+            <form id="toolbar">
+                Robot Address:<br>
+                <input type="text" id="data">
+                <br>
+            </form>
         </div>
-
         <div id="overlay">
 
         </div>
     </div>
 </body>
-    </html>
+</html>
