@@ -7,69 +7,44 @@ var progressRobot;
 
 function addWaypoint(id) {
     var table = document.getElementById("waypointtable");
-    var waypointName = document.getElementById(id).name;
+    var waypointId = document.getElementById(id).id;
 
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
 
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
-        window.alert(cmdqueue.toString());
-		console.log(cmdqueue.indexOf(id));
+        console.log("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
+        console.log("Queue: " + cmdqueue.toString());
 
-        row.insertCell(0).innerHTML = waypointName;
-        row.insertCell(1).innerHTML = '<input type="button" id="cell1.id" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
+        row.insertCell(0).innerHTML = waypointId;
+        row.insertCell(1).innerHTML =
+        '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             cmdqueue.push(id);
-            window.alert(cmdqueue.toString());
-			console.log(cmdqueue.indexOf(id));
+            console.log("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
+            console.log("Queue: " + cmdqueue.toString());
 
-            row.insertCell(0).innerHTML = waypointName;
-            row.insertCell(1).innerHTML = '<input type="button" id="document.getElementById(id)" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
+            row.insertCell(0).innerHTML = waypointId;
+            row.insertCell(1).innerHTML =
+            '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
         } else {
-            window.alert("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
+            console.log("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
         }
     }
 }
 
 function deleteButton(obj){
     var index = obj.parentNode.parentNode.rowIndex;
-    //window.alert(cell[0].value);
-    window.alert(index);
-}
+    var table = document.getElementById("waypointtable");
 
-function deleteFromArray(i) {
-    window.alert()
-    cmdqueue.splice(i, 1);
+    var waypoint = table.rows[index].cells[0].innerHTML;
+    var index = cmdqueue.indexOf(waypoint);
+    console.log("Deleting: " + table.rows[index].cells[0].innerHTML + " at Index: " + index);
+    cmdqueue.splice(index, 1)
+    console.log("Queue: " + cmdqueue.toString());
 }
-
-// function deleteButton(button) {
-//     button.addEventListener("click", function () {
-//         var i = cmdqueue.indexOf(this.id);
-//         cmdqueue.splice(cmdqueue.indexOf(this.id), 1);
-//         this.parentNode.parentNode.remove(); //"this" refer to the "button" object
-//
-//     }, false);
-// }
-//
-// function deleteFromArray(i) {
-//     // window.alert()
-//     cmdqueue.splice(i, 1);
-//     var $row = $(this).closest("tr");    // Find the row
-//        var $text = $row.find("td").text; // Find the text
-//
-//     //    // Let's test it out
-//     //    alert($row);
-//     //    alert($text);
-// }
-//
-// function deleteRow(btn) {
-// var i = r.parentNode.parentNode.rowIndex;
-// 	var row = btn.parentNode.parentNode;
-// 	row.parentNode.removeChild(row);
-// document.getElementById("waypointtable").deleteRow(row);
-// }
 
 // clears waypoints and edges
 function clearWaypoints() {
@@ -82,10 +57,10 @@ function clearWaypoints() {
 function maintainQueue(id) {
     if (edgeQueue.indexOf(id) > -1) {
         edgeQueue.push(id);
-        window.alert(edgeQueue.toString());
+        console.log(edgeQueue.toString());
     } else {
         edgeQueue.splice(edgeQueue.indexOf(id), 1);
-        window.alert("removed, array looks like " + edgeQueue.toString());
+        console.log("removed, array looks like " + edgeQueue.toString());
     }
 }
 
@@ -94,7 +69,7 @@ function maintainQueue(id) {
 
 // Creates the websockets connection
 function setup2() {
-    // window.alert("Initiating robot")
+    // console.log("Initiating robot")
     var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
     var host = "ws://" + name + ":9093/ws"; 	// combines the three string and creates a new string
@@ -138,7 +113,7 @@ function setup2() {
             //     if (msg == "request nodes and edges") {
             //         buttons();
             //     } else {
-            //         window.alert("unexpected string received: " + msg);
+            //         console.log("unexpected string received: " + msg);
             //     }
             // } else {
             //     clearUpdate();
@@ -160,13 +135,13 @@ function setup2() {
                     if (msg == "request nodes and edges") {
                         buttons();
                     } else {
-                        window.alert("unexpected string received: " + msg);
+                        console.log("unexpected string received: " + msg);
                     }
             }
         }
 
         socket.onclose = function () {
-            window.alert("connection closed....");
+            console.log("connection closed....");
             showServerResponse("The connection has been closed.");
         }
     } else {
@@ -178,7 +153,7 @@ function setup2() {
         // p.innerHTML = txt;
         // document.getElementById('output').appendChild(p);
     }
-
+}
 
 
 //function that takes in an array from pathfinding and shows the calculated path
@@ -296,7 +271,7 @@ function showPath(input) {
             });
             break
             default:
-            window.alert("you done fucked up a a ron")
+            console.log("you done fucked up a a ron")
             alert(currentPath)
         }
     }
@@ -307,5 +282,5 @@ function showPath(input) {
  // showPath(array)
 
 function doSomething(){
-    window.alert("YES")
+    console.log("YES")
 }
