@@ -114,5 +114,5 @@ function move(input) {
 // }
 
 //use this for testing move function
-// var array = ["n2","n3"]
-// move(array)
+var array = ["n2","n3"]
+move(array)

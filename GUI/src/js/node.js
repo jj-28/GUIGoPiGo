@@ -5,17 +5,23 @@ var progressNodes;
 var progressEdges;
 var progressRobot;
 
+var linebreak = document.createElement("br");
+
 function addWaypoint(id) {
     var table = document.getElementById("waypointtable");
     var waypointId = document.getElementById(id).id;
+    var console = document.getElementById("console");
+
 
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
 
+    var consoleCount = console.rows.length;
+
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
-        console.log("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
-        console.log("Queue: " + cmdqueue.toString());
+        console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
+        console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
 
         row.insertCell(0).innerHTML = waypointId;
         row.insertCell(1).innerHTML =
@@ -23,27 +29,29 @@ function addWaypoint(id) {
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             cmdqueue.push(id);
-            console.log("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
-            console.log("Queue: " + cmdqueue.toString());
+            console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
+            console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
 
             row.insertCell(0).innerHTML = waypointId;
             row.insertCell(1).innerHTML =
             '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
         } else {
-            console.log("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
+            console.insertRow(consoleCount).innerHTML = ("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
         }
     }
 }
 
 function deleteButton(obj){
+    var console = document.getElementById("console");
+        var consoleCount = console.rows.length;
     var index = obj.parentNode.parentNode.rowIndex;
     var table = document.getElementById("waypointtable");
 
     var waypoint = table.rows[index].cells[0].innerHTML;
     var index = cmdqueue.indexOf(waypoint);
-    console.log("Deleting: " + table.rows[index].cells[0].innerHTML + " at Index: " + index);
+    console.insertRow(consoleCount).innerHTML = ("Deleting: " + table.rows[index].cells[0].innerHTML + " at Index: " + index);
     cmdqueue.splice(index, 1)
-    console.log("Queue: " + cmdqueue.toString());
+    console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
 }
 
 // clears waypoints and edges
@@ -55,12 +63,14 @@ function clearWaypoints() {
 }
 //adds and removes edges from array onClick
 function maintainQueue(id) {
+    var console = document.getElementById("console");
+        var consoleCount = console.rows.length;
     if (edgeQueue.indexOf(id) > -1) {
         edgeQueue.push(id);
-        console.log(edgeQueue.toString());
+        console.insertRow(consoleCount).innerHTML = (edgeQueue.toString());
     } else {
         edgeQueue.splice(edgeQueue.indexOf(id), 1);
-        console.log("removed, array looks like " + edgeQueue.toString());
+        console.insertRow(consoleCount).innerHTML = ("removed, array looks like " + edgeQueue.toString());
     }
 }
 
@@ -69,7 +79,9 @@ function maintainQueue(id) {
 
 // Creates the websockets connection
 function setup2() {
-    // console.log("Initiating robot")
+    var console = document.getElementById("console");
+        var consoleCount = console.rows.length;
+    // console.insertRow(consoleCount).innerHTML = ("Initiating robot")
     var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
     var host = "ws://" + name + ":9093/ws"; 	// combines the three string and creates a new string
@@ -113,7 +125,7 @@ function setup2() {
             //     if (msg == "request nodes and edges") {
             //         buttons();
             //     } else {
-            //         console.log("unexpected string received: " + msg);
+            //         console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + msg);
             //     }
             // } else {
             //     clearUpdate();
@@ -135,17 +147,17 @@ function setup2() {
                     if (msg == "request nodes and edges") {
                         buttons();
                     } else {
-                        console.log("unexpected string received: " + msg);
+                        console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + msg);
                     }
             }
         }
 
         socket.onclose = function () {
-            console.log("connection closed....");
+            console.insertRow(consoleCount).innerHTML = ("connection closed....");
             showServerResponse("The connection has been closed.");
         }
     } else {
-        console.log("invalid socket");
+        console.insertRow(consoleCount).innerHTML = ("invalid socket");
     }
 
     function showServerResponse(txt) {
@@ -271,16 +283,18 @@ function showPath(input) {
             });
             break
             default:
-            console.log("you done fucked up a a ron")
+            console.insertRow(consoleCount).innerHTML = ("you done fucked up a a ron")
             alert(currentPath)
         }
     }
 }
 
 //for testing purposes un-comment code//
- // var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
- // showPath(array)
+ var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
+ showPath(array)
 
 function doSomething(){
-    console.log("YES")
+    var console = document.getElementById("console");
+        var consoleCount = console.rows.length;
+    console.insertRow(consoleCount).innerHTML = ("YES")
 }
