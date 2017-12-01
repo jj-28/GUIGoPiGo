@@ -41,17 +41,18 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
     def on_message(self, message):
         if (message == 'client ready'):
-            self.write_message('request nodes and edges')
-        else:
-            decoded_json = json.dumps(message)
-            Nodem = decoded_json
-            node = Nodem
-        commandQueue.put(node)
+            self.write_message('request initial node and edges')
         if not guiMessageQueue.empty():
+            self.write_message("need node")
             # send message back up.
             pass
-
             # print ("Values Updated")
+        else:
+            hashstring = message
+            node = hashstring.split("/")[0]
+            edges= hashstring.split("/")[1].split(" ")
+        commandQueue.put(node)
+        #assign edges to relevant function for pathfinding input
 
     def on_close(self):
         print('connection closed...')

@@ -65,7 +65,7 @@ function clearWaypoints() {
 function maintainQueue(id) {
     var console = document.getElementById("console");
         var consoleCount = console.rows.length;
-    if (edgeQueue.indexOf(id) > -1) {
+    if (edgeQueue.indexOf(id) == -1) {
         edgeQueue.push(id);
         console.insertRow(consoleCount).innerHTML = (edgeQueue.toString());
     } else {
@@ -108,9 +108,12 @@ function setup2() {
 
         //Sends JSON object containing node and edges
         function buttons() {
-
-            var g = {'node': cmdqueue.toString(), 'edges': edgeQueue.toString()};
-            socket.send(JSON.stringify(g));
+            //
+            // var g = {'node': cmdqueue.toString(), 'edges': edgeQueue.toString()};
+            // socket.send(JSON.stringify(g));
+        var g = cmdqueue[1] + "/" + edgeQueue.toString();
+        console.log("what's being sent: " + g);
+        socket.send(g);
         }
         //clears previous update information
         function clearUpdate() {
@@ -143,8 +146,9 @@ function setup2() {
                 progressNodes = q[0].split(" ");
                 progressEdges = q[2].split(" ");
                 progressRobot = q[1].split(" ");
+                console.log("waypoint" + cmdqueue.shift() + "was deleted");
             } else {
-                    if (msg == "request nodes and edges") {
+                    if (msg == "need node") {
                         buttons();
                     } else {
                         console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + msg);
@@ -169,10 +173,11 @@ function setup2() {
 
 
 //function that takes in an array from pathfinding and shows the calculated path
-function showPath(input) {
+function showPath() {
+    //INPUT IS NOW PROGRESSEDGE ARRAY
     var currentPath;
-    for (var i = 0; i <= input.length - 1; i++) {
-        currentPath = input[i]
+    for (var i = 0; i <= progressEdges.length - 1; i++) {
+        currentPath = progressEdges[i]
         switch (currentPath) {
             case "n1-n2":
             case "n2-n1":
@@ -290,8 +295,8 @@ function showPath(input) {
 }
 
 //for testing purposes un-comment code//
- var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
- showPath(array)
+//  var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
+//  showPath(array)
 
 function doSomething(){
     var console = document.getElementById("console");
