@@ -656,11 +656,11 @@
         </div>
 
         <div class="console">
-<table id="console" ></table>
+            <table id="console" cellspacing="5" ></table>
         </div>
 
         <div class="waypointpanel">
-            <table id="waypointtable" cellspacing="6" cellpadding="10"></table>
+            <table id="waypointtable" cellspacing="30"></table>
         </div>
 
         <!-- Action Buttons-->
@@ -674,7 +674,7 @@
                     });
                 </script>
             </button>
-            <button id= "buttonStop" name="stop" type="button"> Stop
+            <button id= "buttonStop" name="stop" onclick="stop()" type="button"> Stop
                 <script>
                     $(document).ready(function() {
                         $('#buttonStop').click(function() {

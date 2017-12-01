@@ -388,17 +388,17 @@
 	position: relative;
 	left: 864px;
     top: 435px;
-	cursor: pointer;
-	background:    #008CBA;
-	background:    -webkit-linear-gradient(#008CBA, #008CBA);
-	background:    linear-gradient(#008CBA, #008CBA);
-	border-radius: 5px;
-	padding:       8px 20px;
-	color:         #ffffff;
-	display:       inline-block;
-	font:          normal 700 18px/1 "Helvetica", sans-serif;
-	text-align:    center;
-	text-shadow:   1px 1px #000000;
+    cursor: pointer;
+    background:    #008CBA;
+    background:    -webkit-linear-gradient(#008CBA, #008CBA);
+    background:    linear-gradient(#008CBA, #008CBA);
+    border-radius: 5px;
+    padding:       8px 20px;
+    color:         #ffffff;
+    display:       inline-block;
+    font:          normal 700 18px/1 "Helvetica", sans-serif;
+    text-align:    center;
+    text-shadow:   1px 1px #000000;
     z-index: 2;
 }
 
@@ -406,17 +406,17 @@
 	position: relative;
 	left: 864px;
     top: 435px;
-	cursor: pointer;
-	background:    #008CBA;
-	background:    -webkit-linear-gradient(#008CBA, #008CBA);
-	background:    linear-gradient(#008CBA, #008CBA);
-	border-radius: 5px;
-	padding:       8px 20px;
-	color:         #ffffff;
-	display:       inline-block;
-	font:          normal 700 18px/1 "Helvetica", sans-serif;
-	text-align:    center;
-	text-shadow:   1px 1px #000000;
+    cursor: pointer;
+    background:    #008CBA;
+    background:    -webkit-linear-gradient(#008CBA, #008CBA);
+    background:    linear-gradient(#008CBA, #008CBA);
+    border-radius: 5px;
+    padding:       8px 20px;
+    color:         #ffffff;
+    display:       inline-block;
+    font:          normal 700 18px/1 "Helvetica", sans-serif;
+    text-align:    center;
+    text-shadow:   1px 1px #000000;
     z-index: 7;
 }
 
@@ -424,17 +424,17 @@
 	position: relative;
 	left: 864px;
     top: 435px;
-	cursor: pointer;
-	background:    #008CBA;
-	background:    -webkit-linear-gradient(#008CBA, #008CBA);
-	background:    linear-gradient(#008CBA, #008CBA);
-	border-radius: 5px;
-	padding:       8px 20px;
-	color:         #ffffff;
-	display:       inline-block;
-	font:          normal 700 18px/1 "Helvetica", sans-serif;
-	text-align:    center;
-	text-shadow:   1px 1px #000000;
+    cursor: pointer;
+    background:    #008CBA;
+    background:    -webkit-linear-gradient(#008CBA, #008CBA);
+    background:    linear-gradient(#008CBA, #008CBA);
+    border-radius: 5px;
+    padding:       8px 20px;
+    color:         #ffffff;
+    display:       inline-block;
+    font:          normal 700 18px/1 "Helvetica", sans-serif;
+    text-align:    center;
+    text-shadow:   1px 1px #000000;
     z-index: 2;
 }
 
@@ -468,9 +468,9 @@
 .console {
     position: absolute;
     width: 250px;
-    height: 100px;
+    height: 150px;
     border: 4px solid #008CBA;
     left: 70%;
-    bottom : 15%;
-        overflow: auto;
+    bottom : 5%;
+    overflow: auto;
 }

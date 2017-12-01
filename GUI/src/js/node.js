@@ -20,19 +20,20 @@ function addWaypoint(id) {
 
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
-        console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
         console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+        console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
 
-        row.insertCell(0).innerHTML = waypointId;
+
+        row.insertCell(0).innerHTML = "Waypoint: " + waypointId;
         row.insertCell(1).innerHTML =
         '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             cmdqueue.push(id);
-            console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
             console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+            console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
 
-            row.insertCell(0).innerHTML = waypointId;
+            row.insertCell(0).innerHTML = "Waypoint: " + waypointId;
             row.insertCell(1).innerHTML =
             '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
         } else {
@@ -43,28 +44,41 @@ function addWaypoint(id) {
 
 function deleteButton(obj){
     var console = document.getElementById("console");
-        var consoleCount = console.rows.length;
+    var consoleCount = console.rows.length;
     var index = obj.parentNode.parentNode.rowIndex;
     var table = document.getElementById("waypointtable");
 
     var waypoint = table.rows[index].cells[0].innerHTML;
     var index = cmdqueue.indexOf(waypoint);
-    console.insertRow(consoleCount).innerHTML = ("Deleting: " + table.rows[index].cells[0].innerHTML + " at Index: " + index);
     cmdqueue.splice(index, 1)
     console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+    console.insertRow(consoleCount).innerHTML = ("Deleting: " + table.rows[index].cells[0].innerHTML + " at Index: " + index);
+
+
 }
 
 // clears waypoints and edges
 function clearWaypoints() {
+    var console = document.getElementById("console");
+    var consoleCount = console.rows.length;
     while (cmdqueue.length > 0) {
         cmdqueue.pop();
         $('#waypointtable tbody').html('');
     }
+    console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+    console.insertRow(consoleCount).innerHTML = "Waypoints Cleared";
 }
+
+function stop() {
+    var console = document.getElementById("console");
+    var consoleCount = console.rows.length;
+    console.insertRow(consoleCount).innerHTML = "Process Stopped";
+}
+
 //adds and removes edges from array onClick
 function maintainQueue(id) {
     var console = document.getElementById("console");
-        var consoleCount = console.rows.length;
+    var consoleCount = console.rows.length;
     if (edgeQueue.indexOf(id) > -1) {
         edgeQueue.push(id);
         console.insertRow(consoleCount).innerHTML = (edgeQueue.toString());
@@ -80,8 +94,8 @@ function maintainQueue(id) {
 // Creates the websockets connection
 function setup2() {
     var console = document.getElementById("console");
-        var consoleCount = console.rows.length;
-    // console.insertRow(consoleCount).innerHTML = ("Initiating robot")
+    var consoleCount = console.rows.length;
+    console.insertRow(consoleCount).innerHTML = ("Initiating robot")
     var $txt = $("#data");      			// assigns the data(hostname/ip address) entered in the text box
     name = $txt.val();          			// Variable name contains the string(hostname/ip address) entered in the text box
     var host = "ws://" + name + ":9093/ws"; 	// combines the three string and creates a new string
@@ -144,11 +158,11 @@ function setup2() {
                 progressEdges = q[2].split(" ");
                 progressRobot = q[1].split(" ");
             } else {
-                    if (msg == "request nodes and edges") {
-                        buttons();
-                    } else {
-                        console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + msg);
-                    }
+                if (msg == "request nodes and edges") {
+                    buttons();
+                } else {
+                    console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + msg);
+                }
             }
         }
 
@@ -283,18 +297,125 @@ function showPath(input) {
             });
             break
             default:
-            console.insertRow(consoleCount).innerHTML = ("you done fucked up a a ron")
-            alert(currentPath)
+            console.insertRow(consoleCount).innerHTML = ("No path found");
+            stop()
         }
     }
 }
 
 //for testing purposes un-comment code//
- var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
- showPath(array)
+// var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
+// showPath(array)
 
 function doSomething(){
     var console = document.getElementById("console");
-        var consoleCount = console.rows.length;
+    var consoleCount = console.rows.length;
     console.insertRow(consoleCount).innerHTML = ("YES")
+}
+
+function move(input) {
+    var currentNode;
+    currentNode = input[0]
+    switch (currentNode) {
+        case "n1":
+        $(document).ready(function(){
+            $('#robot').css({ top: 380, left: 85 })
+        });
+        break
+        case "n2":
+        $(document).ready(function(){
+            $('#robot').css({ top: 380, left: 185 })
+        });
+        case "n3":
+        break
+        $(document).ready(function(){
+            $('#robot').css({ top: 480, left: 185 })
+        });
+        break
+        case "n4":
+        $(document).ready(function(){
+            $('#robot').css({ top: 380, left: 435 })
+        });
+        break
+        case "n5":
+        $(document).ready(function(){
+            $('#robot').css({ top: 480, left: 435 })
+        });
+        break
+        case "n6":
+        $(document).ready(function(){
+            $('#robot').css({ top: 380, left: 710 })
+        });
+        break
+        case "n7":
+        $(document).ready(function(){
+            $('#robot').css({ top: 318, left: 435 })
+        });
+        break
+        case "n8":
+        $(document).ready(function(){
+            $('#robot').css({ top: 705, left: 325 })
+        });
+        break
+        case "n9":
+        $(document).ready(function(){
+            $('#robot').css({ top: 225, left: 625 })
+        });
+        break
+        case "n10":
+        $(document).ready(function(){
+            $('#robot').css({ top: 285, left: 710 })
+        });
+        break
+        case "n11":
+        $(document).ready(function(){
+            $('#robot').css({ top: 182, left: 621 })
+        });
+        break
+        case "n12":
+        $(document).ready(function(){
+            $('#robot').css({ top: 182, left: 621 })
+        });
+        break
+        case "n13":
+        $(document).ready(function(){
+            $('#robot').css({ top: 188, left: 385 })
+        });
+        break
+        case "n14":
+        $(document).ready(function(){
+            $('#robot').css({ top: 162, left: 230 })
+        });
+        break
+        case "n15":
+        $(document).ready(function(){
+            $('#robot').css({ top: 100, left: 230 })
+        });
+        break
+        case "n16":
+        $(document).ready(function(){
+            $('#robot').css({ top: 162, left: 85 })
+        });
+        break
+        case "n17":
+        $(document).ready(function(){
+            $('#robot').css({ top: 254, left: 385 })
+        });
+        break
+        case "n18":
+        $(document).ready(function(){
+            $('#robot').css({ top: 318, left: 385 })
+        });
+        break
+        case "n19":
+        $(document).ready(function(){
+            $('#robot').css({ top: 325, left: 85 })
+        });
+        break
+        default:
+        $(document).ready(function(){
+            $('#robot').css({ top: 380, left: 85 })
+        });
+    }
+
 }
