@@ -48,11 +48,9 @@ class WSHandler(tornado.websocket.WebSocketHandler):
             pass
             # print ("Values Updated")
         else:
-            hashstring = message
-            node = hashstring.split("/")[0]
-            edges= hashstring.split("/")[1].split(" ")
-        commandQueue.put(node)
-        #assign edges to relevant function for pathfinding input
+            commandQueue.put(message)
+
+        # assign edges to relevant function for pathfinding input
 
     def on_close(self):
         print('connection closed...')
@@ -175,22 +173,28 @@ if __name__ == "__main__":
         # IF current path is empty
         if len(ourPath.nodes) == 0:
             if not commandQueue.empty():
-                # ask for next node
-                node = commandQueue.get_nowait()
-                # IF there is a next node
-                if node != None and node != '':
-                    # update map
-                    # pathfind
-                    node = ourMap.findNode(node)
-                    ourPath = ourMap.getPath(ourMap.findNode(robotPosition.currentNode), node, robotPosition)
-                    for node in ourPath.nodes:
-                        print(node.name)
-                    print(ourPath.commands)
-                    # Gui change is needed
+                hashstring = commandQueue.get_nowait()
+            node = hashstring.split("/")[0]
+            edges = hashstring.split("/")[1].split(" ")  # ask for next node
+            # for str in edges:
+            #     #broken
+            #     ourMap.
+            #     map.toggle
+            #
+            # IF there is a next node
+            if node != None and node != '':
+                # update map
+                # pathfind
+                node = ourMap.findNode(node)
+                ourPath = ourMap.getPath(ourMap.findNode(robotPosition.currentNode), node, robotPosition)
+                for node in ourPath.nodes:
+                    print(node.name)
+                print(ourPath.commands)
+                # Gui change is needed
 
-                    # check GUI status
-                    # IF GUI tells us to stop
-                    # stop, clear paths
-                    # IF there was any change
-                    # Tell GUI of change
-        time.sleep(.2)
+                # check GUI status
+                # IF GUI tells us to stop
+                # stop, clear paths
+                # IF there was any change
+                # Tell GUI of change
+    time.sleep(.2)
