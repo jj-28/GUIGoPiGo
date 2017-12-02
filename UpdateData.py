@@ -25,7 +25,7 @@ class UpdateData(object):
     #
     #     return temp
 
-    def updatedJson(self):
+    def toString(self):
         nodelist = ''
         for node in self.mypath.nodes:
             nodelist = nodelist + node.name + ' '

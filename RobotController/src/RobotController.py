@@ -1,0 +1,411 @@
+import gopigo
+import line_sensor
+import sys
+import time
+import atexit
+
+atexit.register(gopigo.stop)
+
+try:
+    from GoPiGo.Software.Python.line_follower import line_sensor
+    import gopigo 
+except:
+    pass
+    import os
+
+# the following libraries may or may not be installed
+# nor needed
+try:
+    from I2C_mutex import *
+except:
+    pass
+
+try:
+    #from GoPiGo.Software.Python.line_follower._init_ import line_sensor
+    from line_follower import line_sensor
+    from line_follower import scratch_line
+    is_line_follower_accessible = True
+except:
+    
+    try:
+        sys.path.insert(0, '/home/pi/GoPiGo/Software/Python/line_follower')
+        import line_sensor
+        import scratch_line
+        is_line_follower_accessible = True
+    except:
+        is_line_follower_accessible = False
+
+old_settings = ''
+fd = ''
+##########################
+
+read_is_open = True
+global_lock = None
+
+#############################################################
+# the following is in a try/except structure because it depends
+# on the date of gopigo.py
+#############################################################
+try:
+    PORTS = {"A1": gopigo.analogPort, "D11": gopigo.digitalPort,
+             "SERIAL": -1, "I2C": -2, "SERVO": -3}
+except:
+    PORTS = {"A1": 15, "D11": 10, "SERIAL": -1, "I2C": -2, "SERVO": -3}
+
+
+ANALOG = 1
+DIGITAL = 0
+SERIAL = -1
+I2C = -2
+#################################
+def debug(in_str):
+    if False:
+        print(in_str)
+        
+def _grab_read():
+    '''
+    first acquire at the process level,
+    then at the thread level.
+    '''
+    global read_is_open
+    # print("acquiring")
+    try:
+        I2C_Mutex_Acquire()
+    except Exception as e:
+        print("_grab_read: {}".format(e))
+        pass
+    # while read_is_open is False:
+    #     time.sleep(0.01)
+    read_is_open = False
+    # print("acquired")
+
+
+def _release_read():
+    global read_is_open
+    try:
+        I2C_Mutex_Release()
+    except Exception as e:
+        print("_release_read: {}".format(e))
+        pass
+    read_is_open = True
+    # print("released")
+
+###################################
+class Sensor():
+    '''
+    Base class for all sensors
+    Class Attributes:
+        port : string - user-readable port identification
+        portID : integer - actual port id
+        pinmode : "INPUT" or "OUTPUT"
+        pin : 1 for ANALOG, 0 for DIGITAL
+        descriptor = string to describe the sensor for printing purposes
+    Class methods:
+        setPort / getPort
+        setPinMode / getPinMode
+        isAnalog
+        isDigital
+    '''
+    def __init__(self, port, pinmode):
+        '''
+        port = one of PORTS keys
+        pinmode = "INPUT", "OUTPUT", "SERIAL" (which gets ignored), "SERVO"
+        '''
+        #debug("Sensor init")
+        #debug(pinmode)
+        self.setPort(port)
+        self.setPinMode(pinmode)
+        if pinmode == "INPUT" or pinmode == "OUTPUT":
+            try:
+                gopigo.pinMode(self.getPortID(), self.getPinMode())
+            except:
+                pass
+
+    def __str__(self):
+        return ("{} on port {}".format(self.descriptor, self.getPort()))
+
+    def setPort(self, port):
+        self.port = port
+        self.portID = PORTS[self.port]
+
+    def getPort(self):
+        return (self.port)
+
+    def getPortID(self):
+        return (self.portID)
+
+    def setPinMode(self, pinmode):
+        self.pinmode = pinmode
+
+    def getPinMode(self):
+        return (self.pinmode)
+
+    def isAnalog(self):
+        return (self.pin == ANALOG)
+
+    def isDigital(self):
+        return (self.pin == DIGITAL)
+
+    def set_descriptor(self, descriptor):
+        self.descriptor = descriptor
+
+class RobotController(Sensor):
+    
+    def __init__(self):
+        self.status = "idle"
+        port = "I2C"
+        Sensor.__init__(self, port, "INPUT")
+        self.set_descriptor("Line Follower")
+        self.last_3_reads = []
+        self.white_line = self.get_white_calibration()
+        self.black_line = self.get_black_calibration()
+        self.threshold = [w+((b-w)/2) for w,b in zip(self.white_line,self.black_line)]
+
+    def get_white_calibration(self):
+        return line_sensor.get_white_line()
+
+    def get_black_calibration(self):
+        return line_sensor.get_black_line()
+
+    def read(self):
+        five_vals = [0, 0, 1, 0, 0]
+        new_vals = []
+        five_vals = self.read_raw_sensors()
+        
+            
+        for x in five_vals:
+            #print(x)
+            if x > 425:
+                new_vals.append(1)
+            else:
+                new_vals.append(0)
+        new_tup = [new_vals[0], new_vals[1], new_vals[2], new_vals[3], new_vals[4]] 
+        #if new_tup == [-1, -1, -1, -1, -1]:
+         #   new_tup = self.new_read()
+        
+        print(new_tup)
+        return new_tup
+        
+    def turn_left(self):
+        gopigo.set_right_speed(40)
+        gopigo.set_left_speed(40)
+        gopigo.forward()
+        time.sleep(.8)
+        gopigo.left_rot()
+        time.sleep(.5)
+        while True:
+
+            self.read_position()
+            self.read_position()
+            self.read_position()
+            pos = self.read_position()
+            print(pos)
+            debug(pos)
+            if pos == "center":
+                gopigo.stop()
+                break
+
+    # turns right until center is read on the line reader
+    def turn_right(self):
+        gopigo.set_right_speed(40)
+        gopigo.set_left_speed(40)
+        gopigo.forward()
+        time.sleep(.8)
+        gopigo.right_rot()
+        time.sleep(.5)
+        while True:
+
+            self.read_position()
+            self.read_position()
+            self.read_position()
+            pos = self.read_position()
+            print(pos)
+            debug(pos)
+            if pos == "center":
+                gopigo.stop()
+                break
+
+    def turn_around(self):
+        gopigo.set_right_speed(40)
+        gopigo.set_left_speed(40)
+        gopigo.backward()
+        time.sleep(1.5)
+        gopigo.stop()
+        time.sleep(1)
+        gopigo.left_rot()
+        time.sleep(2)
+        while True:
+
+            self.read_position()
+            self.read_position()
+            pos = self.read_position()
+            print(pos)
+            debug(pos)
+            if pos == "center":
+                gopigo.stop()
+                break
+
+
+    def follow_line(self):
+        slight_turn_speed=int(50)
+        default_speed=int(35)
+        wayoff_turn_speed=int(115)
+        print("FOLLOWING LINE")
+
+        gopigo.set_speed(default_speed)
+        gopigo.forward()
+        time.sleep(1)
+        while True:
+            
+            self.read_position()
+            self.read_position()
+            #print(self.read())
+            pos = self.read_position()
+            #print(pos)
+
+            debug(pos)
+            if pos == "center":
+                gopigo.set_speed(default_speed)
+                gopigo.forward()
+            elif pos == "wayleft":
+                gopigo.set_right_speed(default_speed)
+                gopigo.set_left_speed(wayoff_turn_speed)
+            elif pos == "wayright":
+                gopigo.set_right_speed(wayoff_turn_speed)
+                gopigo.set_left_speed(default_speed)
+            elif pos == "left":
+                gopigo.set_right_speed(default_speed)
+                gopigo.set_left_speed(slight_turn_speed)
+            elif pos == "right":
+                gopigo.set_right_speed(slight_turn_speed)
+                gopigo.set_left_speed(default_speed)
+            elif pos == "white":
+                print("white Brake")
+                gopigo.stop()
+                time.sleep(1)
+                whiteTest = self.read_position()
+                whiteTest = self.read_position()
+                if whiteTest == "white":
+                    print("really white")
+                    break
+                else:
+                    gopigo.forward()
+            elif pos == "intersection":
+                gopigo.stop()
+                time.sleep(1)
+                gopigo.set_right_speed(40)
+                gopigo.set_left_speed(40)
+                gopigo.forward()
+                time.sleep(1.2)
+                gopigo.stop()
+                time.sleep(1)
+                intersectionTest = self.read_position()
+                intersectionTest = self.read_position()
+                print("Reading found!" + intersectionTest)
+                gopigo.backward()
+                time.sleep(1.5)
+                gopigo.stop()
+                
+                if intersectionTest != "white":
+                    print("interesection hit!")
+                else:
+                    print("T intersection hit!")
+                break
+            elif pos == "left corner" or "right corner":
+                gopigo.stop()
+                time.sleep(1)
+                gopigo.set_right_speed(40)
+                gopigo.set_left_speed(40)
+                gopigo.forward()
+                time.sleep(1.2)
+                gopigo.stop()
+                time.sleep(1)
+                intersectionTest = self.read_position()
+                intersectionTest = self.read_position()
+                print("Reading found! " + intersectionTest)
+                gopigo.backward()
+                time.sleep(1.5)
+                gopigo.stop()
+                
+                if intersectionTest != "white":
+                    print("T interesection hit!")
+                    break
+                else:
+                    print("corner! turning!")
+                if pos == "left corner":
+                    self.turn_left()
+                else:
+                    self.turn_right()
+                gopigo.forward()
+                time.sleep(.5)
+            elif pos == "unknown":
+                print("Unknown???")
+                #gopigo.stop()
+                #break
+            else:
+                break
+            print(pos)
+        gopigo.stop()
+    def stop(self):
+        gopigo.stop()
+
+    def volt(self):
+        return gopigo.volt()
+    
+    def read_position(self):
+
+        '''
+        Returns a string telling where the black line is, compared to
+            the GoPiGo
+        Returns: "center", "white", "intersection", "left", "right", "wayleft", or "wayright"
+        May return "Unknown"
+        '''
+        five_vals = self.read()
+
+        if five_vals == [0, 0, 1, 0, 0]:
+            return "center"
+        elif five_vals == [0, 0, 0, 0, 0]:
+            return "white"
+        elif five_vals == [1, 1, 1, 1, 1]:
+            return "intersection"
+        elif five_vals == [0, 0, 1, 1, 1] or \
+           five_vals == [0, 1, 1, 1, 1]:
+            return "left corner"
+        elif five_vals == [1, 1, 1, 0, 0] or \
+           five_vals == [1, 1, 1, 1, 0]:
+            return "right corner"
+        elif five_vals == [0, 1, 1, 0, 0] or \
+           five_vals == [0, 1, 0, 0, 0]:
+            return "left"
+        elif five_vals == [0, 0, 1, 1, 0] or \
+           five_vals == [0, 0, 0, 1, 0]:
+            return "right"
+        elif five_vals == [1, 1, 0, 0, 0] or \
+            five_vals == [1, 0, 0, 0, 0]:
+            return "wayleft"
+        elif five_vals == [0, 0, 0, 1, 1] or \
+           five_vals == [0, 0, 0, 0, 1]:
+            return "wayright"
+        return "unknown"
+    
+    def read_raw_sensors(self):
+        '''
+        Returns raw values from all sensors
+        From 0 to 1023
+        May return a list of -1 when there's a read error
+        '''
+
+        _grab_read()
+        try:
+            five_vals = line_sensor.read_sensor()
+        except:
+            pass
+        _release_read()
+        debug ("raw values {}".format(five_vals))
+
+        if five_vals != -1:
+            return five_vals
+        else:
+            self.read_raw_sensors()
+            return [-1, -1, -1, -1, -1]    
+

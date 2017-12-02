@@ -1,7 +1,7 @@
 from PathfindingRover.pathfinding.map import map
 from PathfindingRover.pathfinding.path import path
 from PathfindingRover.pathfinding.robotPosition import RobotPosition
-from RobotController.src.Wrapper import *
+from RobotController.src.RobotController import RobotController
 from UpdateData import UpdateData
 import queue
 import threading
@@ -40,7 +40,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         return True
 
     def on_message(self, message):
-        if (message == 'client ready'):
+        if message == 'client ready':
             self.write_message('request initial node and edges')
         if not guiMessageQueue.empty():
             self.write_message("need node")
@@ -50,11 +50,13 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         else:
             commandQueue.put(message)
 
-        # assign edges to relevant function for pathfinding input
+            # assign edges to relevant function for pathfinding input
 
     def on_close(self):
         print('connection closed...')
-
+    def sendup (self):
+        if not guiMessageQueue.empty():
+                self.write_message(guiMessageQueue.get_nowait())
 
 application = tornado.web.Application([
     (r'/ws', WSHandler),
@@ -93,14 +95,16 @@ class robotControlThread(threading.Thread):
         while (True):
             if not queue.empty():
                 temp = queue.get()
+                robotController.status = "Processing"
                 if temp == "Forward":
-                    self.control.go_straight()
+                    robotController.follow_line()
                 elif temp == "Left":
-                    self.control.turn_left()
+                    robotController.turn_left()
                 elif temp == "Right":
-                    self.control.turn_right()
+                    robotController.turn_right()
                 elif temp == "TurnAround":
-                    self.control.turn_around()
+                    robotController.turn_around()
+                robotController.status = "waiting"
             time.sleep(.2)  # note for commit
 
 
@@ -120,14 +124,15 @@ class mapRecievingThread(threading.Thread):
 if __name__ == "__main__":
     ourMap = map()
     ourPath = path()
+
     robotPosition = RobotPosition()
-    robotController = Wrapper()
+    robotController = RobotController()
     robotController.waiting = 2
     commandQueue = queue.Queue()
     guiMessageQueue = queue.Queue()
     rcMessageQueue = queue.Queue()
     # idk if right
-    updates = UpdateData().updatedJson()
+    updates = UpdateData()
     # get threads going
     guiThread = guiControlThread(1, "Gui Control Thread", 1, commandQueue, guiMessageQueue)
     robotThread = robotControlThread(2, "Robot Control Thread", 1, commandQueue, rcMessageQueue, robotController)
@@ -152,10 +157,10 @@ if __name__ == "__main__":
                 # get a new path
                 # guichange is needed
         # ELIF rover is processing
-        if robotController.waiting == 0:
+        if robotController.status == "Processing":
             pass
         # ELIF waiting for next command
-        elif robotController.waiting == 1:
+        elif robotController.status == "Waiting":
             # IF there are remaining commands
             if len(ourPath.commands) > 0:
                 # send next command
@@ -167,34 +172,34 @@ if __name__ == "__main__":
             # ELSE
             else:
                 # set status to idle
-                robotController.waiting = 2
+                robotController.status = "idle"
 
         # check pathfinding status
         # IF current path is empty
         if len(ourPath.nodes) == 0:
             if not commandQueue.empty():
                 hashstring = commandQueue.get_nowait()
-            node = hashstring.split("/")[0]
-            edges = hashstring.split("/")[1].split(" ")  # ask for next node
-            # for str in edges:
-            #     #broken
-            #     ourMap.
-            #     map.toggle
-            #
-            # IF there is a next node
-            if node != None and node != '':
-                # update map
-                # pathfind
-                node = ourMap.findNode(node)
-                ourPath = ourMap.getPath(ourMap.findNode(robotPosition.currentNode), node, robotPosition)
-                for node in ourPath.nodes:
-                    print(node.name)
-                print(ourPath.commands)
-                # Gui change is needed
+                node = hashstring.split("/")[0]
+                edges = hashstring.split("/")[1].split(" ")  # ask for next node
+                ourMap.resetMap()
+                for str in edges:
+                    edge =ourMap.findEdge(str)
+                    edge.inObstacle = True
+        # IF there is a next node
+        if node != None and node != '':
+            # update map
+            # pathfind
+            node = ourMap.findNode(node)
+            ourPath = ourMap.getPath(ourMap.findNode(robotPosition.currentNode), node, robotPosition)
+            for node in ourPath.nodes:
+                print(node.name)
+            print(ourPath.commands)
+            guiMessageQueue.put(updates.toString())
+            # Gui change is needed
 
-                # check GUI status
-                # IF GUI tells us to stop
-                # stop, clear paths
-                # IF there was any change
-                # Tell GUI of change
-    time.sleep(.2)
+            # check GUI status
+            # IF GUI tells us to stop
+            # stop, clear paths
+            # IF there was any change
+            # Tell GUI of change
+time.sleep(.2)
