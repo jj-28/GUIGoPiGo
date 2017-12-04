@@ -50,11 +50,10 @@ function deleteButton(obj){
     var table = document.getElementById("waypointtable");
 
     var waypoint = table.rows[index].cells[0].innerHTML;
-    var index = cmdqueue.indexOf(waypoint);
     cmdqueue.splice(index, 1)
-    console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
-    console.insertRow(consoleCount).innerHTML = ("Deleting: " + table.rows[index].cells[0].innerHTML + " at Index: " + index);
 
+    console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+    console.insertRow(consoleCount).innerHTML = ("Deleting: " + waypoint + " at Index: " + index);
 
 }
 
@@ -315,12 +314,6 @@ function showPath() {
 //for testing purposes un-comment code//
 //  var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
 //  showPath(array)
-
-function doSomething(){
-    var console = document.getElementById("console");
-    var consoleCount = console.rows.length;
-    console.insertRow(consoleCount).innerHTML = ("YES")
-}
 
 function move(input) {
     var currentNode;

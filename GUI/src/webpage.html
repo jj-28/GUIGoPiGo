@@ -432,7 +432,7 @@
         <!-- clickable areas for the obstacles -->
         <div>
             <map name="obstacles">
-                <area class="areas" id="n18n19" shape="rect" coords="264,676,274,374" onclick="javascript: $('#n18-n19-solid').toggle(); doSomething()">
+                <area class="areas" id="n18n19" shape="rect" coords="264,676,274,374" onclick="javascript: $('#n18-n19-solid').toggle(); doSomething(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
                         $("#n18n19").hover(function(){
@@ -619,7 +619,7 @@
                         });
                     });
                 </script>
-                <area class="areas" id="n11n12" shape="rect" coords="21,128,129,135" onclick="javascript:$('#n11-n12-2').toggle(); maintainQueue(this.id)">
+                <area class="areas" id="n11n12" shape="rect" coords="21,128,129,135" onclick="javascript:$('#n11-n12-2').toggle(); maintainQueue(this.id)"
                 <script>
                     $(document).ready(function(){
                         $("#n11n12").hover(function(){
@@ -630,6 +630,7 @@
                         });
                     });
                 </script>
+
                 <area class="areas" id="n9n11" shape="rect" coords="136,128,170,131" onclick="javascript:$('#n9-n11-2').toggle(); maintainQueue(this.id)">
                 <script>
                     $(document).ready(function(){
