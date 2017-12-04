@@ -20,6 +20,7 @@ function addWaypoint(id) {
 
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
+        window.alert(id);
         console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
         console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
 
@@ -117,7 +118,8 @@ function setup2() {
         var count = 1;
         //sends initial client message
         socket.onopen = function () {
-            socket.send("client ready");
+            // socket.send("client ready");
+        buttons();
         }
 
         //Sends JSON object containing node and edges
@@ -125,9 +127,9 @@ function setup2() {
             //
             // var g = {'node': cmdqueue.toString(), 'edges': edgeQueue.toString()};
             // socket.send(JSON.stringify(g));
-        var g = cmdqueue[1] + "/" + edgeQueue.toString();
-        console.log("what's being sent: " + g);
-        socket.send(g);
+        var g = cmdqueue[0].toString() + "/" + edgeQueue.toString();
+        window.alert(g.toString());
+        socket.send(g.toString());
         }
         //clears previous update information
         function clearUpdate() {
@@ -153,8 +155,10 @@ function setup2() {
             //     // progressEdges = response.[1].split(" ");
             //     // progressRobot = response.[2];
             // }
-            var response =  msg;
-            if (response.indexOf("/") > -1 ) {
+            var response = msg;
+                if (msg == "request nodes and edges") {
+                    buttons();
+            }else if (response.indexOf("/") > -1 ) {
                 var q = response.split("/");
                 clearUpdate();
                 progressNodes = q[0].split(" ");
