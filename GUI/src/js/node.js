@@ -21,7 +21,7 @@ function addWaypoint(id) {
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
         window.alert(id);
-        console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+        console.insertRow(consoleCount).innerHTML = ("Waypoint Queue: " + cmdqueue.toString());
         console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
 
 
@@ -31,7 +31,7 @@ function addWaypoint(id) {
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             cmdqueue.push(id);
-            console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+            console.insertRow(consoleCount).innerHTML = ("Waypoint Queue: " + cmdqueue.toString());
             console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
 
             row.insertCell(0).innerHTML = "Waypoint: " + waypointId;
@@ -52,7 +52,7 @@ function deleteButton(obj){
     var waypoint = table.rows[index].cells[0].innerHTML;
     cmdqueue.splice(index, 1)
 
-    console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+    console.insertRow(consoleCount).innerHTML = ("Waypoint Queue: " + cmdqueue.toString());
     console.insertRow(consoleCount).innerHTML = ("Deleting: " + waypoint + " at Index: " + index);
 
 }
@@ -65,7 +65,7 @@ function clearWaypoints() {
         cmdqueue.pop();
         $('#waypointtable tbody').html('');
     }
-    console.insertRow(consoleCount).innerHTML = ("Queue: " + cmdqueue.toString());
+    console.insertRow(consoleCount).innerHTML = ("Waypoint Queue: " + cmdqueue.toString());
     console.insertRow(consoleCount).innerHTML = "Waypoints Cleared";
 }
 
@@ -81,10 +81,13 @@ function maintainQueue(id) {
         var consoleCount = console.rows.length;
     if (edgeQueue.indexOf(id) == -1) {
         edgeQueue.push(id);
-        console.insertRow(consoleCount).innerHTML = (edgeQueue.toString());
+        console.insertRow(consoleCount).innerHTML = ("Obstacle Queue: " + edgeQueue.toString());
+        console.insertRow(consoleCount).innerHTML = ("Added Obstacle " + id);
     } else {
         edgeQueue.splice(edgeQueue.indexOf(id), 1);
-        console.insertRow(consoleCount).innerHTML = ("removed, array looks like " + edgeQueue.toString());
+        edgeIndex = edgeQueue.indexOf(id);
+        console.insertRow(consoleCount).innerHTML = ("Obstacle Queue: " + edgeQueue.toString());
+        console.insertRow(consoleCount).innerHTML = ("Removing " + id);
     }
 }
 
