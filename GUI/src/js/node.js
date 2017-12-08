@@ -157,7 +157,7 @@ function setup2() {
         function reset () {
             socket.send("RESET");
             clearUpdate();
-            move("");
+            move();
             clearWaypoints();
         }
         socket.onmessage = function (event) {
@@ -168,6 +168,7 @@ function setup2() {
             }
             else if (response == "PATH COMPLETE") {
                 window.alert(cmdqueue.shift());
+                move();
                 if (cmdqueue.length > 0) {
                     buttons();
                 } else {
@@ -181,7 +182,7 @@ function setup2() {
                     progressNodes = q[0].split(" ");
                     progressRobot = q[1];
                     window.alert(progressRobot);
-                    move(progressRobot);
+                    move();
                     progressNodes.unshift(progressRobot);
                     for (var i = 0; i < progressNodes.length - 1; i++) {
                         path = progressNodes[i] + progressNodes[i + 1];
@@ -189,6 +190,7 @@ function setup2() {
                     }
                     window.alert(progressEdges);
                     showPath();
+                    move();
                 } else {
                     // move(progressRobot);
                 }
@@ -197,6 +199,7 @@ function setup2() {
                 if (progressEdges.length > 0) {
                     window.alert("removing first node and calling show path.. " + progressEdges.shift());
                     showPath();
+                    move();
                 }
             }
         }
@@ -221,75 +224,75 @@ function showPath() {
     //INPUT IS NOW PROGRESSEDGE ARRAY
     var currentPath;
     $(document).ready(function () {
-        $('#b-n1-n2').show()
+        $('#b-n1-n2').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n2-n3').show()
-    });
-    
-    $(document).ready(function () {
-        $('#b-n2-n4').show()
+        $('#b-n2-n3').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n4-n5').show()
+        $('#b-n2-n4').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n4-n6').show()
+        $('#b-n4-n5').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n4-n7').show()
+        $('#b-n4-n6').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n7-n8').show()
+        $('#b-n4-n7').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n7-n9').show()
+        $('#b-n7-n8').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n9-n10').show()
+        $('#b-n7-n9').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n9-n11').show()
+        $('#b-n9-n10').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n11-n12').show()
+        $('#b-n9-n11').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n11-n13').show()
+        $('#b-n11-n12').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n13-n14').show()
+        $('#b-n11-n13').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n13-n17').show()
+        $('#b-n13-n14').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n14-n15').show()
+        $('#b-n13-n17').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n14-n16').show()
+        $('#b-n14-n15').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n14-n17').show()
+        $('#b-n14-n16').hide()
     });
 
     $(document).ready(function () {
-        $('#b-n17-n18').show()
+        $('#b-n14-n17').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n17-n18').hide()
     });
 
     for (var i = 0; i <= progressEdges.length - 1; i++) {
@@ -417,9 +420,9 @@ function showPath() {
 //  var array = ["n1n2","n2n4","n4n7","n7n9","n9n11","n11n12"];
 //  showPath(array);
 
-function move(arr) {
+function move() {
     var currentNode;
-    currentNode = arr;
+    currentNode = progressRobot;
     //currentNode = input[0];
     switch (currentNode) {
         case "n1":
