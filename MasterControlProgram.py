@@ -40,22 +40,29 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         return True
 
     def on_message(self, message):
-        if message == 'client ready':
+        print("from client ", message)
+        if message == "client ready":
             self.write_message('request initial node and edges')
-        if not guiMessageQueue.empty():
-            self.write_message("need node")
-            # send message back up.
-            pass
-            # print ("Values Updated")
+            #print("from client", message)
+        elif message == "request path":
+            if not guiMessageQueue.empty():
+                order = guiMessageQueue.get_nowait()
+                print ("path being sent back  up ",order)
+                self.write_message(order)
         else:
+            print("command queue now has: " + message)
             commandQueue.put(message)
-
+##            if not guiMessageQueue.empty():
+##                order = guiMessageQueue.get_nowait()
+##                print ("path being sent back  up ",order)
+##                self.write_message(order)
             # assign edges to relevant function for pathfinding input
 
     def on_close(self):
         print('connection closed...')
     def sendup (self):
         if not guiMessageQueue.empty():
+                print ("path being sent back  up ",guiMessageQueue.get_nowait())
                 self.write_message(guiMessageQueue.get_nowait())
 
 application = tornado.web.Application([
@@ -75,7 +82,7 @@ class guiControlThread(threading.Thread):
         self.cqueue = cqueue
 
     def run(self):
-        print(self.name + " Ready")
+        print(self.name + " Ready\n")
         application.listen(9093)  # starts the websockets connection
         tornado.ioloop.IOLoop.instance().start()
 
@@ -91,11 +98,12 @@ class robotControlThread(threading.Thread):
         self.control = control
 
     def run(self):
-        print(self.name + " Ready")
+        print(self.name + " Ready\n")
         while (True):
-            if not queue.empty():
-                temp = queue.get()
-                robotController.status = "Processing"
+            if not self.queue.empty():
+                temp = self.queue.get()
+                robotController.status = "processing"
+                print("processing: " + temp)
                 if temp == "Forward":
                     robotController.follow_line()
                 elif temp == "Left":
@@ -105,7 +113,8 @@ class robotControlThread(threading.Thread):
                 elif temp == "TurnAround":
                     robotController.turn_around()
                 robotController.status = "waiting"
-            time.sleep(.2)  # note for commit
+                print("awaiting orders")
+            time.sleep(1)  # note for commit
 
 
 class mapRecievingThread(threading.Thread):
@@ -131,9 +140,10 @@ if __name__ == "__main__":
     commandQueue = queue.Queue()
     guiMessageQueue = queue.Queue()
     rcMessageQueue = queue.Queue()
+    node = None
     # idk if right
-    updates = UpdateData()
     # get threads going
+    print("Starting threads")
     guiThread = guiControlThread(1, "Gui Control Thread", 1, commandQueue, guiMessageQueue)
     robotThread = robotControlThread(2, "Robot Control Thread", 1, commandQueue, rcMessageQueue, robotController)
     guiThread.setDaemon(True)
@@ -149,52 +159,92 @@ if __name__ == "__main__":
 
         # check rover status
         # IF rover is idle
-        if robotController.waiting == 2:
+        if robotController.status == "idle":
             # ask for a node
             if len(ourPath.nodes) > 0:
-                robotController.waiting = 0
+                robotController.status = "processing"
+                if len(ourPath.commands)>0:
+                    temp= ourPath.commands.pop(0)
+                    rcMessageQueue.put(temp)
+                    if temp == "Forward":
+                        guiMessageQueue.put(robotPosition.currentNode)
+                        robotPosition.currentNode = ourPath.nodes.pop(0).name
+                        print("forward Position" + robotPosition.currentNode)
+                        
                 # IF node is available
                 # get a new path
                 # guichange is needed
         # ELIF rover is processing
-        if robotController.status == "Processing":
+        if robotController.status == "processing":
             pass
         # ELIF waiting for next command
-        elif robotController.status == "Waiting":
+        elif robotController.status == "waiting":
             # IF there are remaining commands
             if len(ourPath.commands) > 0:
                 # send next command
                 temp = ourPath.commands.pop(0)
-                robotControlThread.put(temp)
+                rcMessageQueue.put(temp)
+                print("incoming command: " + temp)
+                robotController.status = "processing"
                 if temp == "Forward":
-                    robotPosition.currentNode = ourPath.nodes.pop(0)
+                    robotPosition.currentNode = ourPath.nodes.pop(0).name
+                    print("forward Position" + robotPosition.currentNode)
+                    guiMessageQueue.put(robotPosition.currentNode)
+                    #ourPath.nodes.pop(0)
                     # Gui change is needed
             # ELSE
             else:
                 # set status to idle
                 robotController.status = "idle"
-
+                print("all orders completed, robot is idle")
+                ourPath = path()
+                ourPath.nodes = []
+                ourPath.edges = []
+                print(robotPosition.currentNode)
+                #updates = UpdateData(robotPosition,ourPath,ourMap)
+                guiMessageQueue.put(robotPosition.currentNode)
+                guiMessageQueue.put("PATH COMPLETE")
+                
         # check pathfinding status
         # IF current path is empty
-        if len(ourPath.nodes) == 0:
+        if len(ourPath.nodes) == 0 and robotController.status == "idle":
             if not commandQueue.empty():
                 hashstring = commandQueue.get_nowait()
+                print(hashstring)
                 node = hashstring.split("/")[0]
-                edges = hashstring.split("/")[1].split(" ")  # ask for next node
-                ourMap.resetMap()
-                for str in edges:
-                    edge =ourMap.findEdge(str)
-                    edge.inObstacle = True
-        # IF there is a next node
-        if node != None and node != '':
+                print(node)
+                if len(hashstring.split("/")) > 1:
+                    edges = hashstring.split("/")[1].split(" ")  # ask for next node
+                    #print(edges)
+                    ourMap.resetMap()
+                #if edges != None:
+                    for name in edges:
+                        print("edge", name)
+                        offedge = ourMap.findEdge(name)
+                        offedge.inObstacle = True
+                while not commandQueue.empty():
+                    commandQueue.get()
+            # IF there is a next node
+            if node != None and node != '':
             # update map
             # pathfind
-            node = ourMap.findNode(node)
-            ourPath = ourMap.getPath(ourMap.findNode(robotPosition.currentNode), node, robotPosition)
-            for node in ourPath.nodes:
-                print(node.name)
-            print(ourPath.commands)
-            guiMessageQueue.put(updates.toString())
+                mapnode = ourMap.findNode(node)
+                ourPath = ourMap.getPath(ourMap.findNode(robotPosition.currentNode), mapnode, robotPosition)
+                if ourPath.nodes != None:
+                    for node in ourPath.nodes:
+                        #print(node.name)
+                        print(ourPath.commands)
+                    print("Robot Position: " +robotPosition.currentNode)
+                    robotPosition.currentNode = ourPath.nodes.pop(0).name
+                    print("Robot Position new: " +robotPosition.currentNode)
+                    updates = UpdateData(robotPosition,ourPath,ourMap)
+                    print (updates.toString())
+                    guiMessageQueue.put(updates.toString())
+                else:
+                    guiMessageQueue.put("ERROR")
+                    ourPath = path()
+                    ourPath.nodes = None
+                node = None
             # Gui change is needed
 
             # check GUI status
@@ -202,4 +252,4 @@ if __name__ == "__main__":
             # stop, clear paths
             # IF there was any change
             # Tell GUI of change
-time.sleep(.2)
+        time.sleep(1.2)

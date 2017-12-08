@@ -1,10 +1,11 @@
 var brakes;
 var cmdqueue = [];
 var edgeQueue = [];
-var progressNodes;
-var progressEdges;
-var progressRobot;
+var progressNodes = [];
+var progressEdges = [];
+var progressRobot = "";
 var path;
+var sleep;
 
 var linebreak = document.createElement("br");
 
@@ -21,8 +22,8 @@ function addWaypoint(id) {
 
     if (cmdqueue.length == 0) {
         cmdqueue.push(id);
-        window.alert(id);
-        console.insertRow(consoleCount).innerHTML = ("Waypoint Queue: " + cmdqueue.toString());
+        // window.alert(id);
+        // console.insertRow(consoleCount).innerHTML = ("Waypoint Queue: " + cmdqueue.toString());
         console.insertRow(consoleCount).innerHTML = ("Added Waypoint: " + id + " at Index: " + cmdqueue.indexOf(id));
 
 
@@ -42,6 +43,7 @@ function addWaypoint(id) {
             console.insertRow(consoleCount).innerHTML = ("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
         }
     }
+// console.log(cmdqueue.toString());
 }
 
 function deleteButton(obj) {
@@ -117,9 +119,15 @@ function setup2() {
 
     if (socket) {
         var count = 1;
+
         //sends initial client message
+        function send() {
+            socket.send("request path");
+        }
+
         socket.onopen = function () {
             // socket.send("client ready");
+             sleep = setInterval(send, 10000);
             buttons();
         }
 
@@ -128,67 +136,79 @@ function setup2() {
             var g;
             // var g = {'node': cmdqueue.toString(), 'edges': edgeQueue.toString()};
             // socket.send(JSON.stringify(g));
-            if (edgeQueue.length == 1) {
+            if (edgeQueue.length > 0) {
                 g = cmdqueue[0].toString() + "/" + edgeQueue.toString();
-
+                //window.alert(g.toString());
+                socket.send(g.toString());
             } else {
                 g = cmdqueue[0].toString();
+                //window.alert(g.toString());
+                socket.send(g.toString());
             }
-            window.alert(g.toString());
-            socket.send(g.toString());
+
+
         }
 
         //clears previous update information
         function clearUpdate() {
-            // progressEdges = [];
+            progressEdges = [];
             progressNodes = [];
             progressRobot = "";
         }
 
+        // function pushtoarray() {
+        //     for (var i = 0; i < progressNodes.length - 1; i++) {
+        //         path = progressNodes[i] + progressNodes[i + 1];
+        //         progressNodes.push();
+        //     }
+        // }
+        socket.onmessage = function (event) {
+            var response = event.data;
+            console.insertRow(consoleCount).innerHTML = ("received from server " + response);
+            if (response == "ERROR") {
+                window.alert("An error has been detected. Valid path not found.");
+            }
+            else if (response == "PATH COMPLETE") {
+                window.alert(cmdqueue.shift());
+                buttons();
+                // window.alert("DONE!!! ");
+                // clearUpdate();
+                // clearInterval(f);
+                // // if (cmdqueue.length > 1) {
+                // var table = document.getElementById("waypointtable");
+                // table.deleteRow(0);
+                // window.alert("cmd queue " + cmdqueue);
+                //
+                // window.alert("buttons fired");
+                // }else {
 
-        socket.onmessage = function (msg) {
-            // if (typeof msg == 'string') {
-            //     if (msg == "request nodes and edges") {
-            //         buttons();
-            //     } else {
-            //         console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + msg);
-            //     }
-            // } else {
-            //     clearUpdate();
-            //     var response =[] ;
-            //         response = JSON.parse(msg);
-            //     // tokenize array elements and put into seperate arrays
-            //     // progressNodes = response.[0].split(" ");
-            //     // progressEdges = response.[1].split(" ");
-            //     // progressRobot = response.[2];
-            // }
-            var response = msg;
-            //more nodes needed
-            if (msg == "request nodes and edges") {
-                buttons();
-                //update data being sent, with request for nodes
+                // }
             } else if (response.indexOf("/") > -1) {
-                //split nodes by hashses
-                var q = response.split("/");
-                //clear any previously added edges and robot positions
-                clearUpdate();
-                //split nodes into array by spaces
-                progressNodes = q[0].split(" ");
-                //iterately concatenate nodes into edges and push to list
-                for (var i = 0; i < progressNodes.length - 1; i++) {
-                    path = progressNodes[i] + progressNodes[i + 1];
-                    progressNodes.push();
+
+                if (response.split("/").length > 1) {
+                    var q = response.split("/");
+                    // window.alert("before push " + progressNodes);
+                    progressNodes = q[0].split(" ");
+                    // window.alert("after push " + progressNodes);
+                    progressRobot = q[1] + progressRobot;
+                    move(progressRobot);
+                    progressNodes.unshift(progressRobot);
+                    for (var i = 0; i < progressNodes.length - 1; i++) {
+                        path = progressNodes[i] + progressNodes[i + 1];
+                        progressEdges.push(path);
+                        // showPath();
+                    }
+                    window.alert(progressEdges);
+                    showPath();
+                } else {
+                    move(progressRobot);
                 }
-                //get robot's current position
-                progressRobot = q[1].split(" ");
-                //show the path
-                showPath();
-                //delete first item in cmd queue
-                console.log("waypoint" + cmdqueue.shift() + "was deleted");
-                //send down next iitem in queue
-                buttons();
             } else {
-                console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + msg);
+                console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + response);
+                if (progressEdges.length > 0) {
+                    window.alert("removing first node and calling show path.. " + progressEdges.shift());
+                    showPath();
+                }
             }
         }
 
@@ -207,136 +227,139 @@ function setup2() {
     }
 }
 
-
 //function that takes in an array from pathfinding and shows the calculated path
 function showPath() {
     //INPUT IS NOW PROGRESSEDGE ARRAY
     var currentPath;
-    for (var i = 0; i <= progressNodes.length - 1; i++) {
-        currentPath = progressNodes[i];
+    for (var i = 0; i <= progressEdges.length - 1; i++) {
+        currentPath = progressEdges[i];
+        // var currentPath;
+        // for (var i = 0; i <= input.length - 1; i++) {
+        //     currentPath = input[i];
         switch (currentPath) {
-            case "n1-n2":
-            case "n2-n1":
+            case "n1n2":
+            case "n2n1":
                 $(document).ready(function () {
                     $('#b-n1-n2').show()
                 });
                 break
-            case "n2-n3":
-            case "n3-n2":
+            case "n2n3":
+            case "n3n2":
                 $(document).ready(function () {
                     $('#b-n2-n3').show()
                 });
                 break
-            case "n2-n4":
-            case "n4-n2":
+            case "n2n4":
+            case "n4n2":
                 $(document).ready(function () {
                     $('#b-n2-n4').show()
                 });
                 break
-            case "n4-n5":
-            case "n5-n4":
+            case "n4n5":
+            case "n5n4":
                 $(document).ready(function () {
                     $('#b-n4-n5').show()
                 });
                 break
-            case "n4-n6":
-            case "n6-n4":
+            case "n4n6":
+            case "n6n4":
                 $(document).ready(function () {
                     $('#b-n4-n6').show()
                 });
                 break
-            case "n4-n7":
-            case "n7-n4":
+            case "n4n7":
+            case "n7n4":
                 $(document).ready(function () {
                     $('#b-n4-n7').show()
                 });
                 break
-            case "n7-n8":
-            case "n8-n7":
+            case "n7n8":
+            case "n8n7":
                 $(document).ready(function () {
                     $('#b-n7-n8').show()
                 });
                 break
-            case "n7-n9":
-            case "n9-n7":
+            case "n7n9":
+            case "n9n7":
                 $(document).ready(function () {
                     $('#b-n7-n9').show()
                 });
                 break
-            case "n9-n10":
-            case "n10-n9":
+            case "n9n10":
+            case "n10n9":
                 $(document).ready(function () {
                     $('#b-n9-n10').show()
                 });
                 break
-            case "n9-n11":
-            case "n11-n9":
+            case "n9n11":
+            case "n11n9":
                 $(document).ready(function () {
                     $('#b-n9-n11').show()
                 });
                 break
-            case "n11-n12":
-            case "n12-n11":
+            case "n11n12":
+            case "n12n11":
                 $(document).ready(function () {
                     $('#b-n11-n12').show()
                 });
                 break
-            case "n11-n13":
-            case "n13-n11":
+            case "n11n13":
+            case "n13n11":
                 $(document).ready(function () {
                     $('#b-n11-n13').show()
                 });
                 break
-            case "n13-n14":
-            case "n14-n13":
+            case "n13n14":
+            case "n14n13":
                 $(document).ready(function () {
                     $('#b-n13-n14').show()
                 });
                 break
-            case "n13-n17":
-            case "n17-n13":
+            case "n13n17":
+            case "n17n13":
                 $(document).ready(function () {
                     $('#b-n13-n17').show()
                 });
                 break
-            case "n14-n15":
-            case "n15-n14":
+            case "n14n15":
+            case "n15n14":
                 $(document).ready(function () {
                     $('#b-n14-n15').show()
                 });
                 break
-            case "n14-n16":
-            case "n16-n14":
+            case "n14n16":
+            case "n16n14":
                 $(document).ready(function () {
                     $('#b-n14-n16').show()
                 });
                 break
-            case "n14-n17":
-            case "n17-n14":
+            case "n14n17":
+            case "n17n14":
                 $(document).ready(function () {
                     $('#b-n14-n17').show()
                 });
                 break
-            case "n17-n18":
-            case "n18-n17":
+            case "n17n18":
+            case "n18n17":
                 $(document).ready(function () {
                     $('#b-n17-n18').show()
                 });
                 break
             default:
-                console.insertRow(consoleCount).innerHTML = ("No path found");
-                stop()
+            // console.insertRow(consoleCount).innerHTML = ("No path found");
+            // stop()
         }
     }
 }
 
-//for testing purposes un-comment code//
-//  var array = ["n1-n2","n2-n4","n4-n7","n7-n9","n9-n11","n11-n12"];
-//  showPath(array)
+// //for testing purposes un-comment code//
+//  var array = ["n1n2","n2n4","n4n7","n7n9","n9n11","n11n12"];
+//  showPath(array);
 
-function move(input) {
+function move(arr) {
     var currentNode;
-    currentNode = input[0];
+    currentNode = arr;
+    //currentNode = input[0];
     switch (currentNode) {
         case "n1":
             $(document).ready(function () {
@@ -441,5 +464,6 @@ function move(input) {
 
 }
 
+//
 var defaultArray = [];
 move(defaultArray);
