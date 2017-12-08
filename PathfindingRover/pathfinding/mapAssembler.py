@@ -9,6 +9,7 @@ class mapAssembler(object):
 
     def assembleMap(self):
         map = []
+        edges = []
         map.append(Node('n1',76,0))
         map.append(Node('n2',104,30))
         map.append(Node('n3',76,30))
@@ -39,29 +40,29 @@ class mapAssembler(object):
         #              .
         #              .
         #      edge(map[18]......,0,False)
-        edge(map[0],compassDirections.north,map[1],compassDirections.south,0,False)
-        edge(map[1],compassDirections.east,map[2],compassDirections.west,0,False)
-        edge(map[1],compassDirections.north,map[3],compassDirections.south,0,False)
-        edge(map[3],compassDirections.east,map[4],compassDirections.west,0,False)
-        edge(map[3],compassDirections.north,map[5],compassDirections.south,0,False)
-        edge(map[3],compassDirections.west,map[6],compassDirections.east,0,False)
-        edge(map[6],compassDirections.north,map[7],compassDirections.south,0,False)
-        edge(map[6],compassDirections.west,map[8],compassDirections.south,0,False)
-        edge(map[8],compassDirections.east,map[9],compassDirections.south,0,False)
-        edge(map[8],compassDirections.west,map[10],compassDirections.east,0,False)
-        edge(map[10],compassDirections.west,map[11],compassDirections.east,0,False)
-        edge(map[10],compassDirections.south,map[12],compassDirections.north,0,False)
-        edge(map[12],compassDirections.west,map[13],compassDirections.north,0,False)
-        edge(map[13],compassDirections.west,map[14],compassDirections.east,0,False)
-        edge(map[13],compassDirections.south,map[15],compassDirections.north,0,False)
-        edge(map[13],compassDirections.east,map[16],compassDirections.south,0,False)
-        edge(map[12],compassDirections.east,map[16],compassDirections.west,0,False)
-        edge(map[17],compassDirections.west,map[16],compassDirections.east,0,False)
-        edge(map[17],compassDirections.north,map[6],compassDirections.south,0,False)
-        edge(map[17],compassDirections.south,map[18],compassDirections.north,0,False)
+        edges.append(edge(map[0],compassDirections.north,map[1],compassDirections.south,0,False))
+        edges.append(edge(map[1],compassDirections.east,map[2],compassDirections.west,0,False))
+        edges.append(edge(map[1],compassDirections.north,map[3],compassDirections.south,0,False))
+        edges.append(edge(map[3],compassDirections.east,map[4],compassDirections.west,0,False))
+        edges.append(edge(map[3],compassDirections.north,map[5],compassDirections.south,0,False))
+        edges.append(edge(map[3],compassDirections.west,map[6],compassDirections.east,0,False))
+        edges.append(edge(map[6],compassDirections.north,map[7],compassDirections.south,0,False))
+        edges.append(edge(map[6],compassDirections.west,map[8],compassDirections.south,0,False))
+        edges.append(edge(map[8],compassDirections.east,map[9],compassDirections.south,0,False))
+        edges.append(edge(map[8],compassDirections.west,map[10],compassDirections.east,0,False))
+        edges.append(edge(map[10],compassDirections.west,map[11],compassDirections.east,0,False))
+        edges.append(edge(map[10],compassDirections.south,map[12],compassDirections.north,0,False))
+        edges.append(edge(map[12],compassDirections.west,map[13],compassDirections.north,0,False))
+        edges.append(edge(map[13],compassDirections.west,map[14],compassDirections.east,0,False))
+        edges.append(edge(map[13],compassDirections.south,map[15],compassDirections.north,0,False))
+        edges.append(edge(map[13],compassDirections.east,map[16],compassDirections.south,0,False))
+        edges.append(edge(map[12],compassDirections.east,map[16],compassDirections.west,0,False))
+        edges.append(edge(map[16],compassDirections.east,map[17],compassDirections.west,0,False))
+        edges.append(edge(map[6],compassDirections.south,map[17],compassDirections.north,0,False))
+        edges.append(edge(map[17],compassDirections.south,map[18],compassDirections.north,0,False))
 
 
-        return map
+        return map,edges
 
         #
         #                                                __

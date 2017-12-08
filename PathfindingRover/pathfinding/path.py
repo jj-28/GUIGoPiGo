@@ -6,6 +6,7 @@ class path(object):
     def __init__(self):
         self.nodes = [] # the nodes list of a path
         self.commands = [] # string list of commands for robot controller
+        self.directions = []
 
 
     #get a path of strings for the robot to use
@@ -25,18 +26,26 @@ class path(object):
                 edge = self.nodes[i-1].getEdge(self.nodes[i])
                 tempDirection =  edge.getDirection(self.nodes[i])
                 fakepos.direction = self.reverseDirection(tempDirection)
+                self.directions.append(fakepos.direction)
+                print(tempDirection)
+                print(fakepos.direction)
             #get the edge we need
             edge = self.nodes[i].getEdge(self.nodes[i+1])
             direction = edge.getDirection(node)
             #while we aren't facint the correct direction
             if(fakepos.direction != direction ):
                 self.commands.append(self.getDirection(direction,fakepos.direction))
+                fakepos.direction = direction
+                self.directions.append(direction)
                 j = j+1
             self.commands.append("Forward")
             #prep for next node
             i = i +1
             j = j+1
-
+        robotpos.direction = fakepos.direction
+        print(self.directions)
+        print(robotpos.direction)
+        print(fakepos.direction)
         return self.commands
 
     def reverseDirection(self,d):

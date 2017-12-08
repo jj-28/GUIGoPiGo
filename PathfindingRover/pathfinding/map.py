@@ -15,20 +15,18 @@ class map(object):
     def __init__(self):
         mapper = mapAssembler()
         self.nodes = []
-        self.nodes = mapper.assembleMap()  # nodes of the map
-        edgeList = []
-        for thisEdge in self.nodes:
-            if(not edgeList.__contains__(thisEdge)):
-                edgeList.append(thisEdge)
-        self.edges = edgeList
+        self.edges = []
+        (self.nodes,self.edges) = mapper.assembleMap()  # nodes of the map
+
 
     def resetMap(self):
         for thisEdge in self.edges:
             thisEdge.inObstacle = False
 
     def findEdge(self,name):
+        temp = name
         for thisEdge in self.edges:
-            if thisEdge.name == name:
+            if thisEdge.name == temp:
                 return thisEdge
 
     def findNode(self,name):
@@ -41,7 +39,10 @@ class map(object):
     def getPath(self, start, end,robPos):
         mypath = path()
         mypath.nodes = self.__pathfinding(start, end)
-        mypath.getPathAsStrings(robPos)
+        if mypath.nodes != None:
+            mypath.getPathAsStrings(robPos)
+        print(robPos.direction)
+        print(mypath.directions)
         return mypath
 
     # A* pathfinding solution

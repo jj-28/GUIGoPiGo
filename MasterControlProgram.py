@@ -166,6 +166,7 @@ if __name__ == "__main__":
                 if len(ourPath.commands)>0:
                     temp= ourPath.commands.pop(0)
                     rcMessageQueue.put(temp)
+                    #robotPosition.direction = ourPath.directions.pop(0)
                     if temp == "Forward":
                         guiMessageQueue.put(robotPosition.currentNode)
                         robotPosition.currentNode = ourPath.nodes.pop(0).name
@@ -185,6 +186,7 @@ if __name__ == "__main__":
                 temp = ourPath.commands.pop(0)
                 rcMessageQueue.put(temp)
                 print("incoming command: " + temp)
+                robotPosition.direction = ourPath.directions.pop(0)
                 robotController.status = "processing"
                 if temp == "Forward":
                     robotPosition.currentNode = ourPath.nodes.pop(0).name
@@ -211,19 +213,23 @@ if __name__ == "__main__":
             if not commandQueue.empty():
                 hashstring = commandQueue.get_nowait()
                 print(hashstring)
-                node = hashstring.split("/")[0]
-                print(node)
-                if len(hashstring.split("/")) > 1:
-                    edges = hashstring.split("/")[1].split(" ")  # ask for next node
-                    #print(edges)
-                    ourMap.resetMap()
-                #if edges != None:
-                    for name in edges:
-                        print("edge", name)
-                        offedge = ourMap.findEdge(name)
-                        offedge.inObstacle = True
-                while not commandQueue.empty():
-                    commandQueue.get()
+                if hashstring == "RESET":
+                    robotPosition.currentNode = "n1"
+                    robotPosition.direction = 0
+                else:
+                    node = hashstring.split("/")[0]
+                    print(node)
+                    if len(hashstring.split("/")) > 1:
+                        edges = hashstring.split("/")[1].split(" ")  # ask for next node
+                        #print(edges)
+                        ourMap.resetMap()
+                        #if edges != None:
+                        for name in edges:
+                            print("edge", name)
+                            offedge = ourMap.findEdge(name)
+                            offedge.inObstacle = True
+                    while not commandQueue.empty():
+                        commandQueue.get()
             # IF there is a next node
             if node != None and node != '':
             # update map

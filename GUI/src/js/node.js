@@ -126,17 +126,18 @@ function setup2() {
         }
 
         socket.onopen = function () {
-            move("n1");
             // socket.send("client ready");
             sleep = setInterval(send, 10000);
             buttons();
         }
         //Sends JSON object containing node and edges
         function buttons() {
+
             var g;
             // var g = {'node': cmdqueue.toString(), 'edges': edgeQueue.toString()};
             // socket.send(JSON.stringify(g));
             if (cmdqueue.length > 0) {
+                move("n1");
                 if (edgeQueue.length > 0) {
                     g = cmdqueue[0].toString() + "/" + edgeQueue.toString();
                     //window.alert(g.toString());
@@ -212,6 +213,9 @@ function setup2() {
         socket.onclose = function () {
             console.insertRow(consoleCount).innerHTML = ("connection closed....");
             showServerResponse("The connection has been closed.");
+        }
+        socket.onerror= function(error) {
+            window.alert("An unexpected error has occured. Please check the Robot Addresses and try again.");
         }
     } else {
         console.insertRow(consoleCount).innerHTML = ("invalid socket");

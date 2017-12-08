@@ -177,7 +177,7 @@ class RobotController(Sensor):
             
         for x in five_vals:
             #print(x)
-            if x > 450:
+            if x > 425:
                 new_vals.append(1)
             else:
                 new_vals.append(0)
@@ -228,10 +228,10 @@ class RobotController(Sensor):
                 break
 
     def turn_around(self):
-        gopigo.set_right_speed(35)
-        gopigo.set_left_speed(35)
+        gopigo.set_right_speed(40)
+        gopigo.set_left_speed(40)
         gopigo.backward()
-        time.sleep(1)
+        time.sleep(1.5)
         gopigo.stop()
         time.sleep(1)
         gopigo.left_rot()
