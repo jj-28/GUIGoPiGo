@@ -29,7 +29,7 @@ function addWaypoint(id) {
 
         row.insertCell(0).innerHTML = "Waypoint: " + waypointId;
         row.insertCell(1).innerHTML =
-            '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
+        '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
     } else {
         if (cmdqueue[cmdqueue.length - 1] != id) {
             cmdqueue.push(id);
@@ -38,7 +38,7 @@ function addWaypoint(id) {
 
             row.insertCell(0).innerHTML = "Waypoint: " + waypointId;
             row.insertCell(1).innerHTML =
-                '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
+            '<input type="button" id="delete" class="deleteDep" value="Delete" onclick = "deleteButton(this);" >';
         } else {
             console.insertRow(consoleCount).innerHTML = ("You can't add the same waypoint 2 times in a row. Ex:No N1-N1-N@");
         }
@@ -128,7 +128,7 @@ function setup2() {
         socket.onopen = function () {
             move("n1");
             // socket.send("client ready");
-             sleep = setInterval(send, 10000);
+            sleep = setInterval(send, 10000);
             buttons();
         }
         //Sends JSON object containing node and edges
@@ -161,7 +161,7 @@ function setup2() {
         function reset () {
             socket.send("RESET");
             clearUpdate();
-            move("");
+            move();
             clearWaypoints();
         }
         socket.onmessage = function (event) {
@@ -172,6 +172,7 @@ function setup2() {
             }
             else if (response == "PATH COMPLETE") {
                 window.alert(cmdqueue.shift());
+                move();
                 if (cmdqueue.length > 0) {
                     buttons();
                 } else {
@@ -185,7 +186,7 @@ function setup2() {
                     progressNodes = q[0].split(" ");
                     progressRobot = q[1];
                     window.alert(progressRobot);
-                    move(progressRobot);
+                    move();
                     progressNodes.unshift(progressRobot);
                     for (var i = 0; i < progressNodes.length - 1; i++) {
                         path = progressNodes[i] + progressNodes[i + 1];
@@ -193,6 +194,7 @@ function setup2() {
                     }
                     window.alert(progressEdges);
                     showPath();
+                    move();
                 } else {
                     // move(progressRobot);
                 }
@@ -202,6 +204,7 @@ function setup2() {
                     // window.alert("removing first node and calling show path.. " + progressEdges.shift());
                     progressEdges.shift();
                     showPath();
+                    move();
                 }
             }
         }
@@ -228,6 +231,75 @@ function showPath() {
     $(document).ready(function () {
         $('#b-n1-n2').hide()
     });
+
+    $(document).ready(function () {
+        $('#b-n2-n3').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n2-n4').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n4-n5').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n4-n6').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n4-n7').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n7-n8').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n7-n9').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n9-n10').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n9-n11').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n11-n12').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n11-n13').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n13-n14').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n13-n17').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n14-n15').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n14-n16').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n14-n17').hide()
+    });
+
+    $(document).ready(function () {
+        $('#b-n17-n18').hide()
+    });
+
     for (var i = 0; i <= progressEdges.length - 1; i++) {
         currentPath = progressEdges[i];
         // var currentPath;
@@ -236,112 +308,112 @@ function showPath() {
         switch (currentPath) {
             case "n1n2":
             case "n2n1":
-                $(document).ready(function () {
-                    $('#b-n1-n2').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n1-n2').show()
+            });
+            break
             case "n2n3":
             case "n3n2":
-                $(document).ready(function () {
-                    $('#b-n2-n3').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n2-n3').show()
+            });
+            break
             case "n2n4":
             case "n4n2":
-                $(document).ready(function () {
-                    $('#b-n2-n4').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n2-n4').show()
+            });
+            break
             case "n4n5":
             case "n5n4":
-                $(document).ready(function () {
-                    $('#b-n4-n5').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n4-n5').show()
+            });
+            break
             case "n4n6":
             case "n6n4":
-                $(document).ready(function () {
-                    $('#b-n4-n6').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n4-n6').show()
+            });
+            break
             case "n4n7":
             case "n7n4":
-                $(document).ready(function () {
-                    $('#b-n4-n7').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n4-n7').show()
+            });
+            break
             case "n7n8":
             case "n8n7":
-                $(document).ready(function () {
-                    $('#b-n7-n8').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n7-n8').show()
+            });
+            break
             case "n7n9":
             case "n9n7":
-                $(document).ready(function () {
-                    $('#b-n7-n9').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n7-n9').show()
+            });
+            break
             case "n9n10":
             case "n10n9":
-                $(document).ready(function () {
-                    $('#b-n9-n10').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n9-n10').show()
+            });
+            break
             case "n9n11":
             case "n11n9":
-                $(document).ready(function () {
-                    $('#b-n9-n11').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n9-n11').show()
+            });
+            break
             case "n11n12":
             case "n12n11":
-                $(document).ready(function () {
-                    $('#b-n11-n12').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n11-n12').show()
+            });
+            break
             case "n11n13":
             case "n13n11":
-                $(document).ready(function () {
-                    $('#b-n11-n13').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n11-n13').show()
+            });
+            break
             case "n13n14":
             case "n14n13":
-                $(document).ready(function () {
-                    $('#b-n13-n14').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n13-n14').show()
+            });
+            break
             case "n13n17":
             case "n17n13":
-                $(document).ready(function () {
-                    $('#b-n13-n17').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n13-n17').show()
+            });
+            break
             case "n14n15":
             case "n15n14":
-                $(document).ready(function () {
-                    $('#b-n14-n15').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n14-n15').show()
+            });
+            break
             case "n14n16":
             case "n16n14":
-                $(document).ready(function () {
-                    $('#b-n14-n16').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n14-n16').show()
+            });
+            break
             case "n14n17":
             case "n17n14":
-                $(document).ready(function () {
-                    $('#b-n14-n17').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n14-n17').show()
+            });
+            break
             case "n17n18":
             case "n18n17":
-                $(document).ready(function () {
-                    $('#b-n17-n18').show()
-                });
-                break
+            $(document).ready(function () {
+                $('#b-n17-n18').show()
+            });
+            break
             default:
             // console.insertRow(consoleCount).innerHTML = ("No path found");
             // stop()
@@ -353,110 +425,110 @@ function showPath() {
 //  var array = ["n1n2","n2n4","n4n7","n7n9","n9n11","n11n12"];
 //  showPath(array);
 
-function move(arr) {
+function move() {
     var currentNode;
-    currentNode = arr;
+    currentNode = progressRobot;
     //currentNode = input[0];
     switch (currentNode) {
         case "n1":
-            $(document).ready(function () {
-                $('#robot').css({top: 380, left: 85})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 380, left: 85})
+        });
+        break
         case "n2":
-            $(document).ready(function () {
-                $('#robot').css({top: 380, left: 185})
-            });
+        $(document).ready(function () {
+            $('#robot').css({top: 380, left: 185})
+        });
         case "n3":
-            break
-            $(document).ready(function () {
-                $('#robot').css({top: 480, left: 185})
-            });
-            break
+        break
+        $(document).ready(function () {
+            $('#robot').css({top: 480, left: 185})
+        });
+        break
         case "n4":
-            $(document).ready(function () {
-                $('#robot').css({top: 380, left: 435})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 380, left: 435})
+        });
+        break
         case "n5":
-            $(document).ready(function () {
-                $('#robot').css({top: 480, left: 435})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 480, left: 435})
+        });
+        break
         case "n6":
-            $(document).ready(function () {
-                $('#robot').css({top: 380, left: 710})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 380, left: 710})
+        });
+        break
         case "n7":
-            $(document).ready(function () {
-                $('#robot').css({top: 318, left: 435})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 318, left: 435})
+        });
+        break
         case "n8":
-            $(document).ready(function () {
-                $('#robot').css({top: 705, left: 325})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 705, left: 325})
+        });
+        break
         case "n9":
-            $(document).ready(function () {
-                $('#robot').css({top: 225, left: 625})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 225, left: 625})
+        });
+        break
         case "n10":
-            $(document).ready(function () {
-                $('#robot').css({top: 285, left: 710})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 285, left: 710})
+        });
+        break
         case "n11":
-            $(document).ready(function () {
-                $('#robot').css({top: 182, left: 621})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 182, left: 621})
+        });
+        break
         case "n12":
-            $(document).ready(function () {
-                $('#robot').css({top: 182, left: 621})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 182, left: 621})
+        });
+        break
         case "n13":
-            $(document).ready(function () {
-                $('#robot').css({top: 188, left: 385})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 188, left: 385})
+        });
+        break
         case "n14":
-            $(document).ready(function () {
-                $('#robot').css({top: 162, left: 230})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 162, left: 230})
+        });
+        break
         case "n15":
-            $(document).ready(function () {
-                $('#robot').css({top: 100, left: 230})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 100, left: 230})
+        });
+        break
         case "n16":
-            $(document).ready(function () {
-                $('#robot').css({top: 162, left: 85})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 162, left: 85})
+        });
+        break
         case "n17":
-            $(document).ready(function () {
-                $('#robot').css({top: 254, left: 385})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 254, left: 385})
+        });
+        break
         case "n18":
-            $(document).ready(function () {
-                $('#robot').css({top: 318, left: 385})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 318, left: 385})
+        });
+        break
         case "n19":
-            $(document).ready(function () {
-                $('#robot').css({top: 325, left: 85})
-            });
-            break
+        $(document).ready(function () {
+            $('#robot').css({top: 325, left: 85})
+        });
+        break
         default:
-            $(document).ready(function () {
-                $('#robot').css({top: 380, left: 85})
-            });
+        $(document).ready(function () {
+            $('#robot').css({top: 380, left: 85})
+        });
     }
 
 }
