@@ -126,11 +126,11 @@ function setup2() {
         }
 
         socket.onopen = function () {
+            move("n1");
             // socket.send("client ready");
              sleep = setInterval(send, 10000);
             buttons();
         }
-
         //Sends JSON object containing node and edges
         function buttons() {
             var g;
@@ -149,19 +149,17 @@ function setup2() {
 
         }
 
-        //clears previous update information
         function clearUpdate() {
             progressEdges = [];
             progressNodes = [];
             progressRobot = "";
         }
-
-        // function pushtoarray() {
-        //     for (var i = 0; i < progressNodes.length - 1; i++) {
-        //         path = progressNodes[i] + progressNodes[i + 1];
-        //         progressNodes.push();
-        //     }
-        // }
+        function reset () {
+            socket.send("RESET");
+            clearUpdate();
+            move("");
+            clearWaypoints();
+        }
         socket.onmessage = function (event) {
             var response = event.data;
             console.insertRow(consoleCount).innerHTML = ("received from server " + response);
@@ -170,38 +168,29 @@ function setup2() {
             }
             else if (response == "PATH COMPLETE") {
                 window.alert(cmdqueue.shift());
-                buttons();
-                // window.alert("DONE!!! ");
-                // clearUpdate();
-                // clearInterval(f);
-                // // if (cmdqueue.length > 1) {
-                // var table = document.getElementById("waypointtable");
-                // table.deleteRow(0);
-                // window.alert("cmd queue " + cmdqueue);
-                //
-                // window.alert("buttons fired");
-                // }else {
-
-                // }
-            } else if (response.indexOf("/") > -1) {
+                if (cmdqueue.length > 0) {
+                    buttons();
+                } else {
+                    window.alert("The robot has completed navigation. Please hit the reset button.");
+                }
+            }
+            else if (response.indexOf("/") > -1) {
 
                 if (response.split("/").length > 1) {
                     var q = response.split("/");
-                    // window.alert("before push " + progressNodes);
                     progressNodes = q[0].split(" ");
-                    // window.alert("after push " + progressNodes);
-                    progressRobot = q[1] + progressRobot;
+                    progressRobot = q[1];
+                    window.alert(progressRobot);
                     move(progressRobot);
                     progressNodes.unshift(progressRobot);
                     for (var i = 0; i < progressNodes.length - 1; i++) {
                         path = progressNodes[i] + progressNodes[i + 1];
                         progressEdges.push(path);
-                        // showPath();
                     }
                     window.alert(progressEdges);
                     showPath();
                 } else {
-                    move(progressRobot);
+                    // move(progressRobot);
                 }
             } else {
                 console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + response);
@@ -231,6 +220,9 @@ function setup2() {
 function showPath() {
     //INPUT IS NOW PROGRESSEDGE ARRAY
     var currentPath;
+    $(document).ready(function () {
+        $('#b-n1-n2').hide()
+    });
     for (var i = 0; i <= progressEdges.length - 1; i++) {
         currentPath = progressEdges[i];
         // var currentPath;
@@ -463,7 +455,3 @@ function move(arr) {
     }
 
 }
-
-//
-var defaultArray = [];
-move(defaultArray);
