@@ -84,8 +84,8 @@ function maintainQueue(id) {
     var consoleCount = console.rows.length;
     if (edgeQueue.indexOf(id) == -1) {
         edgeQueue.push(id);
-        console.insertRow(consoleCount).innerHTML = ("Obstacle Queue: " + edgeQueue.toString());
-        console.insertRow(consoleCount).innerHTML = ("Added Obstacle " + id);
+        // console.insertRow(consoleCount).innerHTML = ("Obstacle Queue: " + edgeQueue.toString());
+        // console.insertRow(consoleCount).innerHTML = ("Added Obstacle " + id);
     } else {
         edgeQueue.splice(edgeQueue.indexOf(id), 1);
         edgeIndex = edgeQueue.indexOf(id);
@@ -136,14 +136,18 @@ function setup2() {
             var g;
             // var g = {'node': cmdqueue.toString(), 'edges': edgeQueue.toString()};
             // socket.send(JSON.stringify(g));
-            if (edgeQueue.length > 0) {
-                g = cmdqueue[0].toString() + "/" + edgeQueue.toString();
-                //window.alert(g.toString());
-                socket.send(g.toString());
-            } else {
-                g = cmdqueue[0].toString();
-                //window.alert(g.toString());
-                socket.send(g.toString());
+            if (cmdqueue.length > 0) {
+                if (edgeQueue.length > 0) {
+                    g = cmdqueue[0].toString() + "/" + edgeQueue.toString();
+                    //window.alert(g.toString());
+                    socket.send(g.toString());
+                } else {
+                    g = cmdqueue[0].toString();
+                    //window.alert(g.toString());
+                    socket.send(g.toString());
+                }
+            }else {
+                window.alert("You need to add a node before highlighting edges.");
             }
 
 
@@ -162,7 +166,7 @@ function setup2() {
         }
         socket.onmessage = function (event) {
             var response = event.data;
-            console.insertRow(consoleCount).innerHTML = ("received from server " + response);
+            // console.insertRow(consoleCount).innerHTML = ("received from server " + response);
             if (response == "ERROR") {
                 window.alert("An error has been detected. Valid path not found.");
             }
@@ -193,9 +197,10 @@ function setup2() {
                     // move(progressRobot);
                 }
             } else {
-                console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + response);
+                // console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + response);
                 if (progressEdges.length > 0) {
-                    window.alert("removing first node and calling show path.. " + progressEdges.shift());
+                    // window.alert("removing first node and calling show path.. " + progressEdges.shift());
+                    progressEdges.shift();
                     showPath();
                 }
             }
