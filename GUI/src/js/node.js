@@ -159,7 +159,7 @@ function setup2() {
             progressNodes = [];
             progressRobot = "";
         }
-        function reset () {
+        function reset() {
             socket.send("RESET");
             clearUpdate();
             move();
@@ -172,12 +172,15 @@ function setup2() {
                 window.alert("An error has been detected. Valid path not found.");
             }
             else if (response == "PATH COMPLETE") {
-                window.alert(cmdqueue.shift());
+                // window.alert();
+                cmdqueue.shift();
                 move();
                 if (cmdqueue.length > 0) {
                     buttons();
                 } else {
-                    window.alert("The robot has completed navigation. Please hit the reset button.");
+                    window.alert("The robot has completed navigation.");
+                    $('#table tr:first').remove();
+                    // clearWaypoints();
                 }
             }
             else if (response.indexOf("/") > -1) {
@@ -186,20 +189,21 @@ function setup2() {
                     var q = response.split("/");
                     progressNodes = q[0].split(" ");
                     progressRobot = q[1];
-                    window.alert(progressRobot);
-                    move();
+                    // window.alert(progressRobot);
+                    // move();
                     progressNodes.unshift(progressRobot);
                     for (var i = 0; i < progressNodes.length - 1; i++) {
                         path = progressNodes[i] + progressNodes[i + 1];
                         progressEdges.push(path);
                     }
-                    window.alert(progressEdges);
+                    // window.alert(progressEdges);
                     showPath();
                     move();
                 } else {
-                    // move(progressRobot);
+                    move();
                 }
             } else {
+                move();
                 // console.insertRow(consoleCount).innerHTML = ("unexpected string received: " + response);
                 if (progressEdges.length > 0) {
                     // window.alert("removing first node and calling show path.. " + progressEdges.shift());
@@ -425,9 +429,9 @@ function showPath() {
     }
 }
 
-// //for testing purposes un-comment code//
-//  var array = ["n1n2","n2n4","n4n7","n7n9","n9n11","n11n12"];
-//  showPath(array);
+//for testing purposes un-comment code//
+ var array = ["n1n2","n2n4","n4n7","n7n9","n9n11","n11n12"];
+ showPath(array);
 
 function move() {
     var currentNode;

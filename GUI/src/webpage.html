@@ -55,7 +55,7 @@
             class="robot"
             id="robot"
             style="left: 0px; top: 0px"
-            -webkit-transform: rotate(180deg);
+             -webkit-transform: rotate(180deg);
             transform: rotate(180deg);
             alt="robot">
 
@@ -675,7 +675,7 @@
                     });
                 </script>
             </button>
-            <button id= "buttonStop" name="stop" onclick="reset();" type="button"> Stop
+            <button id= "buttonStop" name="reset" onclick="reset()" type="button"> Reset
                 <script>
                     $(document).ready(function() {
                         $('#buttonStop').click(function() {
@@ -691,7 +691,7 @@
         <!-- Toolbar -->
         <div>
             <form id="send">
-                Robot Address:<br>
+                IP:<br>
                 <input type="text" id="data">
                 <br>
             </form>
