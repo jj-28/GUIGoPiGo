@@ -8,16 +8,16 @@ Additionally, the user can choose put an obstacle on an edge by clicking on any 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+#### Prerequisites
 
 To run the software, you'll need:
-*A GoPiGO3 robot kit
-*Raspberry Pi (equpped with wifi dongle or onboard Wi-Fi)
-*Python 3.4+ installed on the robot
-*Pip
-*tornado and GoPiGo modules
-*A computer
-*Any modern web browser (NOTE: The webpage has only been tested with Google Chrome, Mozilla Firefox, Internet Explorer/Microsoft Edge, and Chromium. Any other browsers, such as the browser that is included with the Raspberry Pi are NOT guaranteed to display the webpage properly/support websockets.)
+-A GoPiGO3 robot kit
+-Raspberry Pi (equpped with wifi dongle or onboard Wi-Fi)
+Python 3.4+ installed on the robot
+-Pip
+-tornado and GoPiGo modules
+-A computer
+-Any modern web browser (NOTE: The webpage has only been tested with Google Chrome, Mozilla Firefox, Internet Explorer/Microsoft Edge, and Chromium. Any other browsers, such as the browser that is included with the Raspberry Pi are NOT guaranteed to display the webpage properly/support websockets.)
 
 ### Installing
 
@@ -41,7 +41,7 @@ pip install GoPiGo
 
 ### Tips for Good Performance
 
--Ensure the room that you plan to test in has adequete lighting. The line sensor is extremely sensitive, and lack of adequete lighting will cause the robot to deviate from it's path.
+-Ensure the room that you plan to test in has adequate lighting. The line sensor is extremely sensitive, and lack of adequate lighting will cause the robot to deviate from it's path.
 -Make sure that the surface is clean and white, and the lines are black. The robot works by detecting raw values from the surface and converting them into absolute values (1 for black, and 0 for white). Smudges and dirt will negatively impact performance.
 
 ## Contributors
