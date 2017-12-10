@@ -11,13 +11,13 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 To run the software, you'll need:
--A GoPiGO3 robot kit
--Raspberry Pi (equpped with wifi dongle or onboard Wi-Fi)
--Python 3.4+ installed on the robot
--Pip
--tornado and GoPiGo modules
--A computer
--Any modern web browser (NOTE: The webpage has only been tested with Google Chrome, Mozilla Firefox, Internet Explorer/Microsoft Edge, and Chromium. Any other browsers, such as the browser that is included with the Raspberry Pi are NOT guaranteed to display the webpage properly/support websockets.)
+*A GoPiGO3 robot kit
+*Raspberry Pi (equpped with wifi dongle or onboard Wi-Fi)
+*Python 3.4+ installed on the robot
+*Pip
+*tornado and GoPiGo modules
+*A computer
+*Any modern web browser (NOTE: The webpage has only been tested with Google Chrome, Mozilla Firefox, Internet Explorer/Microsoft Edge, and Chromium. Any other browsers, such as the browser that is included with the Raspberry Pi are NOT guaranteed to display the webpage properly/support websockets.)
 
 ### Installing
 
