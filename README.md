@@ -1,6 +1,10 @@
 # GUIGoPiGo
 
-GUIGoPiGo is a system that allows a user to navigate the Raspberry Pi powered GoPiGo robot, along a given maze. The maze is a whiteboard, with black electrical tape representing edges. When given nodes, represented by the blue buttons, the robot will calculate the shortest path using the A* pathfinding algorithm. The progress of the robot along the path is represented by blue lines, and a image of the robot moving to each respective node.
+GUIGoPiGo is a system that allows a user to navigate the Raspberry Pi powered GoPiGo robot, along a given maze. The maze is a whiteboard, with black electrical tape representing edges. 
+
+![Whiteboard](https://drive.google.com/a/oswego.edu/file/d/0B0jCLlc6RtXrdlplR2E0eUU3LTg/view?usp=sharing)
+
+When given nodes, represented by the blue buttons, the robot will calculate the shortest path using the A* pathfinding algorithm. The progress of the robot along the path is represented by blue lines, and a image of the robot moving to each respective node.
 
 Additionally, the user can choose put an obstacle on an edge by clicking on any edge on the map, which will highlight red. The robot will take this into account during it's calculation, and attempt to find a different path. If there is no valid path to traverse, the robot will not move. 
 
